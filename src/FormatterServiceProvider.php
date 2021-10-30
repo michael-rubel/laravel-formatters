@@ -55,8 +55,8 @@ class FormatterServiceProvider extends PackageServiceProvider
             )
         );
 
-        $appFormatters
-            ->union($packageFormatters)
+        $packageFormatters
+            ->merge($appFormatters)
             ->each(function ($file) use ($app_folder) {
                 $filename = $file->getFilenameWithoutExtension();
 
