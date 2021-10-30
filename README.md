@@ -45,7 +45,7 @@ format('table_column', 'created_at') // Created at
 ```
 
 ### Extending formatters
-Because the formatters are resolved through the Service Container they can be easily overridden by extending bindings.
+Since the formatters are resolved through the Service Container they can be easily overridden by extending bindings.
 
 For example in your Service Provider:
 ```php
