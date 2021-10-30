@@ -16,6 +16,8 @@ Future versions of PHP & Laravel will be supported.
 - `DateTime`
 - `TableColumn`
 
+... Will be more formatters soon. 😉
+
 ## Contributing
 If you have written your own formatter and want to add it to this package, PRs are welcomed.
 - Note: PRs won't be accepted without tests!
