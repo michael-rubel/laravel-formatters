@@ -86,7 +86,7 @@ class FormatterServiceProvider extends PackageServiceProvider
     {
         // @codeCoverageIgnoreStart
         $path = str_contains($file->getPathName(), $app_folder)
-            ? ucfirst(str_replace(DIRECTORY_SEPARATOR, self::CLASS_SEPARATOR, $app_folder))
+            ? Str::ucfirst(str_replace(DIRECTORY_SEPARATOR, self::CLASS_SEPARATOR, $app_folder))
               . self::CLASS_SEPARATOR
             : (new \ReflectionClass(static::class))->getNamespaceName()
               . self::CLASS_SEPARATOR
