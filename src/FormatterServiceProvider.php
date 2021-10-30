@@ -17,7 +17,6 @@ class FormatterServiceProvider extends PackageServiceProvider
      * @const
      */
     public const PACKAGE_FOLDER    = 'Collection';
-    public const PACKAGE_NAMESPACE = '\MichaelRubel\Formatters\Collection\\';
     public const FORMATTER_POSTFIX = '_formatter';
     public const CLASS_SEPARATOR   = '\\';
 
@@ -87,14 +86,12 @@ class FormatterServiceProvider extends PackageServiceProvider
     {
         // @codeCoverageIgnoreStart
         $path = str_contains($file->getPathName(), $app_folder)
-            ? Str::ucfirst(
-                str_replace(
-                    '/',
-                    self::CLASS_SEPARATOR,
-                    $app_folder
-                )
-            ) . self::CLASS_SEPARATOR
-            : self::PACKAGE_NAMESPACE;
+            ? ucfirst(str_replace(DIRECTORY_SEPARATOR, self::CLASS_SEPARATOR, $app_folder))
+              . self::CLASS_SEPARATOR
+            : (new \ReflectionClass(static::class))->getNamespaceName()
+              . self::CLASS_SEPARATOR
+              . self::PACKAGE_FOLDER
+              . self::CLASS_SEPARATOR;
         // @codeCoverageIgnoreEnd
 
         return sprintf(
