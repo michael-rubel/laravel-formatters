@@ -2,11 +2,7 @@
 
 namespace MichaelRubel\Formatters\Tests;
 
-use Carbon\Carbon;
-use MichaelRubel\Formatters\Collection\DateFormatter;
 use MichaelRubel\Formatters\Collection\DateTimeFormatter;
-use MichaelRubel\Formatters\Exceptions\ShouldImplementInterfaceException;
-use MichaelRubel\Formatters\Tests\Boilerplate\WrongFormatter;
 
 class FormatterExtendingTest extends TestCase
 {

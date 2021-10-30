@@ -16,7 +16,7 @@ class FormatterServiceProvider extends PackageServiceProvider
      *
      * @const
      */
-    public const PACKAGE_FOLDER    = 'src/Collection';
+    public const PACKAGE_FOLDER = 'src/Collection';
     public const PACKAGE_NAMESPACE = '\MichaelRubel\Formatters\Collection\\';
     public const FORMATTER_POSTFIX = '_formatter';
 
