@@ -16,10 +16,10 @@ class FormatterServiceProvider extends PackageServiceProvider
      *
      * @const
      */
-    public const PACKAGE_FOLDER    = 'Collection';
+    public const PACKAGE_FOLDER = 'Collection';
     public const PACKAGE_NAMESPACE = '\MichaelRubel\Formatters\Collection\\';
     public const FORMATTER_POSTFIX = '_formatter';
-    public const CLASS_SEPARATOR   = '\\';
+    public const CLASS_SEPARATOR = '\\';
 
     /**
      * Configure the package.
