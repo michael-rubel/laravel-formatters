@@ -77,10 +77,7 @@ format(YourCustomFormatter::class, [
 
 Or by passing the string as an alternative:
 ```php
-format('your_custom', [
-    'to_format' => 'something',
-    'additional_data' => true,
-])
+format('your_custom', 'Something to format.')
 ```
 
 ## Testing
