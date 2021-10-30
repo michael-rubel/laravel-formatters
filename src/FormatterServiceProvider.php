@@ -19,6 +19,7 @@ class FormatterServiceProvider extends PackageServiceProvider
     public const PACKAGE_FOLDER    = 'Collection';
     public const PACKAGE_NAMESPACE = '\MichaelRubel\Formatters\Collection\\';
     public const FORMATTER_POSTFIX = '_formatter';
+    public const CLASS_SEPARATOR   = '\\';
 
     /**
      * Configure the package.
@@ -41,10 +42,10 @@ class FormatterServiceProvider extends PackageServiceProvider
      */
     public function packageBooted(): void
     {
-        $appFolder = config('formatters.folder');
+        $app_folder = config('formatters.folder');
 
-        $appFormatters = File::isDirectory($appFolder)
-            ? collect(File::allFiles($appFolder)) // @codeCoverageIgnore
+        $appFormatters = File::isDirectory($app_folder)
+            ? collect(File::allFiles($app_folder)) // @codeCoverageIgnore
             : collect();
 
         $packageFormatters = collect(
@@ -57,13 +58,13 @@ class FormatterServiceProvider extends PackageServiceProvider
 
         $appFormatters
             ->union($packageFormatters)
-            ->each(function ($file) {
+            ->each(function ($file) use ($app_folder) {
                 $filename = $file->getFilenameWithoutExtension();
 
-                $class = sprintf(
-                    '%s%s',
-                    self::PACKAGE_NAMESPACE,
-                    $filename
+                $class = $this->getFormatterClass(
+                    $file,
+                    $filename,
+                    $app_folder
                 );
 
                 $this->app->bind(
@@ -71,5 +72,35 @@ class FormatterServiceProvider extends PackageServiceProvider
                     $class
                 );
             });
+    }
+
+    /**
+     * Determines the formatter class namespace.
+     *
+     * @param object $file
+     * @param string $filename
+     * @param string $app_folder
+     *
+     * @return string
+     */
+    private function getFormatterClass(object $file, string $filename, string $app_folder): string
+    {
+        // @codeCoverageIgnoreStart
+        $path = str_contains($file->getPathName(), $app_folder)
+            ? Str::ucfirst(
+                str_replace(
+                    '/',
+                    self::CLASS_SEPARATOR,
+                    $app_folder
+                )
+            ) . self::CLASS_SEPARATOR
+            : self::PACKAGE_NAMESPACE;
+        // @codeCoverageIgnoreEnd
+
+        return sprintf(
+            '%s%s',
+            $path,
+            $filename
+        );
     }
 }
