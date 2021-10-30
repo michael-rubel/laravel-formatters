@@ -7,7 +7,8 @@
 [![PHPStan](https://img.shields.io/github/workflow/status/michael-rubel/laravel-formatters/phpstan?label=Larastan)](https://github.com/michael-rubel/laravel-formatters/actions)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/michael-rubel/laravel-formatters/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/michael-rubel/laravel-formatters/?branch=main)
 
-This package is a collection of formatters you can use to standardize data formats in your Laravel application.
+This package is a collection of classes you can use to standardize data formats in your Laravel application.
+It uses the Service Container to easily extend or override the formatter classes.
 
 The package requires PHP 8.0 and Laravel 8.x.
 Future versions of PHP & Laravel will be supported.
