@@ -2,6 +2,7 @@
 
 # Laravel Formatters
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/michael-rubel/laravel-formatters.svg?style=flat-square)](https://packagist.org/packages/michael-rubel/laravel-formatters)
+[![Total Downloads](https://img.shields.io/packagist/dt/michael-rubel/laravel-formatters.svg?style=flat-square)](https://packagist.org/packages/michael-rubel/laravel-formatters)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/michael-rubel/laravel-formatters/run-tests?label=Tests)](https://github.com/michael-rubel/laravel-formatters/actions)
 [![PHPStan](https://img.shields.io/github/workflow/status/michael-rubel/laravel-formatters/phpstan?label=Larastan)](https://github.com/michael-rubel/laravel-formatters/actions)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/michael-rubel/laravel-formatters/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/michael-rubel/laravel-formatters/?branch=main)
