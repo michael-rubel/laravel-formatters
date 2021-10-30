@@ -3,10 +3,10 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | Formatters Overriding Folder
+    | Custom Formatters Folder
     |--------------------------------------------------------------------------
     |
-    | You can change the folder you want to use to override package formatters.
+    | You can change the folder you want to use for your formatters.
     |
     */
 
