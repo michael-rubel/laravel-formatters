@@ -1,6 +1,6 @@
 {
     "name": "michael-rubel/laravel-formatters",
-    "description": "This package is a collection of classes you can use to standardize data formats in your Laravel application.\nIt uses the Service Container to easily extend or override the formatter classes.",
+    "description": "This package is a collection of classes you can use to standardize data formats in your Laravel application. It uses the Service Container to easily extend or override the formatter classes.",
     "keywords": [
         "michael-rubel",
         "laravel",
