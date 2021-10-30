@@ -31,13 +31,5 @@ jobs:
       - name: Run composer install
         run: composer install -n --prefer-dist
 
-      - name: Run phpcbf
-        run: ./vendor/bin/phpcbf
-
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: apply fixes from phpcbf
-
       - name: Run phpcs
         run: ./vendor/bin/phpcs
