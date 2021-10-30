@@ -16,7 +16,7 @@ class FormatterServiceProvider extends PackageServiceProvider
      *
      * @const
      */
-    public const PACKAGE_FOLDER = '/Collection';
+    public const PACKAGE_FOLDER = 'Collection';
     public const PACKAGE_NAMESPACE = '\MichaelRubel\Formatters\Collection\\';
     public const FORMATTER_POSTFIX = '_formatter';
 
@@ -49,7 +49,9 @@ class FormatterServiceProvider extends PackageServiceProvider
 
         $packageFormatters = collect(
             File::allFiles(
-                $this->getPackageBaseDir() . self::PACKAGE_FOLDER
+                $this->getPackageBaseDir()
+                . DIRECTORY_SEPARATOR
+                . self::PACKAGE_FOLDER
             )
         );
 
