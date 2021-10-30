@@ -44,7 +44,7 @@ format('date_time', '2022-12-25 00:00:00') // 2022-12-25 00:00
 format('table_column', 'created_at') // Created at
 ```
 
-### Extending package formatters
+### Extending formatters
 Because the formatters are resolved through the Service Container they can be easily overridden by extending bindings.
 
 For example in your Service Provider:
