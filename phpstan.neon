@@ -1,0 +1,21 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - src
+
+    # The level 8 is the highest level
+    level: max
+
+    ignoreErrors:
+        - '#Property MichaelRubel\\Formatters\\Exceptions\\ShouldImplementInterfaceException(.*)#'
+        - '#Method MichaelRubel\\Formatters\\Formatter\:\:format\(\) has no return typehint specified.#'
+        - '#Instanceof between \*NEVER\* and MichaelRubel\\Formatters\\Formatter will always evaluate to false.#'
+
+    checkMissingIterableValueType: false
+
+    reportUnmatchedIgnoredErrors: false
+
+    checkOctaneCompatibility: true
