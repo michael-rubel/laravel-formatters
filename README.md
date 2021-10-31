@@ -64,7 +64,7 @@ $this->app->extend(DateTimeFormatter::class, function ($formatter) {
 To add a custom formatter you should create the class that implements the `MichaelRubel\Formatters\Formatter` interface and put this to the `app/Formatters` folder.
 You can put formatter with the same name as the package's to override the formatter from the package.
 
-You can customize the folder by publishing the config:
+You can customize the folder path or string binding case by publishing the config:
 ```bash
 php artisan vendor:publish --tag="formatters-config"
 ```
