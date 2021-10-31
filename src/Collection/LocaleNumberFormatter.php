@@ -21,6 +21,21 @@ class LocaleNumberFormatter implements Formatter
     public string $number_key = 'number';
 
     /**
+     * @var string
+     */
+    public string $style_key = 'style';
+
+    /**
+     * @var string
+     */
+    public string $pattern_key = 'pattern';
+
+    /**
+     * @var float
+     */
+    public float $default_number = 0;
+
+    /**
      * Format the date and time.
      *
      * @param Collection $items
@@ -31,11 +46,12 @@ class LocaleNumberFormatter implements Formatter
     {
         $formatter = new NumberFormatter(
             $items->get($this->locale_key) ?? app()->getLocale(),
-            NumberFormatter::DECIMAL
+            $items->get($this->style_key) ?? NumberFormatter::DECIMAL,
+            $items->get($this->pattern_key) ?? null
         );
 
         return $formatter->format(
-            (float) $items->get($this->number_key) ?? 0
+            (float) $items->get($this->number_key) ?? $this->default_number
         );
     }
 }

@@ -15,7 +15,7 @@ class LocaleNumberFormatterTest extends TestCase
             "\xc2\xa0",
             ' ',
             format(LocaleNumberFormatter::class, [
-                'to_format' => 10000,
+                'number' => 10000,
                 'locale' => 'pl',
             ])
         );
@@ -26,7 +26,7 @@ class LocaleNumberFormatterTest extends TestCase
             "\xc2\xa0",
             ' ',
             format(LocaleNumberFormatter::class, [
-                'to_format' => 10000.00,
+                'number' => 10000.00,
                 'locale' => 'pl',
             ])
         );
@@ -37,7 +37,7 @@ class LocaleNumberFormatterTest extends TestCase
             "\xc2\xa0",
             ' ',
             format(LocaleNumberFormatter::class, [
-                'to_format' => 10000.50,
+                'number' => 10000.50,
                 'locale' => 'pl',
             ])
         );
@@ -52,7 +52,7 @@ class LocaleNumberFormatterTest extends TestCase
             "\xc2\xa0",
             ' ',
             format(LocaleNumberFormatter::class, [
-                'to_format' => 10000,
+                'number' => 10000,
                 'locale' => 'en',
             ])
         );
@@ -63,7 +63,7 @@ class LocaleNumberFormatterTest extends TestCase
             "\xc2\xa0",
             ' ',
             format(LocaleNumberFormatter::class, [
-                'to_format' => 10000.00,
+                'number' => 10000.00,
                 'locale' => 'en',
             ])
         );
@@ -74,7 +74,7 @@ class LocaleNumberFormatterTest extends TestCase
             "\xc2\xa0",
             ' ',
             format(LocaleNumberFormatter::class, [
-                'to_format' => 10000.50,
+                'number' => 10000.50,
                 'locale' => 'en',
             ])
         );
