@@ -16,9 +16,10 @@ class FormatterServiceProvider extends PackageServiceProvider
      *
      * @const
      */
-    public const PACKAGE_FOLDER    = 'Collection';
-    public const FORMATTER_POSTFIX = '_formatter';
-    public const CLASS_SEPARATOR   = '\\';
+    public const PACKAGE_FOLDER  = 'Collection';
+    public const PACKAGE_CLASS   = 'Formatter';
+    public const BINDING_POSTFIX = '_formatter';
+    public const CLASS_SEPARATOR = '\\';
 
     /**
      * Configure the package.
@@ -39,9 +40,10 @@ class FormatterServiceProvider extends PackageServiceProvider
      *
      * @return void
      */
-    public function packageBooted(): void
+    public function packageRegistered(): void
     {
-        $app_folder = config('formatters.folder');
+        $app_folder    = config('formatters.folder');
+        $bindings_case = config('formatters.bindings_case');
 
         $appFormatters = File::isDirectory($app_folder)
             ? collect(File::allFiles($app_folder)) // @codeCoverageIgnore
@@ -57,20 +59,28 @@ class FormatterServiceProvider extends PackageServiceProvider
 
         $packageFormatters
             ->merge($appFormatters)
-            ->each(function ($file) use ($app_folder) {
+            ->each(function ($file) use ($app_folder, $bindings_case) {
                 $filename = $file->getFilenameWithoutExtension();
+                $name     = $this->getFormatterName($bindings_case, $filename);
+                $class    = $this->getFormatterClass($file, $filename, $app_folder);
 
-                $class = $this->getFormatterClass(
-                    $file,
-                    $filename,
-                    $app_folder
-                );
-
-                $this->app->bind(
-                    Str::snake($filename),
-                    $class
-                );
+                $this->app->bind($name, $class);
             });
+    }
+
+    /**
+     * Returns formatter name for string binding.
+     *
+     * @param string $bindings_case
+     * @param string $filename
+     *
+     * @return string
+     */
+    public function getFormatterName(string $bindings_case, string $filename): string
+    {
+        $name = str_replace('Formatter', '', $filename);
+
+        return Str::{$bindings_case}($name . self::BINDING_POSTFIX);
     }
 
     /**
