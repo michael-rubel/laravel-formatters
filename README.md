@@ -14,9 +14,9 @@ The package requires PHP 8.0 and Laravel 8.x.
 Future versions of PHP & Laravel will be supported.
 
 ## Available formatters
-- `Date`
-- `DateTime`
-- `TableColumn`
+- [`Date`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/DateFormatter.php)
+- [`DateTime`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/DateTimeFormatter.php)
+- [`TableColumn`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/TableColumnFormatter.php)
 
 ... Will be more formatters soon. 😉
 
