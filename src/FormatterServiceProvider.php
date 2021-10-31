@@ -42,8 +42,13 @@ class FormatterServiceProvider extends PackageServiceProvider
      */
     public function packageRegistered(): void
     {
-        $app_folder    = config('formatters.folder');
-        $bindings_case = config('formatters.bindings_case');
+        $app_folder    = config(
+            'formatters.folder'
+        ) ?? 'app' . DIRECTORY_SEPARATOR . 'Formatters';
+
+        $bindings_case = config(
+            'formatters.bindings_case'
+        ) ?? 'snake';
 
         $appFormatters = File::isDirectory($app_folder)
             ? collect(File::allFiles($app_folder)) // @codeCoverageIgnore

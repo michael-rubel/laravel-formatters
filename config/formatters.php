@@ -10,7 +10,7 @@ return [
     |
     */
 
-    'folder' => 'app/Formatters',
+    'folder' => 'app' . DIRECTORY_SEPARATOR . 'Formatters',
 
     /*
     |--------------------------------------------------------------------------
