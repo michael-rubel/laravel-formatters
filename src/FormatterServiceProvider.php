@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace MichaelRubel\Formatters;
 
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -48,12 +47,14 @@ class FormatterServiceProvider extends PackageServiceProvider
         $bindings_case = config('formatters.bindings_case')
             ?? 'snake';
 
-        $appFormatters = app('files')->isDirectory($app_folder)
-            ? collect(File::allFiles($app_folder))
+        $filesystem = app('files');
+
+        $appFormatters = $filesystem->isDirectory($app_folder)
+            ? collect($filesystem->allFiles($app_folder))
             : collect();
 
         $packageFormatters = collect(
-            File::allFiles(
+            $filesystem->allFiles(
                 $this->getPackageBaseDir()
                 . DIRECTORY_SEPARATOR
                 . self::PACKAGE_FOLDER
