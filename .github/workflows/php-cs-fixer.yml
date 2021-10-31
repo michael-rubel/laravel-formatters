@@ -1,4 +1,4 @@
-name: check & fix styling with php-cs-fixer
+name: php-cs-fixer
 
 on:
   push:

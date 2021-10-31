@@ -1,4 +1,4 @@
-name: check & fix styling with php-codesniffer
+name: php-code-sniffer
 
 on:
   push:
