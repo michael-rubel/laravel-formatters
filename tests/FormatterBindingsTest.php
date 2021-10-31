@@ -2,6 +2,7 @@
 
 namespace MichaelRubel\Formatters\Tests;
 
+use MichaelRubel\Formatters\Collection\DateFormatter;
 use MichaelRubel\Formatters\Exceptions\ShouldNotUseCamelCaseException;
 use MichaelRubel\Formatters\FormatterServiceProvider;
 
@@ -10,6 +11,8 @@ class FormatterBindingsTest extends TestCase
     /** @test */
     public function testStringBindingsWorksProperly()
     {
+        app()->bind('date_formatter', DateFormatter::class);
+
         $result = format('date', '2021-10-30 17:00:00');
         $this->assertEquals('2021-10-30', $result);
 
@@ -26,6 +29,7 @@ class FormatterBindingsTest extends TestCase
         config(['formatters.bindings_case' => 'kebab']);
 
         app()->register(FormatterServiceProvider::class, true);
+        app()->bind('date_formatter', DateFormatter::class);
 
         $result = format('date', '2021-10-30 17:00:00');
         $this->assertEquals('2021-10-30', $result);

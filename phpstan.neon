@@ -10,7 +10,7 @@ parameters:
     level: max
 
     ignoreErrors:
-        - '#Property MichaelRubel\\Formatters\\Exceptions\\ShouldImplementInterfaceException(.*)#'
+        - '#Property MichaelRubel\\Formatters\\Exceptions\\Should(.*)#'
         - '#Method MichaelRubel\\Formatters\\Formatter\:\:format\(\) has no return typehint specified.#'
         - '#Instanceof between \*NEVER\* and MichaelRubel\\Formatters\\Formatter will always evaluate to false.#'
 

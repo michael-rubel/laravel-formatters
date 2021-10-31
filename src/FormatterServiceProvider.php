@@ -42,16 +42,14 @@ class FormatterServiceProvider extends PackageServiceProvider
      */
     public function packageRegistered(): void
     {
-        $app_folder    = config(
-            'formatters.folder'
-        ) ?? 'app' . DIRECTORY_SEPARATOR . 'Formatters';
+        $app_folder = config('formatters.folder')
+            ?? 'app' . DIRECTORY_SEPARATOR . 'Formatters';
 
-        $bindings_case = config(
-            'formatters.bindings_case'
-        ) ?? 'snake';
+        $bindings_case = config('formatters.bindings_case')
+            ?? 'snake';
 
-        $appFormatters = File::isDirectory($app_folder)
-            ? collect(File::allFiles($app_folder)) // @codeCoverageIgnore
+        $appFormatters = app('files')->isDirectory($app_folder)
+            ? collect(File::allFiles($app_folder))
             : collect();
 
         $packageFormatters = collect(
@@ -66,8 +64,8 @@ class FormatterServiceProvider extends PackageServiceProvider
             ->merge($appFormatters)
             ->each(function ($file) use ($app_folder, $bindings_case) {
                 $filename = $file->getFilenameWithoutExtension();
-                $name     = $this->getFormatterName($bindings_case, $filename);
-                $class    = $this->getFormatterClass($file, $filename, $app_folder);
+                $name = $this->getFormatterName($bindings_case, $filename);
+                $class = $this->getFormatterClass($file, $filename, $app_folder);
 
                 $this->app->bind($name, $class);
             });
@@ -99,7 +97,6 @@ class FormatterServiceProvider extends PackageServiceProvider
      */
     private function getFormatterClass(object $file, string $filename, string $app_folder): string
     {
-        // @codeCoverageIgnoreStart
         $path = str_contains($file->getPathName(), $app_folder)
             ? Str::ucfirst(str_replace(DIRECTORY_SEPARATOR, self::CLASS_SEPARATOR, $app_folder))
               . self::CLASS_SEPARATOR
@@ -107,7 +104,6 @@ class FormatterServiceProvider extends PackageServiceProvider
               . self::CLASS_SEPARATOR
               . self::PACKAGE_FOLDER
               . self::CLASS_SEPARATOR;
-        // @codeCoverageIgnoreEnd
 
         return sprintf(
             '%s%s',
