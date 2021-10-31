@@ -65,8 +65,8 @@ class FormatterServiceProvider extends PackageServiceProvider
             ->merge($appFormatters)
             ->each(function ($file) use ($app_folder, $bindings_case) {
                 $filename = $file->getFilenameWithoutExtension();
-                $name     = $this->getFormatterName($bindings_case, $filename);
-                $class    = $this->getFormatterClass($file, $filename, $app_folder);
+                $name = $this->getFormatterName($bindings_case, $filename);
+                $class = $this->getFormatterClass($file, $filename, $app_folder);
 
                 $this->app->bind($name, $class);
             });
