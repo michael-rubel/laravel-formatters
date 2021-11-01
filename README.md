@@ -10,7 +10,7 @@
 This package is a collection of classes you can use to standardize data formats in your Laravel application.
 It uses the Service Container to easily extend or override the formatter classes.
 
-The package requires PHP 8.0 and Laravel 8.x.
+The package requires PHP ^8.0 and Laravel ^8.x.
 Future versions of PHP & Laravel will be supported.
 
 ## Available formatters
@@ -39,7 +39,7 @@ format(DateTimeFormatter::class, now()->addMonth()) // as `Carbon` instance
 format(DateTimeFormatter::class, '2022-12-25 00:00:00') // as string timestamp
 ```
 
-Use can pass the string instead of ::class:
+Use can pass the string instead of `::class`:
 ```php
 format('date_time', '2022-12-25 00:00:00') // 2022-12-25 00:00
 
