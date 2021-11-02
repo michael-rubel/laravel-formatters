@@ -13,7 +13,6 @@ if (! function_exists('format')) {
      * @param string|array $items
      *
      * @return mixed
-     * @throws \Exception
      */
     function format(string $formatter, string|array $items): mixed
     {
@@ -21,13 +20,7 @@ if (! function_exists('format')) {
             ? app($formatter)
             : app($formatter . FormatterServiceProvider::BINDING_POSTFIX);
 
-        if (! $formatter instanceof Formatter) {
-            if (config('formatters.bindings_case') === 'camel') {
-                throw new ShouldNotUseCamelCaseException();
-            }
-
-            throw new ShouldImplementInterfaceException();
-        }
+        FormatterServiceProvider::ensureFormatterImplementsInterface($formatter);
 
         /** @phpstan-ignore-next-line */
         return $formatter->format(
