@@ -44,9 +44,9 @@ format(DateTimeFormatter::class, '2022-12-25 00:00:00') // as string timestamp
 
 Use can pass the string instead of `::class`:
 ```php
-format('date_time', '2022-12-25 00:00:00') // 2022-12-25 00:00
+format('date-time', '2022-12-25 00:00:00') // 2022-12-25 00:00
 
-format('table_column', 'created_at') // Created at
+format('table-column', 'created_at') // Created at
 ```
 
 You can configure the string case (`snake/kebab`) in the config file.
@@ -84,7 +84,7 @@ format(YourCustomFormatter::class, [
 
 Or by passing the string as an alternative:
 ```php
-format('your_custom', 'Something to format.')
+format('your-custom', 'Something to format.')
 ```
 
 ## Testing

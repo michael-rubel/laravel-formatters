@@ -20,9 +20,9 @@ return [
     | The string convention of registered container bindings.
     |
     | Options: 'snake', 'kebab'
-    | Default: 'snake'
+    | Default: 'kebab'
     |
     */
 
-    'bindings_case' => 'snake',
+    'bindings_case' => 'kebab',
 ];

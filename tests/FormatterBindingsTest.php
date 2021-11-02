@@ -11,6 +11,9 @@ class FormatterBindingsTest extends TestCase
     /** @test */
     public function testStringBindingsWorksProperly()
     {
+        config(['formatters.bindings_case' => 'snake']);
+
+        app()->register(FormatterServiceProvider::class, true);
         app()->bind('date_formatter', DateFormatter::class);
 
         $result = format('date', '2021-10-30 17:00:00');
