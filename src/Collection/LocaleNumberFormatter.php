@@ -32,13 +32,6 @@ class LocaleNumberFormatter implements Formatter
     public string $style_key = 'style';
 
     /**
-     * "Pattern" key to pass to the collection of $items.
-     *
-     * @var string
-     */
-    public string $pattern_key = 'pattern';
-
-    /**
      * Extendable fraction digits.
      *
      * @var int
@@ -63,8 +56,7 @@ class LocaleNumberFormatter implements Formatter
     {
         $formatter = new NumberFormatter(
             $items->get($this->locale_key) ?? app()->getLocale(),
-            $items->get($this->style_key) ?? NumberFormatter::DECIMAL,
-            $items->get($this->pattern_key) ?? null
+            $items->get($this->style_key) ?? NumberFormatter::DECIMAL
         );
 
         $formatter->setAttribute(
