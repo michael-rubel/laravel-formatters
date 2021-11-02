@@ -39,13 +39,6 @@ class LocaleNumberFormatter implements Formatter
     public int $fraction_digits = 2;
 
     /**
-     * Default number if $number_key isn't passed.
-     *
-     * @var float
-     */
-    public float $default_number = 0;
-
-    /**
      * Format the date and time.
      *
      * @param Collection $items
@@ -65,7 +58,7 @@ class LocaleNumberFormatter implements Formatter
         );
 
         return $formatter->format(
-            (float) $items->get($this->number_key) ?? $this->default_number
+            (float) $items->get($this->number_key) ?? $items->first()
         );
     }
 }
