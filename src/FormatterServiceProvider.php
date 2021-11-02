@@ -47,7 +47,7 @@ class FormatterServiceProvider extends PackageServiceProvider
             ?? 'app' . DIRECTORY_SEPARATOR . 'Formatters';
 
         $bindings_case = config('formatters.bindings_case')
-            ?? 'snake';
+            ?? 'kebab';
 
         $filesystem = app('files');
 
