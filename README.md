@@ -37,19 +37,18 @@ composer require michael-rubel/laravel-formatters
 ## Usage
 
 ```php
-format(DateTimeFormatter::class, now()->addMonth()) // as `Carbon` instance
-
-format(DateTimeFormatter::class, '2022-12-25 00:00:00') // as string timestamp
+format(DateTimeFormatter::class, now()) // You can use Carbon instance or string timestamp.
 ```
 
-Use can pass the string instead of `::class`:
+You can use string bindings:
 ```php
-format('date-time', '2022-12-25 00:00:00') // 2022-12-25 00:00
-
-format('table-column', 'created_at') // Created at
+format('table-column', 'created_at') // Returns: Created at
 ```
 
-You can configure the string case (`snake/kebab`) in the config file.
+You can configure the string bindings case (snake/kebab) in the config file:
+```bash
+php artisan vendor:publish --tag="formatters-config"
+```
 
 ### Extending formatters
 Since the formatters are resolved through the Service Container they can be easily overridden by extending bindings.
@@ -69,23 +68,7 @@ $this->app->extend(DateTimeFormatter::class, function ($formatter) {
 To add a custom formatter you should create the class that implements the `MichaelRubel\Formatters\Formatter` interface and put it to the `app/Formatters` folder.
 You can put formatter with the same name as the package's to override the formatter from the package.
 
-You can customize the folder by publishing the config:
-```bash
-php artisan vendor:publish --tag="formatters-config"
-```
-
-Then use custom formatter:
-```php
-format(YourCustomFormatter::class, [
-    'to_format' => 'something',
-    'additional_data' => true,
-])
-```
-
-Or by passing the string as an alternative:
-```php
-format('your-custom', 'Something to format.')
-```
+You can customize the folder in the config file.
 
 ## Testing
 ```bash
