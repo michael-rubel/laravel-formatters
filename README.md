@@ -19,6 +19,7 @@ Future versions of PHP & Laravel will be supported.
 - [`Date`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/DateFormatter.php)
 - [`DateTime`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/DateTimeFormatter.php)
 - [`TableColumn`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/TableColumnFormatter.php)
+- [`LocaleNumber`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/LocaleNumberFormatter.php)
 
 ... Will be more formatters soon. 😉
 
