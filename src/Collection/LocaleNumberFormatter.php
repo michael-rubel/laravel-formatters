@@ -58,7 +58,7 @@ class LocaleNumberFormatter implements Formatter
         );
 
         return $formatter->format(
-            (float) $items->get($this->number_key) ?? $items->first()
+            (float) ($items->get($this->number_key) ?? $items->first())
         );
     }
 }
