@@ -3,10 +3,10 @@
 # Laravel Formatters
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/michael-rubel/laravel-formatters.svg?style=flat-square)](https://packagist.org/packages/michael-rubel/laravel-formatters)
 [![Total Downloads](https://img.shields.io/packagist/dt/michael-rubel/laravel-formatters.svg?style=flat-square)](https://packagist.org/packages/michael-rubel/laravel-formatters)
-[![Code Coverage](https://scrutinizer-ci.com/g/michael-rubel/laravel-formatters/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/michael-rubel/laravel-formatters/?branch=main)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/michael-rubel/laravel-formatters/run-tests?label=Tests)](https://github.com/michael-rubel/laravel-formatters/actions)
-[![PHPStan](https://img.shields.io/github/workflow/status/michael-rubel/laravel-formatters/phpstan?label=Larastan)](https://github.com/michael-rubel/laravel-formatters/actions)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/michael-rubel/laravel-formatters/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/michael-rubel/laravel-formatters/?branch=main)
+[![Code Quality](https://img.shields.io/scrutinizer/quality/g/michael-rubel/laravel-formatters.svg?style=flat-square)](https://scrutinizer-ci.com/g/michael-rubel/laravel-formatters/?branch=main)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/michael-rubel/laravel-formatters.svg?style=flat-square)](https://scrutinizer-ci.com/g/michael-rubel/laravel-formatters/?branch=main)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/michael-rubel/laravel-formatters/run-tests/main?style=flat-square&label=tests)](https://github.com/michael-rubel/laravel-formatters/actions)
+[![PHPStan](https://img.shields.io/github/workflow/status/michael-rubel/laravel-formatters/phpstan/main?style=flat-square&label=larastan)](https://github.com/michael-rubel/laravel-formatters/actions)
 
 
 This package is a collection of classes you can use to standardize data formats in your Laravel application.
