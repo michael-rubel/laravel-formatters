@@ -85,4 +85,43 @@ class LocaleNumberFormatterTest extends TestCase
 
         $this->assertSame('10,000.56', $result);
     }
+
+    /** @test */
+    public function testCanFormatNumberBasedOnFrLocale()
+    {
+        $result = format(LocaleNumberFormatter::class, [
+            'number' => 10000,
+            'locale' => 'fr',
+        ]);
+
+        $this->assertEquals('10 000,00', $result);
+
+        $result = format(LocaleNumberFormatter::class, [
+            'number' => 10000.00,
+            'locale' => 'fr',
+        ]);
+
+        $this->assertSame('10 000,00', $result);
+
+        $result = format(LocaleNumberFormatter::class, [
+            'number' => 10000.50,
+            'locale' => 'fr',
+        ]);
+
+        $this->assertSame('10 000,50', $result);
+
+        $result = format(LocaleNumberFormatter::class, [
+            'number' => 10000.5549,
+            'locale' => 'fr',
+        ]);
+
+        $this->assertSame('10 000,55', $result);
+
+        $result = format(LocaleNumberFormatter::class, [
+            'number' => 10000.5550,
+            'locale' => 'fr',
+        ]);
+
+        $this->assertSame('10 000,56', $result);
+    }
 }
