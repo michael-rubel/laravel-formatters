@@ -1,7 +1,7 @@
 ![Laravel Formatters](https://user-images.githubusercontent.com/37669560/139543664-89e5c4ed-0648-40c9-bccf-18e42ae4c2d0.png)
 
 # Laravel Formatters
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/michael-rubel/laravel-formatters.svg?style=flat-square)](https://packagist.org/packages/michael-rubel/laravel-formatters)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/michael-rubel/laravel-formatters.svg?style=flat-square&logo=packagist)](https://packagist.org/packages/michael-rubel/laravel-formatters)
 [![Code Quality](https://img.shields.io/scrutinizer/quality/g/michael-rubel/laravel-formatters.svg?style=flat-square&logo=scrutinizer)](https://scrutinizer-ci.com/g/michael-rubel/laravel-formatters/?branch=main)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/michael-rubel/laravel-formatters.svg?style=flat-square&logo=scrutinizer)](https://scrutinizer-ci.com/g/michael-rubel/laravel-formatters/?branch=main)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/michael-rubel/laravel-formatters/run-tests/main?style=flat-square&label=tests&logo=github)](https://github.com/michael-rubel/laravel-formatters/actions)
@@ -15,10 +15,9 @@ It uses the Service Container to easily extend or override the formatter classes
 The package requires PHP ^8.0 and Laravel ^8.x.
 Future versions of PHP & Laravel will be supported.
 
-[![PHP Version](https://img.shields.io/badge/php-8.x-success?style=flat-square&logo=php)](https://laravel.com)
-[![Laravel Version](https://img.shields.io/badge/laravel-8.x-success?style=flat-square&logo=laravel)](https://laravel.com)
-[![Total Downloads](https://img.shields.io/packagist/dt/michael-rubel/laravel-formatters.svg?style=flat-square)](https://packagist.org/packages/michael-rubel/laravel-formatters)
-[![Downloads Today](https://img.shields.io/packagist/dd/michael-rubel/laravel-formatters.svg?style=flat-square)](https://packagist.org/packages/michael-rubel/laravel-formatters)
+[![Laravel Version](https://img.shields.io/badge/Laravel-v8.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com)
+[![PHP Version](https://img.shields.io/badge/PHP-8.x-777BB4?style=for-the-badge&logo=php)](https://laravel.com)
+[![Total Downloads](https://img.shields.io/packagist/dt/michael-rubel/laravel-formatters.svg?style=for-the-badge&logo=packagist)](https://packagist.org/packages/michael-rubel/laravel-formatters)
 
 ## Available formatters
 - [`Date`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/DateFormatter.php)
