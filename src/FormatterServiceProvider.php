@@ -9,6 +9,7 @@ use MichaelRubel\Formatters\Exceptions\ShouldImplementInterfaceException;
 use MichaelRubel\Formatters\Exceptions\ShouldNotUseCamelCaseException;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Symfony\Component\Finder\SplFileInfo;
 
 class FormatterServiceProvider extends PackageServiceProvider
 {
@@ -43,9 +44,11 @@ class FormatterServiceProvider extends PackageServiceProvider
      */
     public function packageRegistered(): void
     {
+        /** @var string */
         $app_folder = config('formatters.folder')
             ?? 'app' . DIRECTORY_SEPARATOR . 'Formatters';
 
+        /** @var string */
         $bindings_case = config('formatters.bindings_case')
             ?? 'kebab';
 
@@ -92,13 +95,13 @@ class FormatterServiceProvider extends PackageServiceProvider
     /**
      * Determines the formatter class namespace.
      *
-     * @param object $file
-     * @param string $filename
-     * @param string $app_folder
+     * @param SplFileInfo $file
+     * @param string      $filename
+     * @param string      $app_folder
      *
      * @return string
      */
-    private function getFormatterClass(object $file, string $filename, string $app_folder): string
+    private function getFormatterClass(SplFileInfo $file, string $filename, string $app_folder): string
     {
         $path = str_contains($file->getPathName(), $app_folder)
             ? Str::ucfirst(str_replace(DIRECTORY_SEPARATOR, self::CLASS_SEPARATOR, $app_folder))
