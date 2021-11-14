@@ -90,7 +90,7 @@ class LocaleNumberFormatterTest extends TestCase
     /** @test */
     public function testCanFormatNumberBasedOnFrLocale()
     {
-        $result = $this->trimNarrowNoBreakSpace(
+        $result = $this->trimSpecialCharacters(
             format(LocaleNumberFormatter::class, [
                 'number' => 10000,
                 'locale' => 'fr',
@@ -99,7 +99,7 @@ class LocaleNumberFormatterTest extends TestCase
 
         $this->assertSame('10 000,00', $result);
 
-        $result = $this->trimNarrowNoBreakSpace(
+        $result = $this->trimSpecialCharacters(
             format(LocaleNumberFormatter::class, [
                 'number' => 10000.00,
                 'locale' => 'fr',
@@ -108,7 +108,7 @@ class LocaleNumberFormatterTest extends TestCase
 
         $this->assertSame('10 000,00', $result);
 
-        $result = $this->trimNarrowNoBreakSpace(
+        $result = $this->trimSpecialCharacters(
             format(LocaleNumberFormatter::class, [
                 'number' => 10000.50,
                 'locale' => 'fr',
@@ -117,7 +117,7 @@ class LocaleNumberFormatterTest extends TestCase
 
         $this->assertSame('10 000,50', $result);
 
-        $result = $this->trimNarrowNoBreakSpace(
+        $result = $this->trimSpecialCharacters(
             format(LocaleNumberFormatter::class, [
                 'number' => 10000.5549,
                 'locale' => 'fr',
@@ -126,7 +126,7 @@ class LocaleNumberFormatterTest extends TestCase
 
         $this->assertSame('10 000,55', $result);
 
-        $result = $this->trimNarrowNoBreakSpace(
+        $result = $this->trimSpecialCharacters(
             format(LocaleNumberFormatter::class, [
                 'number' => 10000.5550,
                 'locale' => 'fr',
