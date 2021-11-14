@@ -23,4 +23,17 @@ class TestCase extends Orchestra
     {
         config()->set('testing');
     }
+
+    public function trimNarrowNoBreakSpace(string $input): string
+    {
+        return preg_replace(
+            '/\s+/',
+            ' ',
+            preg_replace(
+                '/[^0-9,\-]/',
+                ' ',
+                $input
+            )
+        );
+    }
 }
