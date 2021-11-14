@@ -2,10 +2,7 @@
 
 namespace MichaelRubel\Formatters\Tests;
 
-use Carbon\Carbon;
-use MichaelRubel\Formatters\Collection\DateTimeFormatter;
 use MichaelRubel\Formatters\Collection\LocaleNumberFormatter;
-use NumberFormatter;
 
 class LocaleNumberFormatterTest extends TestCase
 {
