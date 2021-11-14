@@ -12,15 +12,28 @@ class TestCase extends Orchestra
         parent::setUp();
     }
 
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             FormatterServiceProvider::class,
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    public function getEnvironmentSetUp($app): void
     {
         config()->set('testing');
+    }
+
+    public function trimSpecialCharacters(string $input): string
+    {
+        return preg_replace(
+            '/\s+/',
+            ' ',
+            preg_replace(
+                '/[^A-Za-z0-9,\-]/',
+                ' ',
+                $input
+            )
+        );
     }
 }
