@@ -20,7 +20,7 @@ class TableColumnFormatter implements Formatter
     public function format(Collection $items): string
     {
         return Str::ucfirst(
-            str_replace(
+            Str::replace(
                 '_',
                 ' ',
                 (string) $items->first()
