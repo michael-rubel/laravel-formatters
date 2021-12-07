@@ -18,7 +18,7 @@
     "require": {
         "php": "^8.0|^8.1",
         "ext-intl": "*",
-        "laravel/framework": "^8.67",
+        "laravel/framework": "^8.69",
         "spatie/laravel-package-tools": "^1.9"
     },
     "require-dev": {
