@@ -2,19 +2,19 @@
 
 namespace MichaelRubel\Formatters\Tests;
 
-use MichaelRubel\Formatters\Collection\MaskEmailFormatter;
+use MichaelRubel\Formatters\Collection\MaskStringFormatter;
 
 class MaskEmailFormatterTest extends TestCase
 {
     /** @test */
     public function testCanFormatAsMaskedEmail()
     {
-        $format = format(MaskEmailFormatter::class, 'test@example.com');
+        $format = format(MaskStringFormatter::class, 'MyMaskedString');
+
+        $this->assertSame('MyMa******ring', $format);
+
+        $format = format(MaskStringFormatter::class, 'test@example.com');
 
         $this->assertSame('test********.com', $format);
-
-        $format = format(MaskEmailFormatter::class, 'masked@example.org');
-
-        $this->assertSame('mask**********.org', $format);
     }
 }

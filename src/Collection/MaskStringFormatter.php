@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use MichaelRubel\Formatters\Formatter;
 
-class MaskEmailFormatter implements Formatter
+class MaskStringFormatter implements Formatter
 {
     /**
      * @var string
