@@ -31,7 +31,7 @@ class MaskStringFormatter implements Formatter
     public string $encoding = 'UTF-8';
 
     /**
-     * Format email as masked.
+     * Format string as masked.
      *
      * @param Collection $items
      *
