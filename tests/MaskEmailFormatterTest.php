@@ -7,7 +7,7 @@ use MichaelRubel\Formatters\Collection\MaskStringFormatter;
 class MaskEmailFormatterTest extends TestCase
 {
     /** @test */
-    public function testCanFormatAsMaskedEmail()
+    public function testCanFormatStringAsMasked()
     {
         $format = format(MaskStringFormatter::class, 'MyMaskedString');
         $this->assertSame('MyMa******ring', $format);
