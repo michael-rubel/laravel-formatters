@@ -31,7 +31,7 @@ class MaskEmailFormatter implements Formatter
     public string $encoding = 'UTF-8';
 
     /**
-     * Format the snake-cased attributes in readable format for the tables.
+     * Format email as masked.
      *
      * @param Collection $items
      *
