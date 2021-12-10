@@ -3,6 +3,7 @@
 namespace MichaelRubel\Formatters\Tests;
 
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Foundation\Application;
 use MichaelRubel\Formatters\FormatterServiceProvider;
 use Mockery\MockInterface;
 
@@ -23,6 +24,24 @@ class FormatterConfigTest extends TestCase
             'formatters.folder'        => null,
             'formatters.bindings_case' => null,
         ]);
+
+        $registered = app()->register(FormatterServiceProvider::class, true);
+
+        $this->assertInstanceOf(FormatterServiceProvider::class, $registered);
+    }
+
+    /** @test */
+    public function testBaseDirectorySetsCorrectly()
+    {
+        app()->setBasePath(__DIR__ . '/../');
+
+        $mock = $this->partialMock(Filesystem::class, function (MockInterface $mock) {
+            $mock->shouldReceive('isDirectory')
+                 ->once()
+                 ->andReturnTrue();
+        });
+
+        app()->instance('files', $mock);
 
         $registered = app()->register(FormatterServiceProvider::class, true);
 
