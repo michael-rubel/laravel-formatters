@@ -54,8 +54,8 @@ class FormatterServiceProvider extends PackageServiceProvider
 
         $filesystem = app('files');
 
-        $appFormatters = $filesystem->isDirectory($app_folder)
-            ? collect($filesystem->allFiles($app_folder))
+        $appFormatters = $filesystem->isDirectory(base_path($app_folder))
+            ? collect($filesystem->allFiles(base_path($app_folder)))
             : collect();
 
         $packageFormatters = collect(
