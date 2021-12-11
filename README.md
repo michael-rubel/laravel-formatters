@@ -8,7 +8,7 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/michael-rubel/laravel-formatters/run-tests/main?style=flat-square&label=tests&logo=github)](https://github.com/michael-rubel/laravel-formatters/actions)
 [![PHPStan](https://img.shields.io/github/workflow/status/michael-rubel/laravel-formatters/phpstan/main?style=flat-square&label=larastan&logo=laravel)](https://github.com/michael-rubel/laravel-formatters/actions)
 
-This package introduces the `Formatter` pattern you can use to standardize data formats in your Laravel application. You can write your own formatters and put them in `app/Formatters` folder, then apply them everywhere in your application through `format` helper. The package uses the Service Container under the hood to easily extend or override the formatter classes.
+> This package introduces the `Formatter` pattern you can use to standardize data formats in your Laravel application. You can write your own formatters and put them in `app/Formatters` folder, then apply them everywhere in your application through `format` helper. The package uses the Service Container under the hood to easily extend or override the formatter classes.
 
 The package requires PHP `^8.x` and Laravel `^8.69`.
 
