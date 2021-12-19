@@ -24,8 +24,8 @@ The package requires PHP `^8.x` and Laravel `^8.69`.
 - [`MaskString`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/MaskStringFormatter.php)
 
 ## Contributing
-If you have written your own formatter and want to add it to this package, PRs are welcomed.
-- Note: PRs won't be accepted without tests! We're always covering the code to 100%.
+If you have written your own formatter and want to add it to this package, PRs are welcomed. But take care of the extendability of the formatter you want to make as built-in.
+- Note: PRs won't be accepted without tests!
 
 ## Installation
 You can install the package via composer:
@@ -37,12 +37,12 @@ composer require michael-rubel/laravel-formatters
 ## Usage
 
 ```php
-format(DateTimeFormatter::class, now()) // You can use Carbon instance or string timestamp.
+format(DateTimeFormatter::class, now())
 ```
 
-You can use string bindings:
+You can use a string binding as an alternative to passing the class:
 ```php
-format('table-column', 'created_at') // Returns: Created at
+format('date-time', now())
 ```
 
 You can configure the string bindings case (snake/kebab) in the config file:
