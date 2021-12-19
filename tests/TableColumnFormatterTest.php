@@ -29,4 +29,12 @@ class TableColumnFormatterTest extends TestCase
         $this->assertEquals('Created at', $formattedColumns[4]);
         $this->assertEquals('Updated at', $formattedColumns[5]);
     }
+
+    /** @test */
+    public function testCanFormatUsingStringBinding()
+    {
+        $format = format('table-column', 'created_at');
+
+        $this->assertSame('Created at', $format);
+    }
 }

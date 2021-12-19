@@ -4,7 +4,7 @@ namespace MichaelRubel\Formatters\Tests;
 
 use MichaelRubel\Formatters\Collection\MaskStringFormatter;
 
-class MaskEmailFormatterTest extends TestCase
+class MaskStringFormatterTest extends TestCase
 {
     /** @test */
     public function testCanFormatStringAsMasked()
@@ -20,5 +20,13 @@ class MaskEmailFormatterTest extends TestCase
 
         $format = format(MaskStringFormatter::class, 'tes');
         $this->assertSame('tes', $format);
+    }
+
+    /** @test */
+    public function testCanFormatUsingStringBinding()
+    {
+        $format = format('mask-string', 'test@example.com');
+
+        $this->assertSame('test********.com', $format);
     }
 }

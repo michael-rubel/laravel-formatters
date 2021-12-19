@@ -9,6 +9,18 @@ use MichaelRubel\Formatters\Tests\Boilerplate\WrongFormatter;
 
 class DateFormatterTest extends TestCase
 {
+    /**
+     * Set up the tests.
+     *
+     * @return void
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        Carbon::setTestNow('2021-10-30 14:00:00');
+    }
+
     /** @test */
     public function testThrowsExceptionIfWithoutInterface()
     {
@@ -22,8 +34,6 @@ class DateFormatterTest extends TestCase
     /** @test */
     public function testCanFormatDateUsingCarbonInstance()
     {
-        Carbon::setTestNow('2021-10-30 14:00:00');
-
         $result = format(DateFormatter::class, now());
         $this->assertEquals('2021-10-30', $result);
 
@@ -55,5 +65,15 @@ class DateFormatterTest extends TestCase
 
         $result = format(DateFormatter::class, ['to_format' => '2021-10-31']);
         $this->assertEquals('2021-10-31', $result);
+    }
+
+    /** @test */
+    public function testCanFormatUsingStringBinding()
+    {
+        $result = format('date', now());
+        $this->assertEquals('2021-10-30', $result);
+
+        $result = format('date', '2021-10-30 17:00:00');
+        $this->assertEquals('2021-10-30', $result);
     }
 }
