@@ -18,7 +18,7 @@
     "require": {
         "php": "^8.0|^8.1",
         "ext-intl": "*",
-        "laravel/framework": "^8.69",
+        "laravel/framework": "^8.71|^9.0",
         "spatie/laravel-package-tools": "^1.9"
     },
     "require-dev": {
@@ -26,7 +26,7 @@
         "nunomaduro/larastan": "^1.0",
         "phpunit/phpunit": "^9.5",
         "orchestra/testbench": "^6.6",
-        "brianium/paratest": "^6.3",
+        "brianium/paratest": "^6.3|^7.0",
         "permafrost-dev/coverage-check": "^1.2",
         "mockery/mockery": "^1.4.4",
         "squizlabs/php_codesniffer": "^3.6",
