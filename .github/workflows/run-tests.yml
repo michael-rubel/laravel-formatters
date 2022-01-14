@@ -47,6 +47,3 @@ jobs:
 
       - name: Execute tests
         run: vendor/bin/phpunit --coverage-clover build/clover.xml
-
-      - name: Verify code coverage
-        run: vendor/bin/coverage-check build/clover.xml --require=100
