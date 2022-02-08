@@ -4,12 +4,8 @@ declare(strict_types=1);
 
 namespace MichaelRubel\Formatters\Collection;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use MichaelRubel\Formatters\Formatter;
-use function Webmozart\Assert\Tests\StaticAnalysis\length;
-use function Webmozart\Assert\Tests\StaticAnalysis\nullOrUpper;
-use function Webmozart\Assert\Tests\StaticAnalysis\upper;
 
 class TaxNumberFormatter implements Formatter
 {
