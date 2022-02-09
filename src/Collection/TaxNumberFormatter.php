@@ -49,8 +49,7 @@ class TaxNumberFormatter implements Formatter
     {
         return (string) Str::of(
             $items->get($this->country_key)
-        )
-        ->upper();
+        )->upper();
     }
 
     /**
