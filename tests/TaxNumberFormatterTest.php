@@ -125,4 +125,23 @@ class TaxNumberFormatterTest extends TestCase
 
         $this->assertEquals('PLUu0123456789', $result);
     }
+
+
+    /** @test */
+    public function testCanExtendTaxNumberFormatter()
+    {
+        app()->extend(TaxNumberFormatter::class, function ($formatter) {
+            $formatter->number_key  = 'NIP';
+            $formatter->country_key = 'country_iso_code';
+
+            return $formatter;
+        });
+
+        $result = format(TaxNumberFormatter::class, [
+            'country_iso_code' => 'Dd',
+            'NIP'              => '01234 56789',
+        ]);
+
+        $this->assertEquals('DD0123456789', $result);
+    }
 }
