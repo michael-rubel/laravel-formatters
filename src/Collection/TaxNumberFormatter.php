@@ -29,7 +29,7 @@ class TaxNumberFormatter implements Formatter
      */
     public function format(Collection $items): string
     {
-        $tax_number = $this->getCleanTaxNumber($items);
+        $tax_number = $this->cleanupTaxNumber($items);
 
         if (empty($items->get($this->key_country))) {
             return $tax_number;
@@ -83,7 +83,7 @@ class TaxNumberFormatter implements Formatter
      * @param Collection $items
      * @return string
      */
-    private function getCleanTaxNumber(Collection $items): string
+    private function cleanupTaxNumber(Collection $items): string
     {
         return preg_replace_array(
             '/[^\d\w]/',
