@@ -31,14 +31,12 @@ class TaxNumberFormatter implements Formatter
     {
         $tax_number = $this->cleanupTaxNumber($items);
 
-        if (empty($items->get($this->country_key))) {
-            return $tax_number;
-        }
-
-        return $this->getFullTaxNumber(
-            $tax_number,
-            $this->getCountry($items)
-        );
+        return empty($items->get($this->country_key))
+            ? $tax_number
+            : $this->getFullTaxNumber(
+                $tax_number,
+                $this->getCountry($items)
+            );
     }
 
     /**
@@ -70,9 +68,9 @@ class TaxNumberFormatter implements Formatter
      */
     private function getFullTaxNumber(string $tax_number, string $country): string
     {
-        $prefix = $this->getPrefix($tax_number);
-
-        return Str::of($prefix)->startsWith($country)
+        return Str::of(
+            $this->getPrefix($tax_number)
+        )->startsWith($country)
             ? (string) Str::of($tax_number)
                 ->substr(2)
                 ->start($country)
