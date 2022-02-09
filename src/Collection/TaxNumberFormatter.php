@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace MichaelRubel\Formatters\Collection;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use MichaelRubel\Formatters\Formatter;
 
 class TaxNumberFormatter implements Formatter
@@ -34,11 +35,10 @@ class TaxNumberFormatter implements Formatter
             return $tax_number;
         }
 
-        $country = $this->getCountry($items);
-
-        $prefix = $this->getPrefix($tax_number, $country);
-
-        return $this->getFullTaxNumber($prefix, $country, $tax_number);
+        return $this->getFullTaxNumber(
+            $tax_number,
+            $this->getCountry($items)
+        );
     }
 
     /**
@@ -47,7 +47,19 @@ class TaxNumberFormatter implements Formatter
      */
     private function getCountry(Collection $items): string
     {
-        return strtoupper($items->get($this->key_country));
+        return (string) Str::of($items->get($this->key_country))
+            ->upper();
+    }
+
+    /**
+     * @param string $tax_number
+     * @return string
+     */
+    private function getPrefix(string $tax_number): string
+    {
+        return (string) Str::of($tax_number)
+            ->substr(0, 2)
+            ->upper();
     }
 
     /**
@@ -55,31 +67,16 @@ class TaxNumberFormatter implements Formatter
      * @param string $country
      * @return string
      */
-    private function getPrefix(string $tax_number, string $country): string
+    private function getFullTaxNumber(string $tax_number, string $country): string
     {
-        return strtoupper(
-            substr(
-                (string) $tax_number,
-                0,
-                strlen($country)
-            )
-        );
-    }
+        $prefix = $this->getPrefix($tax_number);
 
-    /**
-     * @param string $prefix
-     * @param string $country
-     * @param string $tax_number
-     * @return string
-     */
-    private function getFullTaxNumber(string $prefix, string $country, string $tax_number): string
-    {
-        return $prefix === $country
-            ? $country . substr(
-                $tax_number,
-                strlen($country)
-            )
-            : $country . $tax_number;
+        return Str::of($prefix)->startsWith($country)
+            ? (string) Str::of($tax_number)
+                ->substr(2)
+                ->start($country)
+            : (string) Str::of($tax_number)
+                ->start($country);
     }
 
     /**
@@ -88,10 +85,10 @@ class TaxNumberFormatter implements Formatter
      */
     private function getCleanTaxNumber(Collection $items): string
     {
-        return (string) preg_replace(
+        return preg_replace_array(
             '/[^\d\w]/',
-            '',
-            $items->get($this->key_number, '')
+            [],
+            $items->get($this->key_number)
         );
     }
 }
