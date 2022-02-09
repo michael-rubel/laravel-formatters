@@ -13,7 +13,7 @@ class TaxNumberFormatter implements Formatter
     /**
      * @var string
      */
-    public string $key_number = 'tax_number';
+    public string $number_key = 'tax_number';
 
     /**
      * @var string
@@ -88,7 +88,7 @@ class TaxNumberFormatter implements Formatter
         return preg_replace_array(
             '/[^\d\w]/',
             [],
-            $items->get($this->key_number)
+            $items->get($this->number_key)
         );
     }
 }
