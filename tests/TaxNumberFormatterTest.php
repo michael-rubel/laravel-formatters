@@ -114,4 +114,15 @@ class TaxNumberFormatterTest extends TestCase
 
         $this->assertEquals('PL', $result);
     }
+
+    /** @test */
+    public function testCanFormatUsingStringBinding()
+    {
+        $result = format('tax-number', [
+            'country_iso' => 'pL',
+            'tax_number'  => 'Uu+01 23-45.67,89',
+        ]);
+
+        $this->assertEquals('PLUu0123456789', $result);
+    }
 }
