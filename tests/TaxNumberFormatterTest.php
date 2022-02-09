@@ -93,4 +93,25 @@ class TaxNumberFormatterTest extends TestCase
 
         $this->assertEquals('PL0123456789', $result);
     }
+
+    /** @test */
+    public function testCanFormatTaxNumberWithEmptyData()
+    {
+        $result = format(TaxNumberFormatter::class, [
+            'country_iso' => '',
+            'tax_number'  => '',
+        ]);
+
+        $this->assertEquals('', $result);
+    }
+
+    /** @test */
+    public function testCanFormatTaxNumberWithOnlyCounty()
+    {
+        $result = format(TaxNumberFormatter::class, [
+            'country_iso' => 'pL',
+        ]);
+
+        $this->assertEquals('PL', $result);
+    }
 }
