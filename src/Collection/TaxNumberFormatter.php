@@ -17,7 +17,7 @@ class TaxNumberFormatter implements Formatter
     /**
      * @var string
      */
-    public string $key_country = 'country';
+    public string $key_country = 'country_iso';
 
     /**
      * Format the Tax Number.

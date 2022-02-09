@@ -10,8 +10,8 @@ class TaxNumberFormatterTest extends TestCase
     public function testCanFormatTaxNumber()
     {
         $result = format(TaxNumberFormatter::class, [
-            'country' => 'PL',
-            'tax_number' => '0123456789',
+            'country_iso' => 'PL',
+            'tax_number'  => '0123456789',
         ]);
 
         $this->assertEquals('PL0123456789', $result);
@@ -21,8 +21,8 @@ class TaxNumberFormatterTest extends TestCase
     public function testCanFormatTaxNumberWithLowerCountryCharacter()
     {
         $result = format(TaxNumberFormatter::class, [
-            'country' => 'pl',
-            'tax_number' => '0123456789',
+            'country_iso' => 'pl',
+            'tax_number'  => '0123456789',
         ]);
 
         $this->assertEquals('PL0123456789', $result);
@@ -32,8 +32,8 @@ class TaxNumberFormatterTest extends TestCase
     public function testCanFormatTaxNumberWithEmptyCountry()
     {
         $result = format(TaxNumberFormatter::class, [
-            'country' => '',
-            'tax_number' => '0123456789',
+            'country_iso' => '',
+            'tax_number'  => '0123456789',
         ]);
 
         $this->assertEquals('0123456789', $result);
@@ -53,8 +53,8 @@ class TaxNumberFormatterTest extends TestCase
     public function testCanFormatTaxNumberWithDiffCountryPrefix()
     {
         $result = format(TaxNumberFormatter::class, [
-            'country' => 'PL',
-            'tax_number' => 'FR0123456789',
+            'country_iso' => 'PL',
+            'tax_number'  => 'FR0123456789',
         ]);
 
         $this->assertEquals('PLFR0123456789', $result);
@@ -64,8 +64,8 @@ class TaxNumberFormatterTest extends TestCase
     public function testCanFormatTaxNumberWithCharactersErasedNumber()
     {
         $result = format(TaxNumberFormatter::class, [
-            'country' => 'pL',
-            'tax_number' => '+01 23-45.67,89',
+            'country_iso' => 'pL',
+            'tax_number'  => '+01 23-45.67,89',
         ]);
 
         $this->assertEquals('PL0123456789', $result);
@@ -75,8 +75,8 @@ class TaxNumberFormatterTest extends TestCase
     public function testCanFormatTaxNumberWithSameCountryPrefixAs()
     {
         $result = format(TaxNumberFormatter::class, [
-            'country' => 'pL',
-            'tax_number' => 'PL0123456789',
+            'country_iso' => 'pL',
+            'tax_number'  => 'PL0123456789',
         ]);
 
         $this->assertEquals('PL0123456789', $result);
@@ -87,8 +87,8 @@ class TaxNumberFormatterTest extends TestCase
     public function testCanFormatTaxNumberIfAlwaysPrefixIsUppercase()
     {
         $result = format(TaxNumberFormatter::class, [
-            'country' => 'pl',
-            'tax_number' => 'pL0123456789',
+            'country_iso' => 'pl',
+            'tax_number'  => 'pL0123456789',
         ]);
 
         $this->assertEquals('PL0123456789', $result);
