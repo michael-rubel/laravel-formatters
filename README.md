@@ -19,9 +19,10 @@ The package requires PHP `^8.x` and Laravel `^8.71`.
 ## Available built-in formatters
 - [`Date`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/DateFormatter.php)
 - [`DateTime`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/DateTimeFormatter.php)
-- [`TableColumn`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/TableColumnFormatter.php)
 - [`LocaleNumber`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/LocaleNumberFormatter.php)
 - [`MaskString`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/MaskStringFormatter.php)
+- [`TableColumn`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/TableColumnFormatter.php)
+- [`TaxNumber`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/TaxNumberFormatter.php)
 
 ## Contributing
 If you have written your own formatter and want to add it to this package, PRs are welcomed. But take care of the extendability of the formatter you want to make as built-in.
