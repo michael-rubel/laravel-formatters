@@ -19,9 +19,8 @@ if (! function_exists('format')) {
 
         FormatterServiceProvider::ensureFormatterImplementsInterface($formatter);
 
-        /** @phpstan-ignore-next-line */
         return $formatter->format(
-            collect($items)
+            collect($items) /* @phpstan-ignore-line */
         );
     }
 }
