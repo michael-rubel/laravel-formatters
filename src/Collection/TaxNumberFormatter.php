@@ -18,7 +18,7 @@ class TaxNumberFormatter implements Formatter
     /**
      * @var string
      */
-    public string $key_country = 'country_iso';
+    public string $country_key = 'country_iso';
 
     /**
      * Format the Tax Number.
@@ -31,7 +31,7 @@ class TaxNumberFormatter implements Formatter
     {
         $tax_number = $this->cleanupTaxNumber($items);
 
-        if (empty($items->get($this->key_country))) {
+        if (empty($items->get($this->country_key))) {
             return $tax_number;
         }
 
@@ -47,7 +47,7 @@ class TaxNumberFormatter implements Formatter
      */
     private function getCountry(Collection $items): string
     {
-        return (string) Str::of($items->get($this->key_country))
+        return (string) Str::of($items->get($this->country_key))
             ->upper();
     }
 
