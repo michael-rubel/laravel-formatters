@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace MichaelRubel\Formatters;
 
 use Illuminate\Support\Str;
+use MichaelRubel\Formatters\Commands\MakeFormatterCommand;
 use MichaelRubel\Formatters\Exceptions\ShouldImplementInterfaceException;
 use MichaelRubel\Formatters\Exceptions\ShouldNotUseCamelCaseException;
 use Spatie\LaravelPackageTools\Package;
@@ -34,7 +35,8 @@ class FormatterServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('laravel-formatters')
-            ->hasConfigFile();
+            ->hasConfigFile()
+            ->hasCommand(MakeFormatterCommand::class);
     }
 
     /**
