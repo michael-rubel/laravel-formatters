@@ -1,0 +1,23 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Illuminate\Support\Collection;
+use MichaelRubel\Formatters\Formatter;
+
+class {{ class }} implements Formatter
+{
+    /**
+     * Format the input.
+     *
+     * @param Collection $items
+     *
+     * @return
+     */
+    public function format(Collection $items)
+    {
+        //
+    }
+}
