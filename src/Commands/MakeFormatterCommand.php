@@ -44,7 +44,7 @@ class MakeFormatterCommand extends GeneratorCommand
     protected function resolveStubPath(string $stub): string
     {
         return file_exists($customPath = $this->laravel->basePath(trim($stub, '/')))
-            ? $customPath
+            ? $customPath // @codeCoverageIgnore
             : __DIR__ . $stub;
     }
 
