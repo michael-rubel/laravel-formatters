@@ -51,6 +51,9 @@ You can configure the string bindings case (snake/kebab) in the config file:
 php artisan vendor:publish --tag="formatters-config"
 ```
 
+### Artisan command
+To make the programmer's life easier, we also added the Artisan command. You can use `make:formatter` command to generate formatter classes. It will put the class with the given name into `app/Formatters` folder and auto-inject the stub.
+
 ### Extending formatters
 Since the formatters are resolved through the Service Container they can be easily overridden by extending bindings.
 
