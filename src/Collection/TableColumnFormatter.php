@@ -7,9 +7,12 @@ namespace MichaelRubel\Formatters\Collection;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use MichaelRubel\Formatters\Formatter;
+use MichaelRubel\Formatters\Traits\HelpsFormatData;
 
 class TableColumnFormatter implements Formatter
 {
+    use HelpsFormatData;
+
     /**
      * Format the snake-cased attributes in readable format for the tables.
      *
@@ -23,7 +26,7 @@ class TableColumnFormatter implements Formatter
             Str::replace(
                 '_',
                 ' ',
-                (string) $items->first()
+                $this->extractStringFromCollection($items)
             )
         );
     }

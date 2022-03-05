@@ -7,9 +7,12 @@ namespace MichaelRubel\Formatters\Collection;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use MichaelRubel\Formatters\Formatter;
+use MichaelRubel\Formatters\Traits\HelpsFormatData;
 
 class MaskStringFormatter implements Formatter
 {
+    use HelpsFormatData;
+
     /**
      * @var string
      */
@@ -40,7 +43,7 @@ class MaskStringFormatter implements Formatter
     public function format(Collection $items): string
     {
         return Str::mask(
-            (string) $items->first(),
+            $this->extractStringFromCollection($items),
             $this->character,
             $this->index,
             $this->length,

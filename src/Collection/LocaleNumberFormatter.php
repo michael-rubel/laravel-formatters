@@ -6,10 +6,13 @@ namespace MichaelRubel\Formatters\Collection;
 
 use Illuminate\Support\Collection;
 use MichaelRubel\Formatters\Formatter;
+use MichaelRubel\Formatters\Traits\HelpsFormatData;
 use NumberFormatter;
 
 class LocaleNumberFormatter implements Formatter
 {
+    use HelpsFormatData;
+
     /**
      * "Locale" key to pass to the collection of $items.
      *
@@ -58,7 +61,9 @@ class LocaleNumberFormatter implements Formatter
         );
 
         return $formatter->format(
-            (float) ($items->get($this->number_key) ?? $items->first())
+            (float) (
+                $items->get($this->number_key) ?? $this->extractStringFromCollection($items)
+            )
         );
     }
 }
