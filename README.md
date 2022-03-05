@@ -12,24 +12,17 @@
 
 The package requires PHP `^8.x` and Laravel `^8.71` or `^9.0`.
 
-## Available built-in formatters
-- [`Date`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/DateFormatter.php)
-- [`DateTime`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/DateTimeFormatter.php)
-- [`LocaleNumber`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/LocaleNumberFormatter.php)
-- [`MaskString`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/MaskStringFormatter.php)
-- [`TableColumn`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/TableColumnFormatter.php)
-- [`TaxNumber`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/TaxNumberFormatter.php)
-
-## Contributing
-If you have written your own formatter and want to add it to this package, PRs are welcomed. But take care of the extendability of the formatter you want to make as built-in.
-- Note: PRs won't be accepted without tests!
-
 ## Installation
-You can install the package via composer:
 
+Install the package via composer:
 ```bash
 composer require michael-rubel/laravel-formatters
 ```
+
+```bash
+php artisan vendor:publish --tag="formatters-config"
+```
+
 
 ## Usage
 
@@ -42,10 +35,13 @@ You can use a string binding as an alternative to passing the class:
 format('date-time', now())
 ```
 
-You can configure the string bindings case (snake/kebab) in the config file:
-```bash
-php artisan vendor:publish --tag="formatters-config"
-```
+## Available built-in formatters
+- [`Date`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/DateFormatter.php)
+- [`DateTime`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/DateTimeFormatter.php)
+- [`LocaleNumber`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/LocaleNumberFormatter.php)
+- [`MaskString`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/MaskStringFormatter.php)
+- [`TableColumn`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/TableColumnFormatter.php)
+- [`TaxNumber`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/TaxNumberFormatter.php)
 
 ### Artisan command
 To make the programmer's life easier, we also added the Artisan command. You can use `make:formatter` command to generate formatter classes. It will put the class with the given name into `app/Formatters` folder and auto-inject the stub.
@@ -66,9 +62,10 @@ $this->app->extend(DateTimeFormatter::class, function ($formatter) {
 
 ### Adding custom/overriding package formatters
 To add a custom formatter you should create the class that implements the `MichaelRubel\Formatters\Formatter` interface and put it to the `app/Formatters` folder.
-You can put formatter with the same name as the package's to override the formatter from the package.
+You can put formatter with the same name as the package's to override the formatter from the package. You can customize the folder in the config file.
 
-You can customize the folder in the config file.
+## Contributing
+If you have written your own formatter and want to add it to this package, PRs are welcomed. But take care of the extendability of the formatter you want to make as built-in and remember to write tests for your use cases.
 
 ## Testing
 ```bash
