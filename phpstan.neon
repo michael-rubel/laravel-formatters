@@ -17,6 +17,7 @@ parameters:
         - '#Cannot cast mixed to float\.#'
         - '#Parameter \#2 \$style of class NumberFormatter constructor expects int, mixed given\.#'
         - '#Parameter \#1 \$time of method Carbon\\Carbon\:\:parse\(\) expects DateTimeInterface\|string\|null, mixed given\.#'
+        - '#Cannot cast mixed to string.#'
 
     checkMissingIterableValueType: false
 
