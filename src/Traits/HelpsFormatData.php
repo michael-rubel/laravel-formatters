@@ -19,6 +19,6 @@ trait HelpsFormatData
 
         return is_string($extracted)
             ? $extracted
-            : '';
+            : (string) $extracted;
     }
 }

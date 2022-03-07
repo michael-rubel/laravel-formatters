@@ -7,6 +7,14 @@ use MichaelRubel\Formatters\Collection\LocaleNumberFormatter;
 class LocaleNumberFormatterTest extends TestCase
 {
     /** @test */
+    public function testCanFormatUsingFirstCollectionParameter()
+    {
+        $result = format('locale-number', 10000);
+
+        $this->assertSame('10,000.00', $result);
+    }
+
+    /** @test */
     public function testCanFormatUsingStringBinding()
     {
         $result = format('locale-number', ['number' => 10000.50, 'locale' => 'pl']);
