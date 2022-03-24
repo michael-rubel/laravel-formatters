@@ -32,15 +32,13 @@ class TaxNumberFormatter implements Formatter
      */
     public function format(Collection $items): string
     {
-        $instance = $this->getFirstFrom($items);
+        $tax_number = $this->cleanupTaxNumber($items);
 
-        $tax_number = $this->cleanupTaxNumber($instance);
-
-        return empty($instance->get($this->country_key))
+        return empty($items->get($this->country_key))
             ? $tax_number
             : $this->getFullTaxNumber(
                 $tax_number,
-                $this->getCountry($instance)
+                $this->getCountry($items)
             );
     }
 

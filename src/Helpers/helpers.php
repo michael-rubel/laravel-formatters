@@ -11,7 +11,7 @@ if (! function_exists('format')) {
      *
      * @return mixed
      */
-    function format(string $formatter, mixed ...$items): mixed
+    function format(string $formatter, mixed $items): mixed
     {
         $formatter = class_exists($formatter) || interface_exists($formatter)
             ? app($formatter)

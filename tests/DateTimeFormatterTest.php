@@ -73,7 +73,7 @@ class DateTimeFormatterTest extends TestCase
         Carbon::setTestNow('2022-03-24 10:30');
         config(['app.timezone' => 'Europe/Warsaw']);
 
-        $result = format('date-time', now(), 'UTC');
+        $result = format('date-time', [now(), 'UTC']);
         $this->assertEquals('2022-03-24 10:30', $result);
 
         $result = format('date-time', now());
