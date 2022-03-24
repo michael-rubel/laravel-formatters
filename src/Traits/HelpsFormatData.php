@@ -25,16 +25,4 @@ trait HelpsFormatData
             ? $extracted
             : (string) $extracted;
     }
-
-    /**
-     * @param Collection $items
-     *
-     * @return Collection
-     */
-    private function getFirstFrom(Collection $items): Collection
-    {
-        return collect(
-            $items->first()
-        );
-    }
 }
