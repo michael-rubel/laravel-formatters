@@ -20,6 +20,16 @@ class DateTimeFormatter implements Formatter
     public string $datetime_format = 'Y-m-d H:i';
 
     /**
+     * @var object|array|string
+     */
+    public object|array|string $instance;
+
+    /**
+     * @var string
+     */
+    public string $timezone;
+
+    /**
      * Format the date and time.
      *
      * @param Collection $items
@@ -28,24 +38,24 @@ class DateTimeFormatter implements Formatter
      */
     public function format(Collection $items): string
     {
-        $instance = $items->first();
+        $this->instance = $items->first();
 
-        if (is_array($instance)) {
-            $instance = current($instance);
+        if (is_array($this->instance)) {
+            $this->instance = current($this->instance);
         }
 
-        $timezone = config('app.timezone');
+        $this->timezone = config('app.timezone');
 
         if (count($items) > 1) {
-            $timezone = $items->last();
+            $this->timezone = $items->last();
         }
 
-        if (! $instance instanceof CarbonInterface) {
-            $instance = app(Carbon::class)->parse($instance);
+        if (! $this->instance instanceof CarbonInterface) {
+            $this->instance = app(Carbon::class)->parse($this->instance);
         }
 
-        return $instance
-            ->setTimezone($timezone)
+        return $this->instance
+            ->setTimezone($this->timezone)
             ->format($this->datetime_format);
     }
 }

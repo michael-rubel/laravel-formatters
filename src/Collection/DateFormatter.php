@@ -17,9 +17,9 @@ class DateFormatter implements Formatter
     public string $date_format = 'Y-m-d';
 
     /**
-     * @var object|array
+     * @var object|array|string
      */
-    public object|array $instance;
+    public object|array|string $instance;
 
     /**
      * @var string
@@ -35,24 +35,24 @@ class DateFormatter implements Formatter
      */
     public function format(Collection $items): string
     {
-        $instance = $items->first();
+        $this->instance = $items->first();
 
-        if (is_array($instance)) {
-            $instance = current($instance);
+        if (is_array($this->instance)) {
+            $this->instance = current($this->instance);
         }
 
-        $timezone = config('app.timezone');
+        $this->timezone = config('app.timezone');
 
         if (count($items) > 1) {
-            $timezone = $items->last();
+            $this->timezone = $items->last();
         }
 
-        if (! $instance instanceof CarbonInterface) {
-            $instance = app(Carbon::class)->parse($instance);
+        if (! $this->instance instanceof CarbonInterface) {
+            $this->instance = app(Carbon::class)->parse($this->instance);
         }
 
-        return $instance
-            ->setTimezone($timezone)
+        return $this->instance
+            ->setTimezone($this->timezone)
             ->format($this->date_format);
     }
 }
