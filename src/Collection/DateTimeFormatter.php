@@ -60,7 +60,7 @@ class DateTimeFormatter implements Formatter
      *
      * @return void
      */
-    public function getInstance(Collection $items): void
+    protected function getInstance(Collection $items): void
     {
         $this->instance = $items->first();
 
@@ -74,7 +74,7 @@ class DateTimeFormatter implements Formatter
      *
      * @return void
      */
-    public function setTimezone(Collection $items): void
+    protected function setTimezone(Collection $items): void
     {
         $this->timezone = config('app.timezone');
 
