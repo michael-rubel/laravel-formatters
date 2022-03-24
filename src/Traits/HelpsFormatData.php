@@ -17,10 +17,6 @@ trait HelpsFormatData
     {
         $extracted = $collection->first();
 
-        if (is_array($extracted)) {
-            $extracted = current($extracted);
-        }
-
         return is_string($extracted)
             ? $extracted
             : (string) $extracted;
