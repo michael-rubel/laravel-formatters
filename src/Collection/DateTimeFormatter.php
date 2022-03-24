@@ -20,14 +20,14 @@ class DateTimeFormatter implements Formatter
     public string $datetime_format = 'Y-m-d H:i';
 
     /**
-     * @var object|array|string
+     * @var mixed
      */
-    public object|array|string $instance;
+    public mixed $instance;
 
     /**
-     * @var string
+     * @var mixed
      */
-    public string $timezone;
+    public mixed $timezone;
 
     /**
      * Format the date and time.
@@ -38,16 +38,12 @@ class DateTimeFormatter implements Formatter
      */
     public function format(Collection $items): string
     {
-        $this->instance = $items->first();
-
-        if (is_array($this->instance)) {
-            $this->instance = current($this->instance);
+        if (! isset($this->instance)) {
+            $this->getInstance($items);
         }
 
-        $this->timezone = config('app.timezone');
-
-        if (count($items) > 1) {
-            $this->timezone = $items->last();
+        if (! isset($this->timezone)) {
+            $this->setTimezone($items);
         }
 
         if (! $this->instance instanceof CarbonInterface) {
@@ -57,5 +53,33 @@ class DateTimeFormatter implements Formatter
         return $this->instance
             ->setTimezone($this->timezone)
             ->format($this->datetime_format);
+    }
+
+    /**
+     * @param Collection $items
+     *
+     * @return void
+     */
+    public function getInstance(Collection $items): void
+    {
+        $this->instance = $items->first();
+
+        if (is_array($this->instance)) {
+            $this->instance = current($this->instance);
+        }
+    }
+
+    /**
+     * @param Collection $items
+     *
+     * @return void
+     */
+    public function setTimezone(Collection $items): void
+    {
+        $this->timezone = config('app.timezone');
+
+        if (count($items) > 1) {
+            $this->timezone = $items->last();
+        }
     }
 }
