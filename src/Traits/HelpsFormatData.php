@@ -17,8 +17,24 @@ trait HelpsFormatData
     {
         $extracted = $collection->first();
 
+        if (is_array($extracted)) {
+            $extracted = current($extracted);
+        }
+
         return is_string($extracted)
             ? $extracted
             : (string) $extracted;
+    }
+
+    /**
+     * @param Collection $items
+     *
+     * @return Collection
+     */
+    private function getFirstFrom(Collection $items): Collection
+    {
+        return collect(
+            $items->first()
+        );
     }
 }

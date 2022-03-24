@@ -50,6 +50,8 @@ class LocaleNumberFormatter implements Formatter
      */
     public function format(Collection $items): string
     {
+        $items = $this->getFirstFrom($items);
+
         $formatter = new NumberFormatter(
             $items->get($this->locale_key) ?? app()->getLocale(),
             $items->get($this->style_key) ?? NumberFormatter::DECIMAL

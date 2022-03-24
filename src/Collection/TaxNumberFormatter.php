@@ -7,9 +7,12 @@ namespace MichaelRubel\Formatters\Collection;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use MichaelRubel\Formatters\Formatter;
+use MichaelRubel\Formatters\Traits\HelpsFormatData;
 
 class TaxNumberFormatter implements Formatter
 {
+    use HelpsFormatData;
+
     /**
      * @var string
      */
@@ -29,13 +32,15 @@ class TaxNumberFormatter implements Formatter
      */
     public function format(Collection $items): string
     {
-        $tax_number = $this->cleanupTaxNumber($items);
+        $instance = $this->getFirstFrom($items);
 
-        return empty($items->get($this->country_key))
+        $tax_number = $this->cleanupTaxNumber($instance);
+
+        return empty($instance->get($this->country_key))
             ? $tax_number
             : $this->getFullTaxNumber(
                 $tax_number,
-                $this->getCountry($items)
+                $this->getCountry($instance)
             );
     }
 
