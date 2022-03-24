@@ -17,6 +17,8 @@ class DateTimeFormatterTest extends TestCase
         parent::setUp();
 
         Carbon::setTestNow('2021-10-30 14:00:00');
+
+        config(['app.timezone' => 'UTC']);
     }
 
     /** @test */
@@ -63,5 +65,18 @@ class DateTimeFormatterTest extends TestCase
 
         $result = format('date-time', '2021-10-30 17:00:00');
         $this->assertEquals('2021-10-30 17:00', $result);
+    }
+
+    /** @test */
+    public function testCanFormatWithTimezone()
+    {
+        Carbon::setTestNow('2022-03-24 10:30');
+        config(['app.timezone' => 'Europe/Warsaw']);
+
+        $result = format('date-time', now(), 'UTC');
+        $this->assertEquals('2022-03-24 10:30', $result);
+
+        $result = format('date-time', now());
+        $this->assertEquals('2022-03-24 11:30', $result);
     }
 }
