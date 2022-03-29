@@ -60,10 +60,6 @@ class DateFormatter implements Formatter
     protected function getInstance(Collection $items): void
     {
         $this->instance = $items->first();
-
-        if (is_array($this->instance)) {
-            $this->instance = current($this->instance);
-        }
     }
 
     /**
