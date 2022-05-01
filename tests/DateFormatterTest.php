@@ -37,7 +37,7 @@ class DateFormatterTest extends TestCase
         $result = format(DateFormatter::class, now());
         $this->assertEquals('2021-10-30', $result);
 
-        $result = format(DateFormatter::class, ['to_format' => now()]);
+        $result = format(DateFormatter::class, ['date' => now()]);
         $this->assertEquals('2021-10-30', $result);
     }
 
@@ -57,13 +57,13 @@ class DateFormatterTest extends TestCase
     /** @test */
     public function testCanFormatDateUsingArray()
     {
-        $result = format(DateFormatter::class, ['to_format' => '2021-10-30 15:00:00']);
+        $result = format(DateFormatter::class, ['date' => '2021-10-30 15:00:00']);
         $this->assertEquals('2021-10-30', $result);
 
-        $result = format(DateFormatter::class, ['to_format' => '2021-11-01 15:00']);
+        $result = format(DateFormatter::class, ['date' => '2021-11-01 15:00']);
         $this->assertEquals('2021-11-01', $result);
 
-        $result = format(DateFormatter::class, ['to_format' => '2021-10-31']);
+        $result = format(DateFormatter::class, ['date' => '2021-10-31']);
         $this->assertEquals('2021-10-31', $result);
     }
 
@@ -83,10 +83,20 @@ class DateFormatterTest extends TestCase
         Carbon::setTestNow('2022-03-24 23:30');
         config(['app.timezone' => 'Europe/Warsaw']);
 
-        $result = format('date', [now(), 'UTC']);
+        $result = format('date', ['date' => now(), 'timezone' => 'UTC']);
         $this->assertEquals('2022-03-24', $result);
 
         $result = format('date', now());
         $this->assertEquals('2022-03-25', $result);
+    }
+
+    /** @test */
+    public function testCanUseUnpackingParameters()
+    {
+        Carbon::setTestNow('2022-03-24 23:30');
+        config(['app.timezone' => 'Europe/Warsaw']);
+
+        $result = format('date', now(), 'UTC');
+        $this->assertEquals('2022-03-24', $result);
     }
 }

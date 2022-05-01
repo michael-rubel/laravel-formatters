@@ -12,67 +12,33 @@ use MichaelRubel\Formatters\Formatter;
 class DateFormatter implements Formatter
 {
     /**
-     * @var string
+     * @param string|CarbonInterface $date
+     * @param string|null $timezone
+     * @param string $date_format
      */
-    public string $date_format = 'Y-m-d';
+    public function __construct(
+        public string|CarbonInterface $date,
+        public string|null $timezone = null,
+        public string $date_format = 'Y-m-d',
+    ) {
+        if (! $this->timezone) {
+            $this->timezone = config('app.timezone');
+        }
 
-    /**
-     * @var mixed
-     */
-    public mixed $instance;
-
-    /**
-     * @var mixed
-     */
-    public mixed $timezone;
+        if (! $this->date instanceof CarbonInterface) {
+            $this->date = app(Carbon::class)->parse($this->date);
+        }
+    }
 
     /**
      * Format the date.
      *
-     * @param Collection $items
-     *
      * @return string
      */
-    public function format(Collection $items): string
+    public function format(): string
     {
-        if (! isset($this->instance)) {
-            $this->getInstance($items);
-        }
-
-        if (! isset($this->timezone)) {
-            $this->getTimezone($items);
-        }
-
-        if (! $this->instance instanceof CarbonInterface) {
-            $this->instance = app(Carbon::class)->parse($this->instance);
-        }
-
-        return $this->instance
+        return $this->date
             ->setTimezone($this->timezone)
             ->format($this->date_format);
-    }
-
-    /**
-     * @param Collection $items
-     *
-     * @return void
-     */
-    protected function getInstance(Collection $items): void
-    {
-        $this->instance = $items->first();
-    }
-
-    /**
-     * @param Collection $items
-     *
-     * @return void
-     */
-    protected function getTimezone(Collection $items): void
-    {
-        $this->timezone = config('app.timezone');
-
-        if (count($items) > 1) {
-            $this->timezone = $items->last();
-        }
     }
 }

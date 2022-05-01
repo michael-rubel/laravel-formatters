@@ -27,7 +27,7 @@ class DateTimeFormatterTest extends TestCase
         $result = format(DateTimeFormatter::class, now());
         $this->assertEquals('2021-10-30 14:00', $result);
 
-        $result = format(DateTimeFormatter::class, ['to_format' => now()]);
+        $result = format(DateTimeFormatter::class, ['datetime' => now()]);
         $this->assertEquals('2021-10-30 14:00', $result);
     }
 
@@ -47,13 +47,13 @@ class DateTimeFormatterTest extends TestCase
     /** @test */
     public function testCanFormatDateTimeUsingArray()
     {
-        $result = format(DateTimeFormatter::class, ['to_format' => '2021-11-01 15:00:00']);
+        $result = format(DateTimeFormatter::class, ['datetime' => '2021-11-01 15:00:00']);
         $this->assertEquals('2021-11-01 15:00', $result);
 
-        $result = format(DateTimeFormatter::class, ['to_format' => '2021-11-01 15:00']);
+        $result = format(DateTimeFormatter::class, ['datetime' => '2021-11-01 15:00']);
         $this->assertEquals('2021-11-01 15:00', $result);
 
-        $result = format(DateTimeFormatter::class, ['to_format' => '2021-11-01']);
+        $result = format(DateTimeFormatter::class, ['datetime' => '2021-11-01']);
         $this->assertEquals('2021-11-01 00:00', $result);
     }
 
@@ -73,10 +73,20 @@ class DateTimeFormatterTest extends TestCase
         Carbon::setTestNow('2022-03-24 10:30');
         config(['app.timezone' => 'Europe/Warsaw']);
 
-        $result = format('date-time', [now(), 'UTC']);
+        $result = format('date-time', ['datetime' => now(), 'timezone' => 'UTC']);
         $this->assertEquals('2022-03-24 10:30', $result);
 
         $result = format('date-time', now());
         $this->assertEquals('2022-03-24 11:30', $result);
+    }
+
+    /** @test */
+    public function testCanUseUnpackingParameters()
+    {
+        Carbon::setTestNow('2022-03-24 10:30');
+        config(['app.timezone' => 'Europe/Warsaw']);
+
+        $result = format('date-time', now(), 'UTC');
+        $this->assertEquals('2022-03-24 10:30', $result);
     }
 }

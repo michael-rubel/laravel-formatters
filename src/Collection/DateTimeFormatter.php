@@ -6,76 +6,38 @@ namespace MichaelRubel\Formatters\Collection;
 
 use Carbon\CarbonInterface;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
 use MichaelRubel\Formatters\Formatter;
-use MichaelRubel\Formatters\Traits\HelpsFormatData;
 
 class DateTimeFormatter implements Formatter
 {
-    use HelpsFormatData;
-
     /**
-     * @var string
+     * @param string|CarbonInterface $datetime
+     * @param string|null $timezone
+     * @param string $datetime_format
      */
-    public string $datetime_format = 'Y-m-d H:i';
+    public function __construct(
+        public string|CarbonInterface $datetime,
+        public string|null $timezone = null,
+        public string $datetime_format = 'Y-m-d H:i',
+    ) {
+        if (! $this->timezone) {
+            $this->timezone = config('app.timezone');
+        }
 
-    /**
-     * @var mixed
-     */
-    public mixed $instance;
-
-    /**
-     * @var mixed
-     */
-    public mixed $timezone;
+        if (! $this->datetime instanceof CarbonInterface) {
+            $this->datetime = app(Carbon::class)->parse($this->datetime);
+        }
+    }
 
     /**
      * Format the date and time.
      *
-     * @param Collection $items
-     *
      * @return string
      */
-    public function format(Collection $items): string
+    public function format(): string
     {
-        if (! isset($this->instance)) {
-            $this->getInstance($items);
-        }
-
-        if (! isset($this->timezone)) {
-            $this->setTimezone($items);
-        }
-
-        if (! $this->instance instanceof CarbonInterface) {
-            $this->instance = app(Carbon::class)->parse($this->instance);
-        }
-
-        return $this->instance
+        return $this->datetime
             ->setTimezone($this->timezone)
             ->format($this->datetime_format);
-    }
-
-    /**
-     * @param Collection $items
-     *
-     * @return void
-     */
-    protected function getInstance(Collection $items): void
-    {
-        $this->instance = $items->first();
-    }
-
-    /**
-     * @param Collection $items
-     *
-     * @return void
-     */
-    protected function setTimezone(Collection $items): void
-    {
-        $this->timezone = config('app.timezone');
-
-        if (count($items) > 1) {
-            $this->timezone = $items->last();
-        }
     }
 }
