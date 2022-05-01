@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace MichaelRubel\Formatters;
 
 use Illuminate\Support\Str;
+use MichaelRubel\EnhancedContainer\LecServiceProvider;
 use MichaelRubel\Formatters\Commands\MakeFormatterCommand;
 use MichaelRubel\Formatters\Exceptions\ShouldImplementInterfaceException;
 use MichaelRubel\Formatters\Exceptions\ShouldNotUseCamelCaseException;
@@ -46,6 +47,8 @@ class FormatterServiceProvider extends PackageServiceProvider
      */
     public function packageRegistered(): void
     {
+        $this->app->register(LecServiceProvider::class);
+
         /** @var string */
         $app_folder = config('formatters.folder')
             ?? 'app' . DIRECTORY_SEPARATOR . 'Formatters';

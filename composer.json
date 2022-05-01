@@ -19,6 +19,7 @@
         "php": "^8.0|^8.1",
         "ext-intl": "*",
         "laravel/framework": "^8.71|^9.0",
+        "michael-rubel/laravel-enhanced-container": "^6.3|^7.3",
         "spatie/laravel-package-tools": "^1.9"
     },
     "require-dev": {

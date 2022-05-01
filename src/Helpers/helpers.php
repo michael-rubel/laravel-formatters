@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use MichaelRubel\EnhancedContainer\Call;
 use MichaelRubel\Formatters\FormatterServiceProvider;
 
 if (! function_exists('format')) {
@@ -11,16 +12,16 @@ if (! function_exists('format')) {
      *
      * @return mixed
      */
-    function format(string $formatter, mixed $items): mixed
+    function format(string $formatter, mixed ...$items): mixed
     {
         $formatter = class_exists($formatter) || interface_exists($formatter)
-            ? app($formatter)
-            : app($formatter . FormatterServiceProvider::BINDING_POSTFIX);
+            ? call($formatter, $items)
+            : call($formatter . FormatterServiceProvider::BINDING_POSTFIX, $items);
 
-        FormatterServiceProvider::ensureFormatterImplementsInterface($formatter);
-
-        return $formatter->format(
-            collect($items) /* @phpstan-ignore-line */
+        FormatterServiceProvider::ensureFormatterImplementsInterface(
+            $formatter->getInternal(Call::INSTANCE)
         );
+
+        return $formatter->format();
     }
 }
