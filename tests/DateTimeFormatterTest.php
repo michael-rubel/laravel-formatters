@@ -89,4 +89,23 @@ class DateTimeFormatterTest extends TestCase
         $result = format('date-time', now(), 'UTC');
         $this->assertEquals('2022-03-24 10:30', $result);
     }
+
+    /** @test */
+    public function testCanExtendDateTimeFormatter()
+    {
+        config(['app.timezone' => 'UTC']);
+
+        $result = format(DateTimeFormatter::class, '2021-10-31');
+        $this->assertEquals('2021-10-31 00:00', $result);
+
+        app()->extend(DateTimeFormatter::class, function ($service) {
+            $service->timezone = 'Europe/Warsaw';
+            $service->datetime_format = 'Y-m-d H:i:s';
+
+            return $service;
+        });
+
+        $result = format(DateTimeFormatter::class, '2021-10-31');
+        $this->assertEquals('2021-10-31 02:00:00', $result);
+    }
 }

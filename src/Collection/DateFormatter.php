@@ -12,21 +12,29 @@ use MichaelRubel\Formatters\Formatter;
 class DateFormatter implements Formatter
 {
     /**
-     * @param string|CarbonInterface $date
+     * @param string|CarbonInterface|null $date
      * @param string|null $timezone
-     * @param string $date_format
+     * @param string|null $date_format
      */
     public function __construct(
-        public string|CarbonInterface $date,
+        public string|null|CarbonInterface $date = null,
         public string|null $timezone = null,
-        public string $date_format = 'Y-m-d',
+        public string|null $date_format = 'Y-m-d',
     ) {
         if (! $this->timezone) {
             $this->timezone = config('app.timezone');
         }
 
+        if (! $this->date) {
+            $this->date = now();
+        }
+
         if (! $this->date instanceof CarbonInterface) {
             $this->date = app(Carbon::class)->parse($this->date);
+        }
+
+        if (! $this->date_format) {
+            $this->date_format = 'Y-m-d';
         }
     }
 
