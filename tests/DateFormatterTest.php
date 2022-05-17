@@ -68,6 +68,14 @@ class DateFormatterTest extends TestCase
     }
 
     /** @test */
+    public function testFormatHelperFailsWhenMultipleArraysPassed()
+    {
+        $this->expectException(\TypeError::class);
+
+        format(DateFormatter::class, ['date' => '2021-10-30 15:00:00'], ['test' => true]);
+    }
+
+    /** @test */
     public function testCanFormatUsingStringBinding()
     {
         $result = format('date', now());

@@ -3,6 +3,7 @@
 namespace MichaelRubel\Formatters\Tests;
 
 use Carbon\Carbon;
+use MichaelRubel\Formatters\Collection\DateFormatter;
 use MichaelRubel\Formatters\Collection\DateTimeFormatter;
 
 class DateTimeFormatterTest extends TestCase
@@ -55,6 +56,14 @@ class DateTimeFormatterTest extends TestCase
 
         $result = format(DateTimeFormatter::class, ['datetime' => '2021-11-01']);
         $this->assertEquals('2021-11-01 00:00', $result);
+    }
+
+    /** @test */
+    public function testFormatHelperFailsWhenMultipleArraysPassed()
+    {
+        $this->expectException(\TypeError::class);
+
+        format(DateFormatter::class, ['datetime' => '2021-10-30 15:00:00'], ['test' => true]);
     }
 
     /** @test */
