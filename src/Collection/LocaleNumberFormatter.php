@@ -6,43 +6,45 @@ namespace MichaelRubel\Formatters\Collection;
 
 use Illuminate\Support\Collection;
 use MichaelRubel\Formatters\Formatter;
-use MichaelRubel\Formatters\Traits\HelpsFormatData;
 use NumberFormatter;
 
 class LocaleNumberFormatter implements Formatter
 {
-    use HelpsFormatData;
-
     /**
-     * "Locale" key to pass to the collection of $items.
-     *
-     * @var string
+     * @var NumberFormatter
      */
-    public string $locale_key = 'locale';
+    public NumberFormatter $formatter;
 
     /**
-     * "Number" key to pass to the collection of $items.
-     *
-     * @var string
+     * @param int|float|string $number
+     * @param string|null      $locale
+     * @param int              $style
+     * @param string|null      $pattern
+     * @param int              $fraction_digits
      */
-    public string $number_key = 'number';
+    public function __construct(
+        public int|float|string $number,
+        public ?string $locale = null,
+        public int $style = NumberFormatter::DECIMAL,
+        public ?string $pattern = null,
+        public int $fraction_digits = 2
+    ) {
+        $this->locale = $this->locale ?? app()->getLocale();
+
+        $this->formatter = new NumberFormatter(
+            $this->locale,
+            $this->style,
+            $this->pattern
+        );
+
+        $this->formatter->setAttribute(
+            NumberFormatter::FRACTION_DIGITS,
+            $this->fraction_digits
+        );
+    }
 
     /**
-     * "Style" key to pass to the collection of $items.
-     *
-     * @var string
-     */
-    public string $style_key = 'style';
-
-    /**
-     * Extendable fraction digits.
-     *
-     * @var int
-     */
-    public int $fraction_digits = 2;
-
-    /**
-     * Format the date and time.
+     * Format the number based on locale.
      *
      * @param Collection $items
      *
@@ -50,20 +52,8 @@ class LocaleNumberFormatter implements Formatter
      */
     public function format(Collection $items): string
     {
-        $formatter = new NumberFormatter(
-            $items->get($this->locale_key) ?? app()->getLocale(),
-            $items->get($this->style_key) ?? NumberFormatter::DECIMAL
-        );
-
-        $formatter->setAttribute(
-            NumberFormatter::FRACTION_DIGITS,
-            $this->fraction_digits
-        );
-
-        return $formatter->format(
-            (float) (
-                $items->get($this->number_key) ?? $this->extractStringFromCollection($items)
-            )
+        return $this->formatter->format(
+            (float) $this->number
         );
     }
 }

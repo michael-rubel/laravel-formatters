@@ -7,7 +7,7 @@ use MichaelRubel\Formatters\Collection\LocaleNumberFormatter;
 class LocaleNumberFormatterTest extends TestCase
 {
     /** @test */
-    public function testCanFormatUsingFirstCollectionParameter()
+    public function testCanFormatUsingFirstParameter()
     {
         $result = format('locale-number', 10000);
 
