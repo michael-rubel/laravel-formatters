@@ -37,6 +37,19 @@ class MaskStringFormatterTest extends TestCase
     }
 
     /** @test */
+    public function testFormatBehaviorWithNullOrEmpty()
+    {
+        $format = format('mask-string');
+        $this->assertSame('', $format);
+
+        $format = format('mask-string', '');
+        $this->assertSame('', $format);
+
+        $format = format('mask-string', null);
+        $this->assertSame('', $format);
+    }
+
+    /** @test */
     public function testCanExtendFormatterBinding()
     {
         extend(MaskStringFormatter::class, function ($formatter) {

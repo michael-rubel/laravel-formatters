@@ -86,6 +86,19 @@ class DateFormatterTest extends TestCase
     }
 
     /** @test */
+    public function testFormatBehaviorWithNullOrEmpty()
+    {
+        $format = format('date');
+        $this->assertSame('2021-10-30', $format);
+
+        $format = format('date', '');
+        $this->assertSame('2021-10-30', $format);
+
+        $format = format('date', null);
+        $this->assertSame('2021-10-30', $format);
+    }
+
+    /** @test */
     public function testCanFormatWithTimezone()
     {
         Carbon::setTestNow('2022-03-24 23:30');

@@ -23,6 +23,19 @@ class LocaleNumberFormatterTest extends TestCase
     }
 
     /** @test */
+    public function testFormatBehaviorWithNullOrEmpty()
+    {
+        $format = format('locale-number');
+        $this->assertSame('0.00', $format);
+
+        $format = format('locale-number', '');
+        $this->assertSame('0.00', $format);
+
+        $format = format('locale-number', null);
+        $this->assertSame('0.00', $format);
+    }
+
+    /** @test */
     public function testCanFormatNumberBasedOnPlLocale()
     {
         $result = format(LocaleNumberFormatter::class, [

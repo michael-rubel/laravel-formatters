@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace MichaelRubel\Formatters\Collection;
 
-use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use MichaelRubel\Formatters\Formatter;
 
@@ -14,7 +13,7 @@ class TableColumnFormatter implements Formatter
      * @param string|null $string
      */
     public function __construct(
-        public ?string $string
+        public ?string $string = null
     ) {
     }
 

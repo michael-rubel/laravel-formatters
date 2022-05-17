@@ -16,16 +16,12 @@ class DateFormatter implements Formatter
      * @param string|null $date_format
      */
     public function __construct(
-        public string|null|CarbonInterface $date = null,
+        public string|CarbonInterface|null $date = null,
         public string|null $timezone = null,
         public string|null $date_format = 'Y-m-d',
     ) {
         if (! $this->timezone) {
             $this->timezone = config('app.timezone');
-        }
-
-        if (! $this->date) {
-            $this->date = now();
         }
 
         if (! $this->date instanceof CarbonInterface) {

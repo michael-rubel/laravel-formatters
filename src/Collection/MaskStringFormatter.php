@@ -10,14 +10,14 @@ use MichaelRubel\Formatters\Formatter;
 class MaskStringFormatter implements Formatter
 {
     /**
-     * @param string $string
-     * @param string $character
-     * @param int    $index
-     * @param int    $length
-     * @param string $encoding
+     * @param string|null $string
+     * @param string      $character
+     * @param int         $index
+     * @param int         $length
+     * @param string      $encoding
      */
     public function __construct(
-        public string $string,
+        public ?string $string = '',
         public string $character = '*',
         public int $index = 4,
         public int $length = -4,
@@ -33,7 +33,7 @@ class MaskStringFormatter implements Formatter
     public function format(): string
     {
         return Str::mask(
-            $this->string,
+            $this->string ?? '',
             $this->character,
             $this->index,
             $this->length,

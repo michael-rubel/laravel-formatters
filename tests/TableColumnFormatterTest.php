@@ -38,6 +38,19 @@ class TableColumnFormatterTest extends TestCase
     }
 
     /** @test */
+    public function testFormatBehaviorWithNullOrEmpty()
+    {
+        $format = format('table-column');
+        $this->assertSame('', $format);
+
+        $format = format('table-column', '');
+        $this->assertSame('', $format);
+
+        $format = format('table-column', null);
+        $this->assertSame('', $format);
+    }
+
+    /** @test */
     public function testCanExtendFormatterBinding()
     {
         extend(TableColumnFormatter::class, function ($formatter) {

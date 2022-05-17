@@ -16,16 +16,12 @@ class DateTimeFormatter implements Formatter
      * @param string|null $datetime_format
      */
     public function __construct(
-        public string|null|CarbonInterface $datetime = null,
+        public string|CarbonInterface|null $datetime = null,
         public string|null $timezone = null,
         public string|null $datetime_format = null,
     ) {
         if (! $this->timezone) {
             $this->timezone = config('app.timezone');
-        }
-
-        if (! $this->datetime) {
-            $this->datetime = now();
         }
 
         if (! $this->datetime instanceof CarbonInterface) {

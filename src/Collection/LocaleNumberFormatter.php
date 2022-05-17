@@ -16,14 +16,14 @@ class LocaleNumberFormatter implements Formatter
     public NumberFormatter $formatter;
 
     /**
-     * @param int|float|string $number
-     * @param string|null      $locale
-     * @param int              $style
-     * @param string|null      $pattern
-     * @param int              $fraction_digits
+     * @param int|float|string|null $number
+     * @param string|null           $locale
+     * @param int                   $style
+     * @param string|null           $pattern
+     * @param int                   $fraction_digits
      */
     public function __construct(
-        public int|float|string $number,
+        public int|float|string|null $number = null,
         public ?string $locale = null,
         public int $style = NumberFormatter::DECIMAL,
         public ?string $pattern = null,
