@@ -7,8 +7,6 @@ namespace MichaelRubel\Formatters;
 use Illuminate\Support\Str;
 use MichaelRubel\EnhancedContainer\LecServiceProvider;
 use MichaelRubel\Formatters\Commands\MakeFormatterCommand;
-use MichaelRubel\Formatters\Exceptions\ShouldImplementInterfaceException;
-use MichaelRubel\Formatters\Exceptions\ShouldNotUseCamelCaseException;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Symfony\Component\Finder\SplFileInfo;
@@ -117,21 +115,5 @@ class FormatterServiceProvider extends PackageServiceProvider
               . self::CLASS_SEPARATOR;
 
         return sprintf('%s%s', $path, $filename);
-    }
-
-    /**
-     * Ensures all the formatters will implement the same interface.
-     *
-     * @param object $formatter
-     */
-    public static function ensureFormatterImplementsInterface(object $formatter): void
-    {
-        if (! $formatter instanceof Formatter) {
-            if (config('formatters.bindings_case') === 'camel') {
-                throw new ShouldNotUseCamelCaseException();
-            }
-
-            throw new ShouldImplementInterfaceException();
-        }
     }
 }

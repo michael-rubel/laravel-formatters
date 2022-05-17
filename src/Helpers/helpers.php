@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use MichaelRubel\EnhancedContainer\Call;
+use MichaelRubel\Formatters\FormatterService;
 use MichaelRubel\Formatters\FormatterServiceProvider;
 
 if (! function_exists('format')) {
@@ -14,11 +15,13 @@ if (! function_exists('format')) {
      */
     function format(string $formatter, mixed ...$items): mixed
     {
+        $items = FormatterService::unwrapIfArray($items);
+
         $formatter = class_exists($formatter) || interface_exists($formatter)
             ? call($formatter, $items)
             : call($formatter . FormatterServiceProvider::BINDING_POSTFIX, $items);
 
-        FormatterServiceProvider::ensureFormatterImplementsInterface(
+        FormatterService::ensureFormatterImplementsInterface(
             $formatter->getInternal(Call::INSTANCE)
         );
 
