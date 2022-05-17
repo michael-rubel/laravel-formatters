@@ -23,10 +23,42 @@ class MaskStringFormatterTest extends TestCase
     }
 
     /** @test */
+    public function testCanFormatStringAsMaskedUsingArray()
+    {
+        $format = format(MaskStringFormatter::class, ['string' => 'MyMaskedString']);
+        $this->assertSame('MyMa******ring', $format);
+    }
+
+    /** @test */
     public function testCanFormatUsingStringBinding()
     {
         $format = format('mask-string', 'test@example.com');
-
         $this->assertSame('test********.com', $format);
+    }
+
+    /** @test */
+    public function testCanExtendFormatterBinding()
+    {
+        extend(MaskStringFormatter::class, function ($formatter) {
+            $formatter->string    = 'test@example.com';
+            $formatter->character = '%';
+            $formatter->index     = 5;
+            $formatter->length    = -5;
+            $formatter->encoding  = 'KOI8-U';
+
+            $this->assertStringContainsString('test@example.com', $formatter->string);
+            $this->assertStringContainsString('%', $formatter->character);
+            $this->assertStringContainsString(5, $formatter->index);
+            $this->assertStringContainsString(-5, $formatter->length);
+            $this->assertStringContainsString('KOI8-U', $formatter->encoding);
+
+            return $formatter;
+        });
+
+        $format = format(MaskStringFormatter::class, 'binding has the priority');
+        $this->assertSame('test@%%%%%%e.com', $format);
+
+        $format = format('mask-string', 'binding has the priority');
+        $this->assertSame('test@%%%%%%e.com', $format);
     }
 }
