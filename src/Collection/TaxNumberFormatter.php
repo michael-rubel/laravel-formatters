@@ -4,93 +4,74 @@ declare(strict_types=1);
 
 namespace MichaelRubel\Formatters\Collection;
 
-use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use MichaelRubel\Formatters\Formatter;
-use MichaelRubel\Formatters\Traits\HelpsFormatData;
 
 class TaxNumberFormatter implements Formatter
 {
-    use HelpsFormatData;
-
     /**
-     * @var string
+     * @param string|null $tax_number
+     * @param string|null $country
      */
-    public string $number_key = 'tax_number';
-
-    /**
-     * @var string
-     */
-    public string $country_key = 'country_iso';
+    public function __construct(
+        public ?string $tax_number = null,
+        public ?string $country = null
+    ) {
+        $this->cleanup();
+    }
 
     /**
      * Format the Tax Number.
      *
-     * @param Collection $items
-     *
      * @return string
      */
-    public function format(Collection $items): string
+    public function format(): string
     {
-        $tax_number = $this->cleanupTaxNumber($items);
-
-        return empty($items->get($this->country_key))
-            ? $tax_number
-            : $this->getFullTaxNumber(
-                $tax_number,
-                $this->getCountry($items)
-            );
+        return empty($this->country)
+            ? $this->tax_number
+            : $this->getFullTaxNumber();
     }
 
     /**
-     * @param Collection $items
-     * @return string
+     * @return void
      */
-    private function getCountry(Collection $items): string
+    private function cleanup(): void
     {
-        return (string) Str::of(
-            $items->get($this->country_key)
-        )->upper();
+        $regexedTaxNumber = preg_replace_array(
+            '/[^\d\w]/',
+            [],
+            $this->tax_number
+        );
+
+        $this->tax_number = Str::upper($regexedTaxNumber);
+        $this->country    = Str::upper($this->country);
     }
 
     /**
-     * @param string $tax_number
      * @return string
      */
-    private function getPrefix(string $tax_number): string
+    private function getPrefix(): string
     {
-        return (string) Str::of($tax_number)
+        return (string) Str::of($this->tax_number)
             ->substr(0, 2)
             ->upper();
     }
 
     /**
-     * @param string $tax_number
-     * @param string $country
      * @return string
      */
-    private function getFullTaxNumber(string $tax_number, string $country): string
+    private function getFullTaxNumber(): string
     {
-        return Str::of(
-            $this->getPrefix($tax_number)
-        )->startsWith($country)
-            ? (string) Str::of($tax_number)
-                ->substr(2)
-                ->start($country)
-            : (string) Str::of($tax_number)
-                ->start($country);
-    }
+        $prefixStartsWithCountry = Str::of(
+            $this->getPrefix()
+        )->startsWith($this->country);
 
-    /**
-     * @param Collection $items
-     * @return string
-     */
-    private function cleanupTaxNumber(Collection $items): string
-    {
-        return preg_replace_array(
-            '/[^\d\w]/',
-            [],
-            $items->get($this->number_key)
-        );
+        if ($prefixStartsWithCountry) {
+            return (string) Str::of($this->tax_number)
+                ->substr(2)
+                ->start($this->country);
+        }
+
+        return Str::start($this->tax_number, $this->country);
     }
 }
