@@ -34,7 +34,24 @@ class TableColumnFormatterTest extends TestCase
     public function testCanFormatUsingStringBinding()
     {
         $format = format('table-column', 'created_at');
+        $this->assertSame('Created at', $format);
+    }
 
+    /** @test */
+    public function testCanExtendFormatterBinding()
+    {
+        extend(TableColumnFormatter::class, function ($formatter) {
+            $formatter->string = 'created_at';
+
+            $this->assertStringContainsString('created_at', $formatter->string);
+
+            return $formatter;
+        });
+
+        $format = format(TableColumnFormatter::class, 'created_at');
+        $this->assertSame('Created at', $format);
+
+        $format = format('table-column', 'created_at');
         $this->assertSame('Created at', $format);
     }
 }
