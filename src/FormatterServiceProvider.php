@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MichaelRubel\Formatters;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use MichaelRubel\EnhancedContainer\LecServiceProvider;
 use MichaelRubel\Formatters\Commands\MakeFormatterCommand;
@@ -19,7 +20,6 @@ class FormatterServiceProvider extends PackageServiceProvider
      * @const
      */
     public const PACKAGE_FOLDER  = 'Collection';
-    public const PACKAGE_CLASS   = 'Formatter';
     public const BINDING_POSTFIX = '_formatter';
     public const CLASS_SEPARATOR = '\\';
 
@@ -59,7 +59,7 @@ class FormatterServiceProvider extends PackageServiceProvider
 
         $appFormatters = $filesystem->isDirectory(base_path($app_folder))
             ? collect($filesystem->allFiles(base_path($app_folder)))
-            : collect();
+            : new Collection;
 
         $packageFormatters = collect(
             $filesystem->allFiles(

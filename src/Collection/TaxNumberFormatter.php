@@ -27,9 +27,9 @@ class TaxNumberFormatter implements Formatter
      */
     public function format(): string
     {
-        return empty($this->country)
-            ? $this->tax_number
-            : $this->getFullTaxNumber();
+        return ! blank($this->country)
+            ? $this->getFullTaxNumber()
+            : $this->tax_number ?? '';
     }
 
     /**
@@ -62,9 +62,8 @@ class TaxNumberFormatter implements Formatter
      */
     private function getFullTaxNumber(): string
     {
-        $prefixStartsWithCountry = Str::of(
-            $this->getPrefix()
-        )->startsWith($this->country);
+        $prefixStartsWithCountry = Str::of($this->getPrefix())
+            ->startsWith($this->country);
 
         if ($prefixStartsWithCountry) {
             return (string) Str::of($this->tax_number)

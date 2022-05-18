@@ -21,7 +21,7 @@ class DateFormatter implements Formatter
         public string|null $date_format = 'Y-m-d',
     ) {
         if (! $this->timezone) {
-            $this->timezone = config('app.timezone');
+            $this->timezone = config('app.timezone', 'UTC');
         }
 
         if (! $this->date instanceof CarbonInterface) {

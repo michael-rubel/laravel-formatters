@@ -9,15 +9,18 @@ parameters:
     level: max
 
     ignoreErrors:
-        - '#Property MichaelRubel\\Formatters\\Exceptions\\Should(.*)#'
-        - '#Method MichaelRubel\\Formatters\\Formatter\::format\(\) has no return type specified.#'
-        - '#Instanceof between \*NEVER\* and MichaelRubel\\Formatters\\Formatter will always evaluate to false.#'
-        - '#Unable to resolve the template type (.*) in call to function collect#'
-        - '#Cannot cast mixed to float\.#'
-        - '#Parameter \#2 \$style of class NumberFormatter constructor expects int, mixed given\.#'
-        - '#Parameter \#1 \$time of method Carbon\\Carbon\:\:parse\(\) expects DateTimeInterface\|string\|null, mixed given\.#'
-        - '#Cannot cast mixed to string.#'
-        - '#(.*)mixed given.#'
+        - '#Property MichaelRubel\\Formatters\\Exceptions\\(.*)Exception\:\:\$message has no type specified\.#'
+        - '#Cannot call method getInternal\(\) on mixed\.#'
+        - '#Cannot call method format\(\) on mixed\.#'
+        - '#Parameter \#2 \$parameters of function call expects array, mixed given\.#'
+        - '#Parameter \#1 \$array of function current expects array\|object, mixed given\.#'
+        - '#Parameter \#1 \$value of function count expects array\|Countable, mixed given\.#'
+        - '#Property MichaelRubel\\Formatters\\Collection\\DateTimeFormatter\:\:\$timezone \(string\|null\) does not accept mixed\.#'
+        - '#Cannot call method setTimezone\(\) on Carbon\\CarbonInterface\|string\|null\.#'
+        - '#Property MichaelRubel\\Formatters\\Collection\\DateFormatter\:\:\$timezone \(string\|null\) does not accept mixed\.#'
+        - '#Parameter \#1 \$needles of method Illuminate\\Support\\Stringable\:\:startsWith\(\) expects array\<string\>\|string, string\|null given\.#'
+        - '#Parameter \#3 \$subject of static method Illuminate\\Support\\Str\:\:replace\(\) expects array\<string\>\|string, string\|null given\.#'
+        - '#(.*)expects string, string\|null given\.#'
 
     checkMissingIterableValueType: false
 

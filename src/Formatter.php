@@ -7,7 +7,7 @@ namespace MichaelRubel\Formatters;
 /**
  * Interface Formatter
  *
- * @method format
+ * @method format()
  */
 interface Formatter
 {

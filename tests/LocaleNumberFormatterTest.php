@@ -23,6 +23,14 @@ class LocaleNumberFormatterTest extends TestCase
     }
 
     /** @test */
+    public function testCanFormatWithVariadicParameters()
+    {
+        $result = format('locale-number', 10000.50, 'pl');
+
+        $this->assertSame('10 000,50', $result);
+    }
+
+    /** @test */
     public function testFormatBehaviorWithNullOrEmpty()
     {
         $format = format('locale-number');
