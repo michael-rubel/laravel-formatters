@@ -7,7 +7,7 @@ namespace MichaelRubel\Formatters;
 use MichaelRubel\Formatters\Exceptions\ShouldImplementInterfaceException;
 use MichaelRubel\Formatters\Exceptions\ShouldNotUseCamelCaseException;
 
-class FormatterService
+class FormatterService implements FormatterServiceInterface
 {
     /**
      * Ensures all the formatters will implement the same interface.

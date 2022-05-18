@@ -15,15 +15,6 @@ use Symfony\Component\Finder\SplFileInfo;
 class FormatterServiceProvider extends PackageServiceProvider
 {
     /**
-     * Internal constants.
-     *
-     * @const
-     */
-    public const PACKAGE_FOLDER  = 'Collection';
-    public const BINDING_POSTFIX = '_formatter';
-    public const CLASS_SEPARATOR = '\\';
-
-    /**
      * Configure the package.
      *
      * @param Package $package
@@ -65,7 +56,7 @@ class FormatterServiceProvider extends PackageServiceProvider
             $filesystem->allFiles(
                 $this->getPackageBaseDir()
                 . DIRECTORY_SEPARATOR
-                . self::PACKAGE_FOLDER
+                . FormatterService::PACKAGE_FOLDER
             )
         );
 
@@ -92,7 +83,7 @@ class FormatterServiceProvider extends PackageServiceProvider
     {
         $name = str_replace('Formatter', '', $filename);
 
-        return Str::{$bindings_case}($name . self::BINDING_POSTFIX);
+        return Str::{$bindings_case}($name . FormatterService::BINDING_POSTFIX);
     }
 
     /**
@@ -107,12 +98,12 @@ class FormatterServiceProvider extends PackageServiceProvider
     private function getFormatterClass(SplFileInfo $file, string $filename, string $app_folder): string
     {
         $path = str_contains($file->getPathName(), $app_folder)
-            ? Str::ucfirst(str_replace(DIRECTORY_SEPARATOR, self::CLASS_SEPARATOR, $app_folder))
-              . self::CLASS_SEPARATOR
+            ? Str::ucfirst(str_replace(DIRECTORY_SEPARATOR, FormatterService::CLASS_SEPARATOR, $app_folder))
+              . FormatterService::CLASS_SEPARATOR
             : (new \ReflectionClass(static::class))->getNamespaceName()
-              . self::CLASS_SEPARATOR
-              . self::PACKAGE_FOLDER
-              . self::CLASS_SEPARATOR;
+              . FormatterService::CLASS_SEPARATOR
+              . FormatterService::PACKAGE_FOLDER
+              . FormatterService::CLASS_SEPARATOR;
 
         return sprintf('%s%s', $path, $filename);
     }

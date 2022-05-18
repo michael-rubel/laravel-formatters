@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use MichaelRubel\EnhancedContainer\Call;
 use MichaelRubel\Formatters\FormatterService;
-use MichaelRubel\Formatters\FormatterServiceProvider;
 
 if (! function_exists('format')) {
     /**
@@ -19,7 +18,7 @@ if (! function_exists('format')) {
 
         $formatter = class_exists($formatter) || interface_exists($formatter)
             ? call($formatter, $items)
-            : call($formatter . FormatterServiceProvider::BINDING_POSTFIX, $items);
+            : call($formatter . FormatterService::BINDING_POSTFIX, $items);
 
         FormatterService::ensureFormatterImplementsInterface(
             $formatter->getInternal(Call::INSTANCE)
