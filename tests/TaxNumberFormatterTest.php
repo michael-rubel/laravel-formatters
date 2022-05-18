@@ -18,6 +18,16 @@ class TaxNumberFormatterTest extends TestCase
     }
 
     /** @test */
+    public function testCanUseVariadicParameters()
+    {
+        $result = format(TaxNumberFormatter::class, 'UA0123456789', 'UA');
+        $this->assertEquals('UA0123456789', $result);
+
+        $result = format(TaxNumberFormatter::class, 'UA0123456789');
+        $this->assertEquals('UA0123456789', $result);
+    }
+
+    /** @test */
     public function testCanFormatTaxNumberWithLowerCountryCharacter()
     {
         $result = format(TaxNumberFormatter::class, [

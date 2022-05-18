@@ -42,6 +42,13 @@ class DateFormatterTest extends TestCase
     }
 
     /** @test */
+    public function testCanUseVariadicParameters()
+    {
+        $result = format(DateFormatter::class, now(), 'Europe/Kiev', 'd-m-Y');
+        $this->assertEquals('30-10-2021', $result);
+    }
+
+    /** @test */
     public function testCanFormatDateUsingString()
     {
         $result = format(DateFormatter::class, '2021-10-30 15:00:00');

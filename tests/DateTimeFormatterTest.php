@@ -33,6 +33,13 @@ class DateTimeFormatterTest extends TestCase
     }
 
     /** @test */
+    public function testCanUseVariadicParameters()
+    {
+        $result = format(DateTimeFormatter::class, now(), 'Europe/Kiev', 'Y-m-d H:i:s');
+        $this->assertEquals('2021-10-30 17:00:00', $result);
+    }
+
+    /** @test */
     public function testCanFormatDateTimeUsingString()
     {
         $result = format(DateTimeFormatter::class, '2021-10-31 17:00:00');

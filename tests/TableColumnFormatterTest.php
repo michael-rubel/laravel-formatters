@@ -35,6 +35,9 @@ class TableColumnFormatterTest extends TestCase
     {
         $format = format('table-column', 'created_at');
         $this->assertSame('Created at', $format);
+
+        $format = format('table-column', ['attribute' => 'created_at']);
+        $this->assertSame('Created at', $format);
     }
 
     /** @test */

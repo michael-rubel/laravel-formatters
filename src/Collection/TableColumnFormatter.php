@@ -10,10 +10,10 @@ use MichaelRubel\Formatters\Formatter;
 class TableColumnFormatter implements Formatter
 {
     /**
-     * @param string|null $string
+     * @param string|null $attribute
      */
     public function __construct(
-        public ?string $string = null
+        public ?string $attribute = null
     ) {
     }
 
@@ -28,7 +28,7 @@ class TableColumnFormatter implements Formatter
             Str::replace(
                 '_',
                 ' ',
-                $this->string
+                $this->attribute
             )
         );
     }
