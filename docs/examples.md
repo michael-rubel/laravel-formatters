@@ -24,33 +24,33 @@ format(DateTimeFormatter::class, [
 
 ```php
 format('locale-number', 10000.50, 'en');
-format('locale-number', ['number' => 10000.50, 'locale' => 'pl'])
-format(LocaleNumberFormatter::class, 10000.50, 'pl')
+format('locale-number', ['number' => 10000.50, 'locale' => 'pl']);
+format(LocaleNumberFormatter::class, 10000.50, 'pl');
 ```
 
 ### MaskString formatter
 
 ```php
-format('mask-string', 'test@example.com')
-format(MaskStringFormatter::class, 'test@example.com')
-format(MaskStringFormatter::class, ['string' => 'test@example.com'])
+format('mask-string', 'test@example.com');
+format(MaskStringFormatter::class, 'test@example.com');
+format(MaskStringFormatter::class, ['string' => 'test@example.com']);
 ```
 
 ### TableColumn formatter
 
 ```php
-format('table-column', 'created_at')
-format('table-column', ['attribute' => 'created_at'])
-format(TableColumnFormatter::class, 'updated_at')
+format('table-column', 'created_at');
+format('table-column', ['attribute' => 'created_at']);
+format(TableColumnFormatter::class, 'updated_at');
 ```
 
 ### TaxNumber formatter
 
 ```php
-format('tax-number', 'UA0123456789')
-format(TaxNumberFormatter::class, '0123456789', 'PL')
+format('tax-number', 'UA0123456789');
+format(TaxNumberFormatter::class, '0123456789', 'PL');
 format(TaxNumberFormatter::class, [
     'tax_number' => 'UA0123456789',
     'country'    => 'UA',
-])
+]);
 ```
