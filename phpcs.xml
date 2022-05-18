@@ -45,6 +45,7 @@
        The following tags are equivalent to the command line arguments:
        -p
     -->
+    <arg name="standard" value="PSR2"/>
     <arg name="report" value="full"/>
     <arg name="colors"/>
     <arg value="p"/>
@@ -61,7 +62,7 @@
        PEAR standard exists inside the PHP_CodeSniffer install
        directory.
     -->
-    <rule ref="PSR12">
+    <rule ref="PSR2">
         <exclude name="Generic.Files.LineLength"/>
     </rule>
 </ruleset>
