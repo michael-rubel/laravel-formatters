@@ -30,12 +30,12 @@ php artisan vendor:publish --tag="formatters-config"
 ## Usage
 
 ```php
-format(DateTimeFormatter::class, now())
+format(DateTimeFormatter::class, now());
 ```
 
-You can use a string binding as an alternative to passing the class:
+You can use a shorter version of the string as an alternative:
 ```php
-format('date-time', now())
+format('date-time', now());
 ```
 
 ## Available built-in formatters
@@ -54,7 +54,7 @@ Since the formatters are resolved through the Service Container they can be easi
 
 For example in your Service Provider:
 ```php
-$this->app->extend(DateTimeFormatter::class, function ($formatter) {
+extend(DateTimeFormatter::class, function ($formatter) {
     $formatter->datetime_format = 'Y.m.d H:i';
 
     return $formatter;
@@ -66,6 +66,9 @@ $this->app->extend(DateTimeFormatter::class, function ($formatter) {
 ### Adding custom/overriding package formatters
 To add a custom formatter you should create the class that implements the `MichaelRubel\Formatters\Formatter` interface and put it to the `app/Formatters` folder.
 You can put formatter with the same name as the package's to override the formatter from the package. You can customize the folder in the config file.
+
+### Examples
+You can discover examples of the usage [here](https://github.com/michael-rubel/laravel-formatters/blob/main/docs/examples.md).
 
 ## Contributing
 If you have written your own formatter and want to add it to this package, PRs are welcomed. But take care of the extendability of the formatter you want to make as built-in and remember to write tests for your use cases.
