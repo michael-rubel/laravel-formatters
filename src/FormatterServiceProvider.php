@@ -6,7 +6,6 @@ namespace MichaelRubel\Formatters;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use MichaelRubel\EnhancedContainer\LecServiceProvider;
 use MichaelRubel\Formatters\Commands\MakeFormatterCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
