@@ -36,8 +36,6 @@ class FormatterServiceProvider extends PackageServiceProvider
      */
     public function packageRegistered(): void
     {
-        $this->app->register(LecServiceProvider::class);
-
         /** @var string */
         $app_folder = config('formatters.folder')
             ?? 'app' . DIRECTORY_SEPARATOR . 'Formatters';
