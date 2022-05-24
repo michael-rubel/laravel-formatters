@@ -21,7 +21,7 @@ class DateTimeFormatter implements Formatter
         public string|null $datetime_format = 'Y-m-d H:i',
     ) {
         if (! $this->timezone) {
-            $this->timezone = config('app.timezone');
+            $this->timezone = config('app.timezone', 'UTC');
         }
 
         if (! $this->datetime) {
