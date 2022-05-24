@@ -16,20 +16,20 @@ class DateTimeFormatter implements Formatter
      * @param string|null $datetime_format
      */
     public function __construct(
-        public string|CarbonInterface|null $datetime = null,
+        public string|null|CarbonInterface $datetime = null,
         public string|null $timezone = null,
-        public string|null $datetime_format = null,
+        public string|null $datetime_format = 'Y-m-d H:i',
     ) {
         if (! $this->timezone) {
             $this->timezone = config('app.timezone');
         }
 
-        if (! $this->datetime instanceof CarbonInterface) {
-            $this->datetime = app(Carbon::class)->parse($this->datetime);
+        if (! $this->datetime) {
+            $this->datetime = now();
         }
 
-        if (! $this->datetime_format) {
-            $this->datetime_format = 'Y-m-d H:i';
+        if (! $this->datetime instanceof CarbonInterface) {
+            $this->datetime = app(Carbon::class)->parse($this->datetime);
         }
     }
 
