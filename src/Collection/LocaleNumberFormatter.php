@@ -48,9 +48,9 @@ class LocaleNumberFormatter implements Formatter
      *
      * @param Collection $items
      *
-     * @return string
+     * @return string|false
      */
-    public function format(Collection $items): string
+    public function format(Collection $items): string|false
     {
         return $this->formatter->format(
             (float) $this->number
