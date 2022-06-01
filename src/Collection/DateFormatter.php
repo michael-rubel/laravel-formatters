@@ -6,7 +6,6 @@ namespace MichaelRubel\Formatters\Collection;
 
 use Carbon\CarbonInterface;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
 use MichaelRubel\Formatters\Formatter;
 
 class DateFormatter implements Formatter
