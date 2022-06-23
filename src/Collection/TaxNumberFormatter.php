@@ -14,10 +14,12 @@ class TaxNumberFormatter implements Formatter
      * @param string|null $country
      */
     public function __construct(
-        public ?string $tax_number = null,
-        public ?string $country = null
+        public ?string $tax_number = '',
+        public ?string $country = ''
     ) {
-        $this->cleanup();
+        $filteredTaxNumber = preg_replace_array('/[^\d\w]/', [], (string) $this->tax_number);
+        $this->tax_number  = Str::upper($filteredTaxNumber);
+        $this->country     = Str::upper((string) $this->country);
     }
 
     /**
@@ -29,22 +31,7 @@ class TaxNumberFormatter implements Formatter
     {
         return ! blank($this->country)
             ? $this->getFullTaxNumber()
-            : $this->tax_number ?? '';
-    }
-
-    /**
-     * @return void
-     */
-    private function cleanup(): void
-    {
-        $regexedTaxNumber = preg_replace_array(
-            '/[^\d\w]/',
-            [],
-            $this->tax_number
-        );
-
-        $this->tax_number = Str::upper($regexedTaxNumber);
-        $this->country    = Str::upper($this->country);
+            : (string) $this->tax_number;
     }
 
     /**
