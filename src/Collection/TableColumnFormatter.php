@@ -13,7 +13,7 @@ class TableColumnFormatter implements Formatter
      * @param string|null $attribute
      */
     public function __construct(
-        public ?string $attribute = null
+        public ?string $attribute = ''
     ) {
     }
 
@@ -28,7 +28,7 @@ class TableColumnFormatter implements Formatter
             Str::replace(
                 '_',
                 ' ',
-                $this->attribute
+                (string) $this->attribute
             )
         );
     }
