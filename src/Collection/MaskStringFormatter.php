@@ -33,7 +33,7 @@ class MaskStringFormatter implements Formatter
     public function format(): string
     {
         return Str::mask(
-            $this->string ?? '',
+            (string) $this->string,
             $this->character,
             $this->index,
             $this->length,
