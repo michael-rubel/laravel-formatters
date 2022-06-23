@@ -13,7 +13,7 @@ class TableColumnFormatter implements Formatter
      * @param string|null $attribute
      */
     public function __construct(
-        public ?string $attribute = ''
+        public ?string $attribute = null
     ) {
     }
 
