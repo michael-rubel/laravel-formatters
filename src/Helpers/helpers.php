@@ -7,8 +7,8 @@ use MichaelRubel\Formatters\FormatterService;
 
 if (! function_exists('format')) {
     /**
-     * @param string $formatter
-     * @param mixed  $items
+     * @param  string  $formatter
+     * @param  mixed  $items
      *
      * @return mixed
      */

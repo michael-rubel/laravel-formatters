@@ -12,7 +12,7 @@ class FormatterService implements FormatterServiceInterface
     /**
      * Ensures all the formatters will implement the same interface.
      *
-     * @param object $formatter
+     * @param  object  $formatter
      */
     public static function ensureFormatterImplementsInterface(object $formatter): void
     {
@@ -28,7 +28,7 @@ class FormatterService implements FormatterServiceInterface
     /**
      * Unwrap the array if it is only one passed parameter.
      *
-     * @param mixed $items
+     * @param  mixed  $items
      *
      * @return mixed
      */

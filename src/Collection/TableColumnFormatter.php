@@ -10,7 +10,7 @@ use MichaelRubel\Formatters\Formatter;
 class TableColumnFormatter implements Formatter
 {
     /**
-     * @param string|null $attribute
+     * @param  string|null  $attribute
      */
     public function __construct(
         public ?string $attribute = null

@@ -16,11 +16,11 @@ class LocaleNumberFormatter implements Formatter
     public NumberFormatter $formatter;
 
     /**
-     * @param int|float|string|null $number
-     * @param string|null           $locale
-     * @param int                   $style
-     * @param string|null           $pattern
-     * @param int                   $fraction_digits
+     * @param  int|float|string|null  $number
+     * @param  string|null  $locale
+     * @param  int  $style
+     * @param  string|null  $pattern
+     * @param  int  $fraction_digits
      */
     public function __construct(
         public int|float|string|null $number = null,
@@ -46,7 +46,7 @@ class LocaleNumberFormatter implements Formatter
     /**
      * Format the number based on locale.
      *
-     * @param Collection $items
+     * @param  Collection  $items
      *
      * @return string|false
      */

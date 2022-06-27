@@ -37,7 +37,7 @@ class MakeFormatterCommand extends GeneratorCommand
     /**
      * Resolve the fully-qualified path to the stub.
      *
-     * @param string $stub
+     * @param  string  $stub
      *
      * @return string
      */

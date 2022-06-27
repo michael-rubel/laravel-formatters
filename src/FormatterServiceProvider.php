@@ -16,7 +16,7 @@ class FormatterServiceProvider extends PackageServiceProvider
     /**
      * Configure the package.
      *
-     * @param Package $package
+     * @param  Package  $package
      *
      * @return void
      */
@@ -61,8 +61,8 @@ class FormatterServiceProvider extends PackageServiceProvider
             ->merge($appFormatters)
             ->each(function ($file) use ($app_folder, $bindings_case) {
                 $filename = $file->getFilenameWithoutExtension();
-                $name     = $this->getFormatterName($bindings_case, $filename);
-                $class    = $this->getFormatterClass($file, $filename, $app_folder);
+                $name = $this->getFormatterName($bindings_case, $filename);
+                $class = $this->getFormatterClass($file, $filename, $app_folder);
 
                 $this->app->bind($name, $class);
             });
@@ -71,8 +71,8 @@ class FormatterServiceProvider extends PackageServiceProvider
     /**
      * Returns formatter name for string binding.
      *
-     * @param string $bindings_case
-     * @param string $filename
+     * @param  string  $bindings_case
+     * @param  string  $filename
      *
      * @return string
      */
@@ -86,9 +86,9 @@ class FormatterServiceProvider extends PackageServiceProvider
     /**
      * Determines the formatter class namespace.
      *
-     * @param SplFileInfo $file
-     * @param string      $filename
-     * @param string      $app_folder
+     * @param  SplFileInfo  $file
+     * @param  string  $filename
+     * @param  string  $app_folder
      *
      * @return string
      */

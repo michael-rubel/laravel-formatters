@@ -11,9 +11,9 @@ use MichaelRubel\Formatters\Formatter;
 class DateFormatter implements Formatter
 {
     /**
-     * @param string|CarbonInterface|null $date
-     * @param string|null $timezone
-     * @param string|null $date_format
+     * @param  string|CarbonInterface|null  $date
+     * @param  string|null  $timezone
+     * @param  string|null  $date_format
      */
     public function __construct(
         public string|null|CarbonInterface $date = null,
