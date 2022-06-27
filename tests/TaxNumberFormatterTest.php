@@ -92,7 +92,6 @@ class TaxNumberFormatterTest extends TestCase
         $this->assertEquals('PL0123456789', $result);
     }
 
-
     /** @test */
     public function testCanFormatTaxNumberIfAlwaysPrefixIsUppercase()
     {
@@ -162,7 +161,7 @@ class TaxNumberFormatterTest extends TestCase
     {
         extend(TaxNumberFormatter::class, function ($formatter) {
             $formatter->tax_number = 'UA0123456789';
-            $formatter->country    = 'UA';
+            $formatter->country = 'UA';
 
             return $formatter;
         });

@@ -12,7 +12,7 @@ class ExampleFormatter implements Formatter
     /**
      * Format the date.
      *
-     * @param Collection $items
+     * @param  Collection  $items
      *
      * @return string
      */
