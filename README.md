@@ -1,4 +1,4 @@
-![Laravel Formatters](https://user-images.githubusercontent.com/37669560/146684668-4c901349-dac7-49b8-b34a-29fdab108ded.png)
+![Laravel Formatters](https://user-images.githubusercontent.com/37669560/176375794-5588c598-858a-4fd7-a182-7094e219c788.png)
 
 # Laravel Formatters
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/michael-rubel/laravel-formatters.svg?style=flat-square&logo=packagist)](https://packagist.org/packages/michael-rubel/laravel-formatters)
