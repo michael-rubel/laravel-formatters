@@ -56,14 +56,12 @@ Since the formatters are resolved through the Service Container they can be easi
 
 For example in your Service Provider:
 ```php
-extend(DateTimeFormatter::class, function ($formatter) {
+$this->app->extend(DateTimeFormatter::class, function ($formatter) {
     $formatter->datetime_format = 'Y.m.d H:i';
 
     return $formatter;
 });
 ```
-
-- Note: You can use [Laravel Enhanced Container](https://github.com/michael-rubel/laravel-enhanced-container) package for shorter extending syntax.
 
 ### Adding custom/overriding package formatters
 To add a custom formatter you should create the class that implements the `MichaelRubel\Formatters\Formatter` interface and put it to the `app/Formatters` folder.
