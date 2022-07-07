@@ -18,7 +18,7 @@
     "require": {
         "php": "^8.0",
         "ext-intl": "*",
-        "michael-rubel/laravel-enhanced-container": "^6.4|^8.0",
+        "michael-rubel/laravel-enhanced-container": "^6.4|^8.0|^9.0",
         "spatie/laravel-package-tools": "^1.9"
     },
     "require-dev": {
