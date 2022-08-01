@@ -11,7 +11,7 @@ class TaxNumberFormatterTest extends TestCase
     {
         $result = format(TaxNumberFormatter::class, [
             'tax_number' => '0123456789',
-            'country'    => 'UA',
+            'country' => 'UA',
         ]);
 
         $this->assertEquals('UA0123456789', $result);
@@ -32,7 +32,7 @@ class TaxNumberFormatterTest extends TestCase
     {
         $result = format(TaxNumberFormatter::class, [
             'tax_number' => '0123456789',
-            'country'    => 'pl',
+            'country' => 'pl',
         ]);
 
         $this->assertEquals('PL0123456789', $result);
@@ -43,7 +43,7 @@ class TaxNumberFormatterTest extends TestCase
     {
         $result = format(TaxNumberFormatter::class, [
             'tax_number' => '0123456789',
-            'country'    => '',
+            'country' => '',
         ]);
 
         $this->assertEquals('0123456789', $result);
@@ -64,7 +64,7 @@ class TaxNumberFormatterTest extends TestCase
     {
         $result = format(TaxNumberFormatter::class, [
             'tax_number' => 'FR0123456789',
-            'country'    => 'PL',
+            'country' => 'PL',
         ]);
 
         $this->assertEquals('PLFR0123456789', $result);
@@ -75,7 +75,7 @@ class TaxNumberFormatterTest extends TestCase
     {
         $result = format(TaxNumberFormatter::class, [
             'tax_number' => '+01 23-45.67,89',
-            'country'    => 'pL',
+            'country' => 'pL',
         ]);
 
         $this->assertEquals('PL0123456789', $result);
@@ -86,7 +86,7 @@ class TaxNumberFormatterTest extends TestCase
     {
         $result = format(TaxNumberFormatter::class, [
             'tax_number' => 'PL0123456789',
-            'country'    => 'pL',
+            'country' => 'pL',
         ]);
 
         $this->assertEquals('PL0123456789', $result);
@@ -97,7 +97,7 @@ class TaxNumberFormatterTest extends TestCase
     {
         $result = format(TaxNumberFormatter::class, [
             'tax_number' => 'pL0123456789',
-            'country'    => 'pl',
+            'country' => 'pl',
         ]);
 
         $this->assertEquals('PL0123456789', $result);
@@ -108,7 +108,7 @@ class TaxNumberFormatterTest extends TestCase
     {
         $result = format(TaxNumberFormatter::class, [
             'tax_number' => '',
-            'country'    => '',
+            'country' => '',
         ]);
 
         $this->assertEquals('', $result);
@@ -129,7 +129,7 @@ class TaxNumberFormatterTest extends TestCase
     {
         $result = format('tax-number', [
             'tax_number' => '0123456789',
-            'country'    => 'UA',
+            'country' => 'UA',
         ]);
 
         $this->assertEquals('UA0123456789', $result);
@@ -168,7 +168,7 @@ class TaxNumberFormatterTest extends TestCase
 
         $result = format(TaxNumberFormatter::class, [
             'tax_number' => 'extend has priority',
-            'country'    => 'extend has priority',
+            'country' => 'extend has priority',
         ]);
 
         $this->assertEquals('UA0123456789', $result);

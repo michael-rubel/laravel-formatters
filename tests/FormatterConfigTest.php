@@ -20,7 +20,7 @@ class FormatterConfigTest extends TestCase
         app()->instance('files', $mock);
 
         config([
-            'formatters.folder'        => null,
+            'formatters.folder' => null,
             'formatters.bindings_case' => null,
         ]);
 
