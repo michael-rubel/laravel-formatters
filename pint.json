@@ -9,6 +9,10 @@
       "elements": {
         "const": "only_if_meta"
       }
+    },
+    "binary_operator_spaces": {
+      "default": "single_space",
+      "operators": {"=>": null, "=": "align_single_space_minimal"}
     }
   }
 }
