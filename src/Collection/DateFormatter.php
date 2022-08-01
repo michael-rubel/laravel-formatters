@@ -24,10 +24,6 @@ class DateFormatter implements Formatter
             $this->timezone = config('app.timezone', 'UTC');
         }
 
-        if (! $this->date) {
-            $this->date = now();
-        }
-
         if (! $this->date instanceof CarbonInterface) {
             $this->date = app(Carbon::class)->parse($this->date);
         }
