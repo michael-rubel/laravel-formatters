@@ -161,7 +161,7 @@ class TaxNumberFormatterTest extends TestCase
     {
         extend(TaxNumberFormatter::class, function ($formatter) {
             $formatter->tax_number = 'UA0123456789';
-            $formatter->country = 'UA';
+            $formatter->country    = 'UA';
 
             return $formatter;
         });

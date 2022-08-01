@@ -53,11 +53,11 @@ class MaskStringFormatterTest extends TestCase
     public function testCanExtendFormatterBinding()
     {
         extend(MaskStringFormatter::class, function ($formatter) {
-            $formatter->string = 'test@example.com';
+            $formatter->string    = 'test@example.com';
             $formatter->character = '%';
-            $formatter->index = 5;
-            $formatter->length = -5;
-            $formatter->encoding = 'KOI8-U';
+            $formatter->index     = 5;
+            $formatter->length    = -5;
+            $formatter->encoding  = 'KOI8-U';
 
             $this->assertStringContainsString('test@example.com', $formatter->string);
             $this->assertStringContainsString('%', $formatter->character);

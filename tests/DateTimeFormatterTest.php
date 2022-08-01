@@ -128,7 +128,7 @@ class DateTimeFormatterTest extends TestCase
         $this->assertEquals('2021-10-31 00:00', $result);
 
         app()->extend(DateTimeFormatter::class, function ($service) {
-            $service->timezone = 'Europe/Warsaw';
+            $service->timezone        = 'Europe/Warsaw';
             $service->datetime_format = 'Y-m-d H:i:s';
 
             return $service;

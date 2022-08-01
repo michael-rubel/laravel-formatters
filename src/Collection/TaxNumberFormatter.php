@@ -18,8 +18,8 @@ class TaxNumberFormatter implements Formatter
         public ?string $country = null
     ) {
         $filteredTaxNumber = preg_replace_array('/[^\d\w]/', [], (string) $this->tax_number);
-        $this->tax_number = Str::upper($filteredTaxNumber);
-        $this->country = Str::upper((string) $this->country);
+        $this->tax_number  = Str::upper($filteredTaxNumber);
+        $this->country     = Str::upper((string) $this->country);
     }
 
     /**
