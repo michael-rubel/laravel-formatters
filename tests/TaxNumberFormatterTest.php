@@ -183,7 +183,7 @@ class TaxNumberFormatterTest extends TestCase
         $result = format(TaxNumberFormatter::class, ' 526- -10 -40- 567 ', 'PL');
         $this->assertSame('PL5261040567', $result);
 
-        $result = format(TaxNumberFormatter::class, ' 526- -10 -40- 567 ');
+        $result = format(TaxNumberFormatter::class, ' 526- 10 -40- 567 -');
         $this->assertSame('5261040567', $result);
     }
 }
