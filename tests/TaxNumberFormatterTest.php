@@ -173,4 +173,14 @@ class TaxNumberFormatterTest extends TestCase
 
         $this->assertEquals('UA0123456789', $result);
     }
+
+    /** @test */
+    public function testSanitizesTaxNumbersWithDashes()
+    {
+        $result = format(TaxNumberFormatter::class, '526-10-40-567', 'PL');
+        $this->assertSame('PL5261040567', $result);
+
+        $result = format(TaxNumberFormatter::class, ' 526- -10 -40- 567 ', 'PL');
+        $this->assertSame('PL5261040567', $result);
+    }
 }
