@@ -38,6 +38,6 @@ class DateTimeFormatter implements Formatter
     {
         return $this->datetime
             ->setTimezone($this->timezone)
-            ->format($this->datetime_format);
+            ->translatedFormat($this->datetime_format);
     }
 }
