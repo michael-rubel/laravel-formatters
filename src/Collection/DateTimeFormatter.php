@@ -20,13 +20,12 @@ class DateTimeFormatter implements Formatter
         public string|null $timezone = null,
         public string|null $datetime_format = 'Y-m-d H:i',
     ) {
-        if (! $this->timezone) {
-            $this->timezone = config('app.timezone', 'UTC');
-        }
-
         if (! $this->datetime instanceof CarbonInterface) {
             $this->datetime = app(Carbon::class)->parse($this->datetime);
         }
+
+        $this->timezone        = $this->timezone ?? config('app.timezone', 'UTC');
+        $this->datetime_format = $this->datetime_format ?? 'Y-m-d H:i';
     }
 
     /**
