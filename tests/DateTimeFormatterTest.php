@@ -70,7 +70,7 @@ class DateTimeFormatterTest extends TestCase
     {
         $this->expectException(\TypeError::class);
 
-        format(DateFormatter::class, ['datetime' => '2021-10-30 15:00:00'], ['test' => true]);
+        format(DateTimeFormatter::class, ['datetime' => '2021-10-30 15:00:00'], ['test' => true]);
     }
 
     /** @test */
@@ -136,5 +136,17 @@ class DateTimeFormatterTest extends TestCase
 
         $result = format(DateTimeFormatter::class, '2021-10-31');
         $this->assertEquals('2021-10-31 02:00:00', $result);
+    }
+
+    /** @test */
+    public function testCanFormatDateTimeLocalized()
+    {
+        Carbon::setLocale('en');
+        $result = format(DateTimeFormatter::class, now(), 'UTC', 'd F Y H:i');
+        $this->assertSame('30 October 2021 14:00', $result);
+
+        Carbon::setLocale('pl');
+        $result = format(DateFormatter::class, now(), 'Europe/Warsaw', 'd F Y H:i');
+        $this->assertSame('30 października 2021 16:00', $result);
     }
 }

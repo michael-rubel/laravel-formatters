@@ -20,13 +20,12 @@ class DateFormatter implements Formatter
         public string|null $timezone = null,
         public string|null $date_format = 'Y-m-d',
     ) {
-        if (! $this->timezone) {
-            $this->timezone = config('app.timezone', 'UTC');
-        }
-
         if (! $this->date instanceof CarbonInterface) {
             $this->date = app(Carbon::class)->parse($this->date);
         }
+
+        $this->timezone    = $this->timezone ?? config('app.timezone', 'UTC');
+        $this->date_format = $this->date_format ?? 'Y-m-d';
     }
 
     /**
@@ -38,6 +37,6 @@ class DateFormatter implements Formatter
     {
         return $this->date
             ->setTimezone($this->timezone)
-            ->format($this->date_format);
+            ->translatedFormat($this->date_format);
     }
 }

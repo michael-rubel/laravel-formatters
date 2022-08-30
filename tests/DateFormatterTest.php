@@ -146,4 +146,16 @@ class DateFormatterTest extends TestCase
         $result = format(DateFormatter::class, '2021-10-31');
         $this->assertEquals('31-10-2021', $result);
     }
+
+    /** @test */
+    public function testCanFormatDateLocalized()
+    {
+        Carbon::setLocale('en');
+        $result = format(DateFormatter::class, now(), 'UTC', 'd F Y');
+        $this->assertSame('30 October 2021', $result);
+
+        Carbon::setLocale('pl');
+        $result = format(DateFormatter::class, now(), 'Europe/Warsaw', 'd F Y');
+        $this->assertSame('30 października 2021', $result);
+    }
 }
