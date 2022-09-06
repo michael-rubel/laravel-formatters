@@ -23,7 +23,6 @@ parameters:
         - '#(.*)expects string, string\|null given\.#'
         - '#Parameter \#1 \$formatter of static method MichaelRubel\\Formatters\\FormatterService\:\:ensureFormatterImplementsInterface\(\) expects object, mixed given\.#'
         - '#Call to an undefined method MichaelRubel\\EnhancedContainer\\Core\\CallProxy\:\:format\(\)\.#'
-        - '##'
 
     checkMissingIterableValueType: false
 
