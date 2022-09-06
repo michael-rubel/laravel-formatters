@@ -87,13 +87,13 @@ class DateTimeFormatterTest extends TestCase
     public function testFormatBehaviorWithNullOrEmpty()
     {
         $format = format('date-time');
-        $this->assertSame('2021-10-30 14:00', $format);
+        $this->assertNull($format);
 
         $format = format('date-time', '');
-        $this->assertSame('2021-10-30 14:00', $format);
+        $this->assertNull($format);
 
         $format = format('date-time', null);
-        $this->assertSame('2021-10-30 14:00', $format);
+        $this->assertNull($format);
     }
 
     /** @test */

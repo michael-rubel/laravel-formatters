@@ -96,13 +96,13 @@ class DateFormatterTest extends TestCase
     public function testFormatBehaviorWithNullOrEmpty()
     {
         $format = format('date');
-        $this->assertSame('2021-10-30', $format);
+        $this->assertNull($format);
 
         $format = format('date', '');
-        $this->assertSame('2021-10-30', $format);
+        $this->assertNull($format);
 
         $format = format('date', null);
-        $this->assertSame('2021-10-30', $format);
+        $this->assertNull($format);
     }
 
     /** @test */
