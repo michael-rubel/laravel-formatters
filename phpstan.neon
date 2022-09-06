@@ -16,13 +16,14 @@ parameters:
         - '#Parameter \#1 \$array of function current expects array\|object, mixed given\.#'
         - '#Parameter \#1 \$value of function count expects array\|Countable, mixed given\.#'
         - '#Property MichaelRubel\\Formatters\\Collection\\DateTimeFormatter\:\:\$timezone \(string\|null\) does not accept mixed\.#'
-        - '#Cannot call method setTimezone\(\) on Carbon\\CarbonInterface\|string\|null\.#'
+        - '#Cannot call method setTimezone\(\) on Carbon\\CarbonInterface\|string\.#'
         - '#Property MichaelRubel\\Formatters\\Collection\\DateFormatter\:\:\$timezone \(string\|null\) does not accept mixed\.#'
         - '#Parameter \#1 \$needles of method Illuminate\\Support\\Stringable\:\:startsWith\(\) expects array\<string\>\|string, string\|null given\.#'
         - '#Parameter \#3 \$subject of static method Illuminate\\Support\\Str\:\:replace\(\) expects array\<string\>\|string, string\|null given\.#'
         - '#(.*)expects string, string\|null given\.#'
         - '#Parameter \#1 \$formatter of static method MichaelRubel\\Formatters\\FormatterService\:\:ensureFormatterImplementsInterface\(\) expects object, mixed given\.#'
         - '#Call to an undefined method MichaelRubel\\EnhancedContainer\\Core\\CallProxy\:\:format\(\)\.#'
+        - '##'
 
     checkMissingIterableValueType: false
 
