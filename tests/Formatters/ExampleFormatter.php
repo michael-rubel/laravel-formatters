@@ -18,7 +18,6 @@ class ExampleFormatter implements Formatter
         //
     }
 
-
     /**
      * Format the date.
      *
