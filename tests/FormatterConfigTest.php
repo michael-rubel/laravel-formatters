@@ -32,7 +32,9 @@ class FormatterConfigTest extends TestCase
     /** @test */
     public function testBaseDirectorySetsCorrectly()
     {
-        app()->setBasePath(__DIR__ . '/../');
+        app()->setBasePath(__DIR__);
+
+        config(['formatters.folder' => 'Formatters']);
 
         $mock = $this->partialMock(Filesystem::class, function (MockInterface $mock) {
             $mock->shouldReceive('isDirectory')
