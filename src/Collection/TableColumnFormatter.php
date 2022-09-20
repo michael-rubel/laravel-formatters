@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace MichaelRubel\Formatters\Collection;
 
-use Illuminate\Support\Str;
 use MichaelRubel\Formatters\Formatter;
 
 class TableColumnFormatter implements Formatter
@@ -24,12 +23,9 @@ class TableColumnFormatter implements Formatter
      */
     public function format(): string
     {
-        return Str::ucfirst(
-            Str::replace(
-                '_',
-                ' ',
-                (string) $this->attribute
-            )
-        );
+        return str($this->attribute)
+            ->ucfirst()
+            ->replace('_', ' ')
+            ->value();
     }
 }

@@ -32,12 +32,8 @@ class MaskStringFormatter implements Formatter
      */
     public function format(): string
     {
-        return Str::mask(
-            (string) $this->string,
-            $this->character,
-            $this->index,
-            $this->length,
-            $this->encoding
-        );
+        return str($this->string)
+            ->mask($this->character, $this->index, $this->length, $this->encoding)
+            ->value();
     }
 }
