@@ -10,8 +10,7 @@ parameters:
 
     ignoreErrors:
         - '#Property MichaelRubel\\Formatters\\Exceptions\\(.*)Exception\:\:\$message has no type specified\.#'
-        - '#Cannot call method getInternal\(\) on mixed\.#'
-        - '#Cannot call method format\(\) on mixed\.#'
+        - '#Cannot call method (.*) on mixed\.#'
         - '#Parameter \#2 \$parameters of function call expects array, mixed given\.#'
         - '#Parameter \#1 \$array of function current expects array\|object, mixed given\.#'
         - '#Parameter \#1 \$value of function count expects array\|Countable, mixed given\.#'
@@ -29,3 +28,6 @@ parameters:
     reportUnmatchedIgnoredErrors: false
 
     checkOctaneCompatibility: true
+
+    checkGenericClassInNonGenericObjectType: false
+
