@@ -12,7 +12,9 @@ This package introduces the `Formatter` pattern you can use to standardize data 
 
 ---
 
-The package requires PHP `^8.x` and Laravel `^8.71` or `^9.0`.
+Latest version of the package requires PHP `8.x` and Laravel `9.x`.
+If you're looking for older versions, check [release history](https://github.com/michael-rubel/laravel-formatters/releases).
+
 
 ## #StandWithUkraine
 [![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
