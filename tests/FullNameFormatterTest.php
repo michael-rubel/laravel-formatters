@@ -69,21 +69,12 @@ class FullNameFormatterTest extends TestCase
         $this->assertSame('Michael Rubél', $name);
     }
 
-    public function testEmptyStringAndWeirdSymbols()
+    public function testEmptyString()
     {
         $name = format(FullNameFormatter::class, '');
         $this->assertSame('', $name);
 
         $name = format(FullNameFormatter::class, '   ');
-        $this->assertSame('', $name);
-
-        $name = format(FullNameFormatter::class, '  ...  ');
-        $this->assertSame('...', $name);
-
-        $name = format(FullNameFormatter::class, '⠀');
-        $this->assertSame('⠀', $name);
-
-        $name = format(FullNameFormatter::class, ' ');
         $this->assertSame('', $name);
     }
 }
