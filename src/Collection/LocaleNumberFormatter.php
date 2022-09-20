@@ -31,16 +31,9 @@ class LocaleNumberFormatter implements Formatter
     ) {
         $this->locale = $this->locale ?? app()->getLocale();
 
-        $this->formatter = new NumberFormatter(
-            $this->locale,
-            $this->style,
-            $this->pattern
-        );
+        $this->formatter = new NumberFormatter($this->locale, $this->style, $this->pattern);
 
-        $this->formatter->setAttribute(
-            NumberFormatter::FRACTION_DIGITS,
-            $this->fraction_digits
-        );
+        $this->formatter->setAttribute(NumberFormatter::FRACTION_DIGITS, $this->fraction_digits);
     }
 
     /**
