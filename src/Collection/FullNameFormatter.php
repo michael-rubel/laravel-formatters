@@ -15,7 +15,7 @@ class FullNameFormatter implements Formatter
     }
 
     /**
-     * Format the date.
+     * Format the full name.
      *
      * @return string
      */
