@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace MichaelRubel\Formatters\Collection;
 
-use Illuminate\Support\Str;
 use MichaelRubel\Formatters\Formatter;
 
 class MaskStringFormatter implements Formatter
@@ -32,12 +31,8 @@ class MaskStringFormatter implements Formatter
      */
     public function format(): string
     {
-        return Str::mask(
-            (string) $this->string,
-            $this->character,
-            $this->index,
-            $this->length,
-            $this->encoding
-        );
+        return str($this->string)
+            ->mask($this->character, $this->index, $this->length, $this->encoding)
+            ->value();
     }
 }
