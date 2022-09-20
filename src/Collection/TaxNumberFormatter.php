@@ -55,17 +55,8 @@ class TaxNumberFormatter implements Formatter
      */
     private function getFullTaxNumber(): string
     {
-        $prefixStartsWithCountry = str($this->getPrefix())->startsWith($this->country);
-
-        if ($prefixStartsWithCountry) {
-            return str($this->tax_number)
-                ->substr(2)
-                ->start($this->country)
-                ->value();
-        }
-
-        return str($this->tax_number)
-            ->start($this->country)
-            ->value();
+        return str($this->getPrefix())->startsWith($this->country)
+            ? str($this->tax_number)->substr(2)->start($this->country)->value()
+            : str($this->tax_number)->start($this->country)->value();
     }
 }
