@@ -2,7 +2,6 @@
 
 namespace MichaelRubel\Formatters\Collection;
 
-use Illuminate\Support\Str;
 use MichaelRubel\Formatters\Formatter;
 
 class FullNameFormatter implements Formatter
@@ -22,7 +21,7 @@ class FullNameFormatter implements Formatter
      */
     public function format(): string
     {
-        return Str::of($this->name)
+        return str($this->name)
             ->squish()
             ->headline()
             ->value();
