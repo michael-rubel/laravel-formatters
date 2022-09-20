@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Custom Formatters Folder
@@ -25,4 +26,5 @@ return [
     */
 
     'bindings_case' => 'kebab',
+
 ];
