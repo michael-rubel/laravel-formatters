@@ -7,7 +7,7 @@ use MichaelRubel\Formatters\Formatter;
 class FullNameFormatter implements Formatter
 {
     /**
-     * @param string|null $name
+     * @param  string|null  $name
      */
     public function __construct(public ?string $name)
     {
