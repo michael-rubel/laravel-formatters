@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace MichaelRubel\Formatters\Collection;
 
-use Illuminate\Support\Str;
 use MichaelRubel\Formatters\Formatter;
 
 class TaxNumberFormatter implements Formatter
@@ -45,9 +44,10 @@ class TaxNumberFormatter implements Formatter
      */
     private function getPrefix(): string
     {
-        return (string) Str::of($this->tax_number)
+        return str($this->tax_number)
             ->substr(0, 2)
-            ->upper();
+            ->upper()
+            ->value();
     }
 
     /**
