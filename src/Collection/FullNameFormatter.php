@@ -25,7 +25,7 @@ class FullNameFormatter implements Formatter
     {
         return str($this->name)
             ->squish()
-            ->headline()
+            ->title()
             ->value();
     }
 }

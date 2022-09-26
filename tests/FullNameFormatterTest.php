@@ -34,37 +34,17 @@ class FullNameFormatterTest extends TestCase
         $this->assertSame('Michael Rubél', $name);
     }
 
+    public function testCanFormatNameWithMinusSeparators()
+    {
+        $name = format(FullNameFormatter::class, 'Anna Nowak-Kowalska');
+        $this->assertSame('Anna Nowak-Kowalska', $name);
+        $name = format(FullNameFormatter::class, ' anna nowak-kowalska ');
+        $this->assertSame('Anna Nowak-Kowalska', $name);
+    }
+
     public function testCutsSpaceBeforeAndAfter()
     {
-        $name = format(FullNameFormatter::class, ' MichaelRubél ');
-
-        $this->assertSame('Michael Rubél', $name);
-    }
-
-    public function testAddsSpaceBetweenWordsOrHandlesPascalCase()
-    {
-        $name = format(FullNameFormatter::class, 'MichaelRubél');
-
-        $this->assertSame('Michael Rubél', $name);
-    }
-
-    public function testHandlesSnakeCase()
-    {
-        $name = format(FullNameFormatter::class, 'michael_rubél');
-
-        $this->assertSame('Michael Rubél', $name);
-    }
-
-    public function testHandlesCamelCase()
-    {
-        $name = format(FullNameFormatter::class, 'michaelRubél');
-
-        $this->assertSame('Michael Rubél', $name);
-    }
-
-    public function testHandlesKebabCase()
-    {
-        $name = format(FullNameFormatter::class, 'michael-rubél');
+        $name = format(FullNameFormatter::class, ' Michael Rubél ');
 
         $this->assertSame('Michael Rubél', $name);
     }
