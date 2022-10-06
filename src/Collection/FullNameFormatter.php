@@ -24,6 +24,7 @@ class FullNameFormatter implements Formatter
     public function format(): string
     {
         return str($this->name)
+            ->replaceMatches('/\p{C}+/u', '')
             ->squish()
             ->title()
             ->value();
