@@ -57,4 +57,11 @@ class FullNameFormatterTest extends TestCase
         $name = format(FullNameFormatter::class, '   ');
         $this->assertSame('', $name);
     }
+
+    public function testSanitizesInvisibleChars()
+    {
+        $name = format(FullNameFormatter::class, 'Test Full 
+Name');
+        $this->assertSame('Test Full Name', $name);
+    }
 }
