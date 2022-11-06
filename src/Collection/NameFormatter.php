@@ -17,7 +17,7 @@ class NameFormatter implements Formatter
     }
 
     /**
-     * Format the full name.
+     * Format the generic name.
      *
      * @return string
      */
