@@ -45,8 +45,10 @@ format('date-time', now());
 ## Available built-in formatters
 - [`Date`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/DateFormatter.php)
 - [`DateTime`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/DateTimeFormatter.php)
+- [`FullName`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/FullNameFormatter.php)
 - [`LocaleNumber`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/LocaleNumberFormatter.php)
 - [`MaskString`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/MaskStringFormatter.php)
+- [`Name`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/NameFormatter.php)
 - [`TableColumn`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/TableColumnFormatter.php)
 - [`TaxNumber`](https://github.com/michael-rubel/laravel-formatters/blob/main/src/Collection/TaxNumberFormatter.php)
 
