@@ -12,9 +12,9 @@
         "text": "php://stderr",
         "github": true
     },
-    // "logs": {
-    //     "text": "infection.log"
-    // },
+//    "logs": {
+//     "text": "infection.log"
+//    },
     "mutators": {
         "@default": true,
         "IncrementInteger": {
@@ -25,6 +25,16 @@
         "DecrementInteger": {
             "ignore": [
                 "MichaelRubel\\Formatters\\Collection\\MaskStringFormatter::__construct"
+            ]
+        },
+        "Coalesce": {
+            "ignore": [
+                "MichaelRubel\\Formatters\\FormatterServiceProvider::packageRegistered::39"
+            ]
+        },
+        "ConcatOperandRemoval": {
+            "ignore": [
+                "MichaelRubel\\Formatters\\FormatterServiceProvider::packageRegistered::52"
             ]
         }
     }
