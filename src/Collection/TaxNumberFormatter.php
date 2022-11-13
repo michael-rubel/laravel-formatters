@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MichaelRubel\Formatters\Collection;
 
+use Illuminate\Support\Str;
 use MichaelRubel\Formatters\Formatter;
 
 class TaxNumberFormatter implements Formatter
@@ -16,15 +17,10 @@ class TaxNumberFormatter implements Formatter
         public ?string $tax_number = null,
         public ?string $country = null
     ) {
-        $filteredTaxNumber = preg_replace_array('/[^\d\w]/', [], (string) $this->tax_number);
+        $filteredTaxNumber = preg_replace('/[^\d\w]/', '', (string) $this->tax_number);
 
-        $this->tax_number = str($filteredTaxNumber)
-            ->upper()
-            ->value();
-
-        $this->country = str($this->country)
-            ->upper()
-            ->value();
+        $this->tax_number = Str::upper($filteredTaxNumber);
+        $this->country    = Str::upper($this->country);
     }
 
     /**
@@ -36,18 +32,7 @@ class TaxNumberFormatter implements Formatter
     {
         return ! blank($this->country)
             ? $this->getFullTaxNumber()
-            : (string) $this->tax_number;
-    }
-
-    /**
-     * @return string
-     */
-    private function getPrefix(): string
-    {
-        return str($this->tax_number)
-            ->substr(0, 2)
-            ->upper()
-            ->value();
+            : $this->tax_number;
     }
 
     /**
@@ -55,8 +40,12 @@ class TaxNumberFormatter implements Formatter
      */
     private function getFullTaxNumber(): string
     {
-        return ! str($this->getPrefix())->startsWith($this->country)
-            ? str($this->tax_number)->start($this->country)->value()
-            : str($this->tax_number)->substr(2)->start($this->country)->value();
+        $string = str($this->tax_number);
+
+        $value = $string->startsWith($this->country)
+            ? $string->substr(2)->start($this->country)
+            : $string->start($this->country);
+
+        return $value->toString();
     }
 }
