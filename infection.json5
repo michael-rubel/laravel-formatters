@@ -1,0 +1,31 @@
+{
+    "$schema": "vendor/infection/infection/resources/schema.json",
+    "source": {
+        "directories": [
+            "src"
+        ]
+    },
+    "phpUnit": {
+        "configDir": ""
+    },
+    "logs": {
+        "text": "php://stderr",
+        "github": true
+    },
+    // "logs": {
+    //     "text": "infection.log"
+    // },
+    "mutators": {
+        "@default": true,
+        "IncrementInteger": {
+            "ignore": [
+                "MichaelRubel\\Formatters\\Collection\\MaskStringFormatter::__construct"
+            ]
+        },
+        "DecrementInteger": {
+            "ignore": [
+                "MichaelRubel\\Formatters\\Collection\\MaskStringFormatter::__construct"
+            ]
+        }
+    }
+}
