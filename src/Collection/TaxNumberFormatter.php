@@ -26,9 +26,9 @@ class TaxNumberFormatter implements Formatter
     /**
      * Format the Tax Number.
      *
-     * @return string
+     * @return string|null
      */
-    public function format(): string
+    public function format(): ?string
     {
         return ! blank($this->country)
             ? $this->getFullTaxNumber()
