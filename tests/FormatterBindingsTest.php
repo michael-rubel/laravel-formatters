@@ -43,7 +43,7 @@ class FormatterBindingsTest extends TestCase
         $this->assertSame([
             'abstract' => 'test_formatter',
             'concrete' => 'App\Formatters\TestFormatter',
-        ], (new ReflectionFunction($binding))->getClosureUsedVariables());
+        ], (new ReflectionFunction($binding))->getStaticVariables());
 
         File::delete(app_path('Formatters' . DIRECTORY_SEPARATOR . 'TestFormatter.php'));
     }
