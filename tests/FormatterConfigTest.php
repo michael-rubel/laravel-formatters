@@ -3,7 +3,6 @@
 namespace MichaelRubel\Formatters\Tests;
 
 use Illuminate\Filesystem\Filesystem;
-use MichaelRubel\Formatters\FormatterService;
 use MichaelRubel\Formatters\FormatterServiceProvider;
 use Mockery\MockInterface;
 

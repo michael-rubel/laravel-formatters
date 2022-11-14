@@ -3,9 +3,7 @@
 namespace MichaelRubel\Formatters\Tests;
 
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Log;
 use MichaelRubel\Formatters\Commands\MakeFormatterCommand;
-use MichaelRubel\Formatters\FormatterService;
 use MichaelRubel\Formatters\FormatterServiceProvider;
 use Symfony\Component\Console\Input\InputOption;
 

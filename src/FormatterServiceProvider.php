@@ -52,7 +52,7 @@ class FormatterServiceProvider extends PackageServiceProvider
 
         $packageFormatters = collect(
             $filesystem->allFiles(
-                $this->getPackageBaseDir() .  DIRECTORY_SEPARATOR . FormatterService::PACKAGE_FOLDER
+                $this->getPackageBaseDir() . DIRECTORY_SEPARATOR . FormatterService::PACKAGE_FOLDER
             )
         );
 
