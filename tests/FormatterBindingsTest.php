@@ -40,13 +40,10 @@ class FormatterBindingsTest extends TestCase
         $binding = app()->getBindings()['test_formatter']['concrete'];
 
         $this->assertTrue(isset($binding));
-
-        $bindingVars = [
+        $this->assertSame([
             'abstract' => 'test_formatter',
             'concrete' => 'App\Formatters\TestFormatter',
-        ];
-
-        $this->assertSame($bindingVars, (new ReflectionFunction($binding))->getClosureUsedVariables());
+        ], (new ReflectionFunction($binding))->getClosureUsedVariables());
 
         File::delete(app_path('Formatters' . DIRECTORY_SEPARATOR . 'TestFormatter.php'));
     }

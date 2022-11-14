@@ -3,20 +3,30 @@
 namespace MichaelRubel\Formatters\Tests;
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use MichaelRubel\Formatters\Commands\MakeFormatterCommand;
+use MichaelRubel\Formatters\FormatterService;
+use MichaelRubel\Formatters\FormatterServiceProvider;
 use Symfony\Component\Console\Input\InputOption;
 
 class MakeFormatterCommandTest extends TestCase
 {
     public function testCanMakeFormatter()
     {
-        $pathToGeneratedFile = app_path('Formatters' . DIRECTORY_SEPARATOR . 'TestFormatter.php');
+        config([
+            'formatters.folder' => app_path('Formatters'),
+        ]);
 
-        File::delete($pathToGeneratedFile);
+        File::deleteDirectory(config('formatters.folder'));
+
+        app()->register(FormatterServiceProvider::class, true);
+        $this->assertSame('`Formatters` folder not found.', app(FormatterService::PACKAGE_KEY));
 
         $this->artisan('make:formatter', [
             'name' => 'TestFormatter',
         ]);
+
+        $pathToGeneratedFile = app_path('Formatters' . DIRECTORY_SEPARATOR . 'TestFormatter.php');
 
         $this->assertFileExists($pathToGeneratedFile);
 

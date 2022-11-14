@@ -11,6 +11,7 @@ interface FormatterServiceInterface
      *
      * @const
      */
+    public const PACKAGE_KEY     = 'formatters';
     public const PACKAGE_FOLDER  = 'Collection';
     public const BINDING_POSTFIX = '_formatter';
     public const CLASS_SEPARATOR = '\\';
