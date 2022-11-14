@@ -52,9 +52,7 @@ class FormatterServiceProvider extends PackageServiceProvider
             : new Collection;
 
         $packageFormatters = collect(
-            $filesystem->allFiles(
-                $this->getPackageBaseDir() . DIRECTORY_SEPARATOR . FormatterService::PACKAGE_FOLDER
-            )
+            $filesystem->allFiles($this->getPackageDirectory())
         );
 
         $packageFormatters
@@ -66,6 +64,16 @@ class FormatterServiceProvider extends PackageServiceProvider
 
                 $this->app->bind($name, $class);
             });
+    }
+
+    /**
+     * Get the package directory path.
+     *
+     * @return string
+     */
+    private function getPackageDirectory(): string
+    {
+        return $this->getPackageBaseDir() . DIRECTORY_SEPARATOR . FormatterService::PACKAGE_FOLDER;
     }
 
     /**
