@@ -2,6 +2,7 @@
 
 namespace MichaelRubel\Formatters\Tests;
 
+use Illuminate\Support\Facades\File;
 use MichaelRubel\Formatters\Collection\DateFormatter;
 use MichaelRubel\Formatters\Exceptions\ShouldNotUseCamelCaseException;
 use MichaelRubel\Formatters\FormatterServiceProvider;
@@ -24,6 +25,20 @@ class FormatterBindingsTest extends TestCase
 
         $result = format('table_column', 'created_at');
         $this->assertEquals('Created at', $result);
+    }
+
+    /** @test */
+    public function testFormatterFromAppFolderLoadsCorrectly()
+    {
+        $this->artisan('make:formatter', [
+            'name' => 'TestFormatter',
+        ]);
+
+        app()->register(FormatterServiceProvider::class, true);
+
+        $this->assertTrue(isset(app()->getBindings()['test_formatter']));
+
+        File::delete(app_path('Formatters' . DIRECTORY_SEPARATOR . 'TestFormatter.php'));
     }
 
     /** @test */

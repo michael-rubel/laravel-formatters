@@ -28,24 +28,4 @@ class FormatterConfigTest extends TestCase
 
         $this->assertInstanceOf(FormatterServiceProvider::class, $registered);
     }
-
-    /** @test */
-    public function testBaseDirectorySetsCorrectly()
-    {
-        app()->setBasePath(__DIR__);
-
-        config(['formatters.folder' => 'Formatters']);
-
-        $mock = $this->partialMock(Filesystem::class, function (MockInterface $mock) {
-            $mock->shouldReceive('isDirectory')
-                 ->once()
-                 ->andReturnTrue();
-        });
-
-        app()->instance('files', $mock);
-
-        $registered = app()->register(FormatterServiceProvider::class, true);
-
-        $this->assertInstanceOf(FormatterServiceProvider::class, $registered);
-    }
 }
