@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MichaelRubel\Formatters;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use MichaelRubel\Formatters\Commands\MakeFormatterCommand;
 use Spatie\LaravelPackageTools\Package;
@@ -48,7 +49,7 @@ class FormatterServiceProvider extends PackageServiceProvider
 
         $appFormatters = $filesystem->isDirectory(base_path($app_folder))
             ? collect($filesystem->allFiles(base_path($app_folder)))
-            : collect();
+            : new Collection;
 
         $packageFormatters = collect(
             $filesystem->allFiles(
