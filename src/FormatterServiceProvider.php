@@ -36,7 +36,7 @@ class FormatterServiceProvider extends PackageServiceProvider
     public function packageRegistered(): void
     {
         /** @var string $app_folder */
-        $app_folder = config('formatters.folder') ?? 'Formatters';
+        $app_folder = config('formatters.folder') ?? 'app' . DIRECTORY_SEPARATOR . 'Formatters';
 
         /** @var string $bindings_case */
         $bindings_case = config('formatters.bindings_case') ?? 'kebab';
@@ -93,7 +93,8 @@ class FormatterServiceProvider extends PackageServiceProvider
     private function getFormatterClass(SplFileInfo $file, string $filename, string $app_folder): string
     {
         $path = str_contains($file->getPathName(), $app_folder)
-            ? Str::ucfirst($app_folder)
+            ? Str::ucfirst(str_replace(DIRECTORY_SEPARATOR, FormatterService::CLASS_SEPARATOR, $app_folder))
+                . FormatterService::CLASS_SEPARATOR
             : (new \ReflectionClass(static::class))->getNamespaceName()
               . FormatterServiceInterface::CLASS_SEPARATOR
               . FormatterServiceInterface::PACKAGE_FOLDER
