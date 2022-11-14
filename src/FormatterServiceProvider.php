@@ -35,13 +35,11 @@ class FormatterServiceProvider extends PackageServiceProvider
      */
     public function packageRegistered(): void
     {
-        /** @var string */
-        $app_folder = config('formatters.folder')
-            ?? 'app' . DIRECTORY_SEPARATOR . 'Formatters';
+        /** @var string $app_folder */
+        $app_folder = config('formatters.folder') ?? 'Formatters';
 
-        /** @var string */
-        $bindings_case = config('formatters.bindings_case')
-            ?? 'kebab';
+        /** @var string $bindings_case */
+        $bindings_case = config('formatters.bindings_case') ?? 'kebab';
 
         $filesystem = app('files');
 
@@ -53,7 +51,7 @@ class FormatterServiceProvider extends PackageServiceProvider
             $filesystem->allFiles(
                 $this->getPackageBaseDir()
                 . DIRECTORY_SEPARATOR
-                . FormatterService::PACKAGE_FOLDER
+                . FormatterServiceInterface::PACKAGE_FOLDER
             )
         );
 
@@ -76,7 +74,7 @@ class FormatterServiceProvider extends PackageServiceProvider
      *
      * @return string
      */
-    public function getFormatterName(string $bindings_case, string $filename): string
+    private function getFormatterName(string $bindings_case, string $filename): string
     {
         $name = str_replace('Formatter', '', $filename);
 
@@ -95,12 +93,11 @@ class FormatterServiceProvider extends PackageServiceProvider
     private function getFormatterClass(SplFileInfo $file, string $filename, string $app_folder): string
     {
         $path = str_contains($file->getPathName(), $app_folder)
-            ? Str::ucfirst(str_replace(DIRECTORY_SEPARATOR, FormatterService::CLASS_SEPARATOR, $app_folder))
-              . FormatterService::CLASS_SEPARATOR
+            ? Str::ucfirst($app_folder)
             : (new \ReflectionClass(static::class))->getNamespaceName()
-              . FormatterService::CLASS_SEPARATOR
-              . FormatterService::PACKAGE_FOLDER
-              . FormatterService::CLASS_SEPARATOR;
+              . FormatterServiceInterface::CLASS_SEPARATOR
+              . FormatterServiceInterface::PACKAGE_FOLDER
+              . FormatterServiceInterface::CLASS_SEPARATOR;
 
         return sprintf('%s%s', $path, $filename);
     }

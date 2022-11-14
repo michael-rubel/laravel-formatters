@@ -12,11 +12,9 @@ class {{ class }} implements Formatter
     /**
      * Format the input.
      *
-     * @param Collection $items
-     *
-     * @return
+     * @return string|null
      */
-    public function format(Collection $items)
+    public function format(): ?string
     {
         //
     }
