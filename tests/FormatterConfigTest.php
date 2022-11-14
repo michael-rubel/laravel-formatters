@@ -3,7 +3,6 @@
 namespace MichaelRubel\Formatters\Tests;
 
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\Log;
 use MichaelRubel\Formatters\FormatterService;
 use MichaelRubel\Formatters\FormatterServiceProvider;
 use Mockery\MockInterface;
@@ -27,16 +26,15 @@ class FormatterConfigTest extends TestCase
     }
 
     /** @test */
-    public function testPackageFailsWhenConfigHasNulls()
+    public function testPackageDoesntFailWhenConfigHasNulls()
     {
-        $this->expectException(\Exception::class);
-
         config([
             'formatters.folder'        => null,
             'formatters.bindings_case' => null,
         ]);
 
-        app()->register(FormatterServiceProvider::class, true);
+        $registered = app()->register(FormatterServiceProvider::class, true);
+        $this->assertInstanceOf(FormatterServiceProvider::class, $registered);
     }
 
     /** @test */
@@ -47,8 +45,8 @@ class FormatterConfigTest extends TestCase
         ]);
 
         $this->artisan('make:formatter', ['name' => 'TestFormatter']);
-        app()->register(FormatterServiceProvider::class, true);
-        $this->assertSame('`Formatters` folder not found.', app(FormatterService::PACKAGE_KEY));
+        $registered = app()->register(FormatterServiceProvider::class, true);
+        $this->assertInstanceOf(FormatterServiceProvider::class, $registered);
     }
 
     /** @test */
@@ -59,8 +57,8 @@ class FormatterConfigTest extends TestCase
         ]);
 
         $this->artisan('make:formatter', ['name' => 'TestFormatter']);
-        app()->register(FormatterServiceProvider::class, true);
-        $this->assertSame('`Formatters` folder not found.', app(FormatterService::PACKAGE_KEY));
+        $registered = app()->register(FormatterServiceProvider::class, true);
+        $this->assertInstanceOf(FormatterServiceProvider::class, $registered);
     }
 
     /** @test */
@@ -71,8 +69,8 @@ class FormatterConfigTest extends TestCase
         ]);
 
         $this->artisan('make:formatter', ['name' => 'TestFormatter']);
-        app()->register(FormatterServiceProvider::class, true);
-        $this->assertSame('`Formatters` folder not found.', app(FormatterService::PACKAGE_KEY));
+        $registered = app()->register(FormatterServiceProvider::class, true);
+        $this->assertInstanceOf(FormatterServiceProvider::class, $registered);
     }
 
     /** @test */
@@ -83,7 +81,7 @@ class FormatterConfigTest extends TestCase
         ]);
 
         $this->artisan('make:formatter', ['name' => 'TestFormatter']);
-        app()->register(FormatterServiceProvider::class, true);
-        $this->assertSame('`Formatters` folder not found.', app(FormatterService::PACKAGE_KEY));
+        $registered = app()->register(FormatterServiceProvider::class, true);
+        $this->assertInstanceOf(FormatterServiceProvider::class, $registered);
     }
 }

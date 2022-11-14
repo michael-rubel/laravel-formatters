@@ -20,7 +20,6 @@ class MakeFormatterCommandTest extends TestCase
         File::deleteDirectory(config('formatters.folder'));
 
         app()->register(FormatterServiceProvider::class, true);
-        $this->assertSame('`Formatters` folder not found.', app(FormatterService::PACKAGE_KEY));
 
         $this->artisan('make:formatter', [
             'name' => 'TestFormatter',

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace MichaelRubel\Formatters;
 
-use Exception;
 use Illuminate\Support\Str;
 use MichaelRubel\Formatters\Commands\MakeFormatterCommand;
 use Spatie\LaravelPackageTools\Package;
@@ -32,7 +31,6 @@ class FormatterServiceProvider extends PackageServiceProvider
      * Register any package services.
      *
      * @return void
-     * @throws Exception
      */
     public function packageRegistered(): void
     {
@@ -40,23 +38,17 @@ class FormatterServiceProvider extends PackageServiceProvider
         $app_folder = config('formatters.folder');
 
         if (empty($app_folder)) {
-            throw new Exception('Wrong `formatters.folder` config value.');
+            return;
         }
 
         /** @var string $bindings_case */
         $bindings_case = config('formatters.bindings_case', 'kebab');
 
-        if (empty($bindings_case)) {
-            return;
-        }
-
         $filesystem = app('files');
 
         $appFormatters = $filesystem->isDirectory(base_path($app_folder))
             ? collect($filesystem->allFiles(base_path($app_folder)))
-            : collect()->tap(function () {
-                $this->app->singleton(FormatterService::PACKAGE_KEY, fn () => '`Formatters` folder not found.');
-            });
+            : collect();
 
         $packageFormatters = collect(
             $filesystem->allFiles(
