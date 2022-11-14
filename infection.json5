@@ -34,7 +34,7 @@
         },
         "ConcatOperandRemoval": {
             "ignore": [
-                "MichaelRubel\\Formatters\\FormatterServiceProvider::packageRegistered::52"
+                "MichaelRubel\\Formatters\\FormatterServiceProvider::getPackageDirectory"
             ]
         }
     }

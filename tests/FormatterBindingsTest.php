@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\File;
 use MichaelRubel\Formatters\Collection\DateFormatter;
 use MichaelRubel\Formatters\Exceptions\ShouldNotUseCamelCaseException;
 use MichaelRubel\Formatters\FormatterServiceProvider;
+use ReflectionFunction;
 
 class FormatterBindingsTest extends TestCase
 {
@@ -36,7 +37,13 @@ class FormatterBindingsTest extends TestCase
 
         app()->register(FormatterServiceProvider::class, true);
 
-        $this->assertTrue(isset(app()->getBindings()['test_formatter']));
+        $binding = app()->getBindings()['test_formatter']['concrete'];
+
+        $this->assertTrue(isset($binding));
+        $this->assertSame([
+            'abstract' => 'test_formatter',
+            'concrete' => 'App\Formatters\TestFormatter',
+        ], (new ReflectionFunction($binding))->getStaticVariables());
 
         File::delete(app_path('Formatters' . DIRECTORY_SEPARATOR . 'TestFormatter.php'));
     }
