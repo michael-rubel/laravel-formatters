@@ -56,7 +56,7 @@ class TableColumnFormatterTest extends TestCase
     /** @test */
     public function testCanExtendFormatterBinding()
     {
-        extend(TableColumnFormatter::class, function ($formatter) {
+        $this->app->extend(TableColumnFormatter::class, function ($formatter) {
             $formatter->string = 'created_at';
 
             $this->assertStringContainsString('created_at', $formatter->string);
