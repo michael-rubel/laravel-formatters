@@ -52,7 +52,7 @@ class MaskStringFormatterTest extends TestCase
     /** @test */
     public function testCanExtendFormatterBinding()
     {
-        extend(MaskStringFormatter::class, function ($formatter) {
+        $this->app->extend(MaskStringFormatter::class, function ($formatter) {
             $formatter->string    = 'test@example.com';
             $formatter->character = '%';
             $formatter->index     = 5;
