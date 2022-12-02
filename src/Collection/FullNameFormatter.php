@@ -25,11 +25,11 @@ class FullNameFormatter implements Formatter
     {
         $words = str($this->name)->split('/\s/');
 
-        $name = $words->map(function (string $word) {
+        $this->name = $words->map(function (string $word) {
             return str($word)->ucfirst();
         })->join(' ');
 
-        return str($name)
+        return str($this->name)
             ->replaceMatches('/\p{C}+/u', '')
             ->squish()
             ->value();
