@@ -23,10 +23,15 @@ class FullNameFormatter implements Formatter
      */
     public function format(): string
     {
+        $words = str($this->name)->split('/\s/');
+
+        $this->name = $words->map(function (string $word) {
+            return str($word)->ucfirst();
+        })->join(' ');
+
         return str($this->name)
             ->replaceMatches('/\p{C}+/u', '')
             ->squish()
-            ->title()
             ->value();
     }
 }

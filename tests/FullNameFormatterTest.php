@@ -29,9 +29,10 @@ class FullNameFormatterTest extends TestCase
 
     public function testCanFormatFirstAndLastName()
     {
-        $name = format(FullNameFormatter::class, 'michaeL rubéL');
-
+        $name = format(FullNameFormatter::class, 'michael rubél');
         $this->assertSame('Michael Rubél', $name);
+        $name = format(FullNameFormatter::class, 'michael mcKenzie');
+        $this->assertSame('Michael McKenzie', $name);
     }
 
     public function testCanFormatNameWithMinusSeparators()
@@ -39,7 +40,7 @@ class FullNameFormatterTest extends TestCase
         $name = format(FullNameFormatter::class, 'Anna Nowak-Kowalska');
         $this->assertSame('Anna Nowak-Kowalska', $name);
         $name = format(FullNameFormatter::class, ' anna nowak-kowalska ');
-        $this->assertSame('Anna Nowak-Kowalska', $name);
+        $this->assertSame('Anna Nowak-kowalska', $name);
     }
 
     public function testCutsSpaceBeforeAndAfter()
