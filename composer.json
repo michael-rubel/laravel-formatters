@@ -19,7 +19,7 @@
         "php": "^8.0",
         "ext-intl": "*",
         "illuminate/contracts": "^9.7|^10.0",
-        "michael-rubel/laravel-enhanced-container": "^10.0",
+        "michael-rubel/laravel-enhanced-container": "^11.0",
         "spatie/laravel-package-tools": "^1.12"
     },
     "require-dev": {
