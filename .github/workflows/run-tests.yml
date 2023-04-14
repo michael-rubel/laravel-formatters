@@ -44,4 +44,4 @@ jobs:
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
-        run: XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-clover build/clover.xml
+        run: ./vendor/bin/phpunit --coverage-clover build/clover.xml
