@@ -30,7 +30,7 @@
         "nunomaduro/collision": "^6.0|^7.0",
         "nunomaduro/larastan": "^2.2",
         "orchestra/testbench": "^7.0|^8.0",
-        "phpunit/phpunit": "^9.5.4|^10.0",
+        "phpunit/phpunit": "^9.5.4|10.0",
         "roave/backward-compatibility-check": "^7.0|^8.0"
     },
     "autoload": {
