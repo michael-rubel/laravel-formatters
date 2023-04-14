@@ -27,7 +27,7 @@
         "infection/infection": "^0.26.19",
         "laravel/pint": "^1.1",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.0|^7.0",
+        "nunomaduro/collision": "^6.0",
         "nunomaduro/larastan": "^2.2",
         "orchestra/testbench": "^7.0|^8.0",
         "phpunit/phpunit": "^9.5.4",

@@ -5,7 +5,6 @@ namespace MichaelRubel\Formatters\Tests;
 use Carbon\Carbon;
 use MichaelRubel\Formatters\Collection\DateFormatter;
 use MichaelRubel\Formatters\Exceptions\ShouldImplementInterfaceException;
-use MichaelRubel\Formatters\Tests\Boilerplate\WrongFormatter;
 
 class DateFormatterTest extends TestCase
 {
@@ -158,4 +157,8 @@ class DateFormatterTest extends TestCase
         $result = format(DateFormatter::class, now(), 'Europe/Warsaw', 'd F Y');
         $this->assertSame('30 października 2021', $result);
     }
+}
+
+class WrongFormatter
+{
 }
