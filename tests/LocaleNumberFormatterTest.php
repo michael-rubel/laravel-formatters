@@ -169,4 +169,15 @@ class LocaleNumberFormatterTest extends TestCase
 
         $this->assertSame('10 000,56', $result);
     }
+
+    /** @test */
+    public function testCanFormatUsingNamedArguments()
+    {
+        $result = format(
+            formatter: LocaleNumberFormatter::class,
+            number: 10000,
+        );
+
+        $this->assertSame('10,000.00', $result);
+    }
 }
