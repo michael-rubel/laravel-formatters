@@ -17,8 +17,8 @@ class DateFormatter implements Formatter
      */
     public function __construct(
         public string|null|CarbonInterface $date = null,
-        public string|null $timezone = null,
-        public string|null $date_format = 'Y-m-d',
+        public ?string $timezone = null,
+        public ?string $date_format = 'Y-m-d',
     ) {
         if (empty($this->date)) {
             $this->date = null;

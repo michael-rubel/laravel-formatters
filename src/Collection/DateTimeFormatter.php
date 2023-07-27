@@ -17,8 +17,8 @@ class DateTimeFormatter implements Formatter
      */
     public function __construct(
         public string|null|CarbonInterface $datetime = null,
-        public string|null $timezone = null,
-        public string|null $datetime_format = 'Y-m-d H:i',
+        public ?string $timezone = null,
+        public ?string $datetime_format = 'Y-m-d H:i',
     ) {
         if (empty($this->datetime)) {
             $this->datetime = null;
