@@ -3,6 +3,7 @@
 namespace MichaelRubel\Formatters\Tests;
 
 use MichaelRubel\Formatters\Collection\LocaleNumberFormatter;
+use MichaelRubel\Formatters\Collection\TaxNumberFormatter;
 
 class LocaleNumberFormatterTest extends TestCase
 {
@@ -179,5 +180,21 @@ class LocaleNumberFormatterTest extends TestCase
         );
 
         $this->assertSame('10,000.00', $result);
+    }
+
+    /** @test */
+    public function testCanExtendLocaleNumberFormatter()
+    {
+        $this->app->extend(LocaleNumberFormatter::class, function ($formatter) {
+            $formatter->locale = 'fr';
+
+            return $formatter;
+        });
+
+        $result = $this->trimSpecialCharacters(
+            format(LocaleNumberFormatter::class, 10000.5550)
+        );
+
+        $this->assertEquals('10 000,56', $result);
     }
 }
