@@ -128,14 +128,14 @@ class DateFormatterTest extends TestCase
     }
 
     /** @test */
-    public function testCanExtendDateTimeFormatter()
+    public function testCanExtendDateFormatter()
     {
         config(['app.timezone' => 'UTC']);
 
         $result = format(DateFormatter::class, '2021-10-31');
         $this->assertEquals('2021-10-31', $result);
 
-        app()->extend(DateFormatter::class, function ($service) {
+        $this->app->extend(DateFormatter::class, function ($service) {
             $service->timezone    = 'Europe/Warsaw';
             $service->date_format = 'd-m-Y';
 

@@ -27,13 +27,8 @@ class LocaleNumberFormatter implements Formatter
         public ?string $locale = null,
         public int $style = NumberFormatter::DECIMAL,
         public ?string $pattern = null,
-        public int $fraction_digits = 2
+        public int $fraction_digits = 2,
     ) {
-        $this->locale = $this->locale ?? app()->getLocale();
-
-        $this->formatter = new NumberFormatter($this->locale, $this->style, $this->pattern);
-
-        $this->formatter->setAttribute(NumberFormatter::FRACTION_DIGITS, $this->fraction_digits);
     }
 
     /**
@@ -45,6 +40,10 @@ class LocaleNumberFormatter implements Formatter
      */
     public function format(Collection $items): string|false
     {
+        $this->formatter = new NumberFormatter($this->locale ?? app()->getLocale(), $this->style, $this->pattern);
+
+        $this->formatter->setAttribute(NumberFormatter::FRACTION_DIGITS, $this->fraction_digits);
+
         return $this->formatter->format(
             (float) $this->number
         );
