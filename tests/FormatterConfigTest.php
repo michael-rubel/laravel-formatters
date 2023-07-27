@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MichaelRubel\Formatters\Tests;
 
 use Illuminate\Filesystem\Filesystem;
@@ -13,8 +15,8 @@ class FormatterConfigTest extends TestCase
     {
         $mock = $this->partialMock(Filesystem::class, function (MockInterface $mock) {
             $mock->shouldReceive('isDirectory')
-                 ->once()
-                 ->andReturnFalse();
+                ->once()
+                ->andReturnFalse();
         });
 
         app()->instance('files', $mock);

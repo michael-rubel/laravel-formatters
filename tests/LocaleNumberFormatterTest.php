@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MichaelRubel\Formatters\Tests;
 
 use MichaelRubel\Formatters\Collection\LocaleNumberFormatter;
-use MichaelRubel\Formatters\Collection\TaxNumberFormatter;
 
 class LocaleNumberFormatterTest extends TestCase
 {

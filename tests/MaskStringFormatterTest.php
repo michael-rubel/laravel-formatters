@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MichaelRubel\Formatters\Tests;
 
 use MichaelRubel\Formatters\Collection\MaskStringFormatter;
@@ -59,11 +61,11 @@ class MaskStringFormatterTest extends TestCase
             $formatter->length    = -5;
             $formatter->encoding  = 'KOI8-U';
 
-            $this->assertStringContainsString('test@example.com', $formatter->string);
-            $this->assertStringContainsString('%', $formatter->character);
-            $this->assertStringContainsString(5, $formatter->index);
-            $this->assertStringContainsString(-5, $formatter->length);
-            $this->assertStringContainsString('KOI8-U', $formatter->encoding);
+            $this->assertSame('test@example.com', $formatter->string);
+            $this->assertSame('%', $formatter->character);
+            $this->assertSame(5, $formatter->index);
+            $this->assertSame(-5, $formatter->length);
+            $this->assertSame('KOI8-U', $formatter->encoding);
 
             return $formatter;
         });

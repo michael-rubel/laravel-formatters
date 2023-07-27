@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MichaelRubel\Formatters\Tests;
 
 use Carbon\Carbon;
