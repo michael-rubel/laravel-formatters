@@ -21,6 +21,8 @@ class LocaleNumberFormatter implements Formatter
      * @param  int  $style
      * @param  string|null  $pattern
      * @param  int  $fraction_digits
+     * @param  string|null  $grouping_separator
+     * @param  string|null  $decimal_separator
      */
     public function __construct(
         public int|float|string|null $number = null,
@@ -28,6 +30,8 @@ class LocaleNumberFormatter implements Formatter
         public int $style = NumberFormatter::DECIMAL,
         public ?string $pattern = null,
         public int $fraction_digits = 2,
+        public ?string $grouping_separator = null,
+        public ?string $decimal_separator = null,
     ) {
     }
 
@@ -43,6 +47,14 @@ class LocaleNumberFormatter implements Formatter
         $this->formatter = new NumberFormatter($this->locale ?? app()->getLocale(), $this->style, $this->pattern);
 
         $this->formatter->setAttribute(NumberFormatter::FRACTION_DIGITS, $this->fraction_digits);
+
+        if ($this->grouping_separator) {
+            $this->formatter->setSymbol(NumberFormatter::GROUPING_SEPARATOR_SYMBOL, $this->grouping_separator);
+        }
+
+        if ($this->decimal_separator) {
+            $this->formatter->setSymbol(NumberFormatter::DECIMAL_SEPARATOR_SYMBOL, $this->decimal_separator);
+        }
 
         return $this->formatter->format(
             (float) $this->number

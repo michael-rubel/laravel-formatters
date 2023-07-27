@@ -198,4 +198,20 @@ class LocaleNumberFormatterTest extends TestCase
 
         $this->assertEquals('10 000,56', $result);
     }
+
+    /** @test */
+    public function testCanSetGroupingAndDecimalSeparatorUsingExtend()
+    {
+        $this->app->extend(LocaleNumberFormatter::class, function (LocaleNumberFormatter $formatter) {
+            $formatter->locale             = 'en';
+            $formatter->grouping_separator = '-';
+            $formatter->decimal_separator  = ',';
+
+            return $formatter;
+        });
+
+        $result = format(LocaleNumberFormatter::class, 10000.5550);
+
+        $this->assertEquals('10-000,56', $result);
+    }
 }
