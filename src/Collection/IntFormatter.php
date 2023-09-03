@@ -6,7 +6,6 @@ namespace MichaelRubel\Formatters\Collection;
 
 use Num\Num;
 use MichaelRubel\Formatters\Formatter;
-use Num\Enums\DecimalSeparator;
 
 class IntFormatter implements Formatter
 {
@@ -21,27 +20,27 @@ class IntFormatter implements Formatter
     }
 
     /**
-     * Get the decimal separator as a DecimalSeparator enum value.
+     * Get the valid decimal separator or null.
      *
      * @param string|null $decimal_separator The decimal separator to convert.
-     * @return DecimalSeparator|null The DecimalSeparator enum value.
+     * @return string|null The valid decimal separator or null.
      */
-    private function getDecimalSeparator(?string $decimal_separator): ?DecimalSeparator
+    private function getDecimalSeparator(?string $decimal_separator): ?string
     {
         switch ($decimal_separator) {
             case '.':
-                return DecimalSeparator::POINT;
+                return '.';
             case ',':
-                return DecimalSeparator::COMMA;
+                return ',';
             default:
                 return null;
         }
     }
 
     /**
-     * Format the value as a int using the specified decimal separator.
+     * Format the value as an integer using the specified decimal separator.
      *
-     * @return int The formatted int value.
+     * @return int The formatted integer value.
      */
     public function format(): int
     {
