@@ -4,7 +4,6 @@
 .phpunit.cache
 .phpunit.result.cache
 build
-composer.lock
 coverage
 phpunit.xml
 psalm.xml
