@@ -1,5 +1,5 @@
 includes:
-    - ./vendor/nunomaduro/larastan/extension.neon
+    - ./vendor/larastan/larastan/extension.neon
 
 parameters:
 
@@ -22,6 +22,7 @@ parameters:
         - '#(.*)expects string, string\|null given\.#'
         - '#Parameter \#1 \$formatter of static method MichaelRubel\\Formatters\\FormatterService\:\:ensureFormatterImplementsInterface\(\) expects object, mixed given\.#'
         - '#Call to an undefined method MichaelRubel\\EnhancedContainer\\Core\\CallProxy\:\:format\(\)\.#'
+        - '#Parameter \#1 \$needles of method Illuminate\\Support\\Stringable\:\:startsWith\(\) expects iterable\<string\>\|string, string\|null given\.#'
 
     checkMissingIterableValueType: false
 
