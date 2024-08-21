@@ -13,8 +13,7 @@ class TableColumnFormatter implements Formatter
      */
     public function __construct(
         public ?string $attribute = null
-    ) {
-    }
+    ) {}
 
     /**
      * Format the snake-cased attributes in readable format for the tables.

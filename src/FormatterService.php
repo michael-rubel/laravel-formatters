@@ -18,10 +18,10 @@ class FormatterService implements FormatterServiceInterface
     {
         if (! $formatter instanceof Formatter) {
             if (config('formatters.bindings_case') === 'camel') {
-                throw new ShouldNotUseCamelCaseException();
+                throw new ShouldNotUseCamelCaseException;
             }
 
-            throw new ShouldImplementInterfaceException();
+            throw new ShouldImplementInterfaceException;
         }
     }
 
