@@ -21,8 +21,7 @@ class MaskStringFormatter implements Formatter
         public int $index = 4,
         public int $length = -4,
         public string $encoding = 'UTF-8',
-    ) {
-    }
+    ) {}
 
     /**
      * Mask the string.

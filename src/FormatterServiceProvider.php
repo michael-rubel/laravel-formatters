@@ -49,7 +49,7 @@ class FormatterServiceProvider extends PackageServiceProvider
 
         $appFormatters = $filesystem->isDirectory(base_path($app_folder))
             ? collect($filesystem->allFiles(base_path($app_folder)))
-            : new Collection();
+            : new Collection;
 
         $packageFormatters = collect(
             $filesystem->allFiles($this->getPackageDirectory())

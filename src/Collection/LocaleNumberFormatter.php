@@ -32,8 +32,7 @@ class LocaleNumberFormatter implements Formatter
         public int $fraction_digits = 2,
         public ?string $grouping_separator = null,
         public ?string $decimal_separator = null,
-    ) {
-    }
+    ) {}
 
     /**
      * Format the number based on locale.

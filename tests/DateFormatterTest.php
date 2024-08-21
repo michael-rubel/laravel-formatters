@@ -161,6 +161,4 @@ class DateFormatterTest extends TestCase
     }
 }
 
-class WrongFormatter
-{
-}
+class WrongFormatter {}
